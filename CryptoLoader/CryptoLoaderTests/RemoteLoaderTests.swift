@@ -30,16 +30,13 @@ class RemoteLoader {
 
 class RemoteLoaderTests: XCTestCase {
     func test_init_doesNotCallAPI() {
-        let spy = ClientSpy()
-        
-        let _ = RemoteLoader(client: spy)
+        let (_ , spy) = makeSUT()
         
         XCTAssertTrue(spy.message.isEmpty)
     }
     
     func test_loadFromURL_callsOnURL() {
-        let spy = ClientSpy()
-        let remoteLoader = RemoteLoader(client: spy)
+        let (remoteLoader, spy) = makeSUT()
         
         remoteLoader.load(from: anyURL)
         
@@ -48,6 +45,13 @@ class RemoteLoaderTests: XCTestCase {
     
     // MARK: - Hepler
     private let anyURL = URL(string: "any-url")!
+    
+    private func makeSUT() -> (remoteLoader: RemoteLoader, spy: ClientSpy){
+        let spy = ClientSpy()
+        let remoteLoader = RemoteLoader(client: spy)
+        
+        return (remoteLoader, spy)
+    }
 }
 
 class ClientSpy: HTTPClient {
