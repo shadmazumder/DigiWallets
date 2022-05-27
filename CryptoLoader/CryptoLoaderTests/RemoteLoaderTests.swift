@@ -84,8 +84,6 @@ class RemoteLoaderTests: XCTestCase {
     }
     
     // MARK: - Hepler
-    private let anyURL = URL(string: "any-url")!
-    
     private func makeSUT() -> (remoteLoader: RemoteLoader, spy: ClientSpy){
         let spy = ClientSpy()
         let remoteLoader = RemoteLoader(client: spy)
@@ -100,7 +98,7 @@ class RemoteLoaderTests: XCTestCase {
             switch (result, expectedResult) {
             case let (.failure(receivedError), .failure(expectedError)):
                 XCTAssertEqual(receivedError, expectedError, file: file, line: line)
-                
+            
             default:
                 XCTFail("Expected \(expectedResult) but got \(result)", file: file, line: line)
             }
