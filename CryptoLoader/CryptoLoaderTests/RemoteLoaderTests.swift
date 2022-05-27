@@ -6,20 +6,7 @@
 //
 
 import XCTest
-
-enum HTTPResult {
-    enum Error {
-        case connectivity
-        case non200HTTPResponse
-    }
-    
-    case success(Data, HTTPURLResponse)
-    case failure(Error)
-}
-
-protocol HTTPClient{
-    func get(from url: URL, completion: @escaping ((HTTPResult) -> Void))
-}
+import CryptoLoader
 
 class RemoteLoader {
     private let client: HTTPClient

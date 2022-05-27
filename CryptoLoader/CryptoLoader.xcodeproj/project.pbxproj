@@ -11,6 +11,8 @@
 		E8AF945528409D9500884741 /* CryptoLoader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8AF944A28409D9500884741 /* CryptoLoader.framework */; };
 		E8AF94652840A6B200884741 /* RemoteLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AF94642840A6B200884741 /* RemoteLoaderTests.swift */; };
 		E8AF94682840DD1000884741 /* TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AF94672840DD1000884741 /* TestHelper.swift */; };
+		E8AF946B2840F0B600884741 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AF946A2840F0B600884741 /* HTTPClient.swift */; };
+		E8AF946D2840F0DA00884741 /* HTTPResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AF946C2840F0DA00884741 /* HTTPResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,8 @@
 		E8AF945428409D9500884741 /* CryptoLoaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptoLoaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8AF94642840A6B200884741 /* RemoteLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteLoaderTests.swift; sourceTree = "<group>"; };
 		E8AF94672840DD1000884741 /* TestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelper.swift; sourceTree = "<group>"; };
+		E8AF946A2840F0B600884741 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		E8AF946C2840F0DA00884741 /* HTTPResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,7 @@
 		E8AF944C28409D9500884741 /* CryptoLoader */ = {
 			isa = PBXGroup;
 			children = (
+				E8AF94692840F0A300884741 /* HTTPClient */,
 				E8AF944E28409D9500884741 /* CryptoLoader.docc */,
 			);
 			path = CryptoLoader;
@@ -91,6 +96,15 @@
 				E8AF94672840DD1000884741 /* TestHelper.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		E8AF94692840F0A300884741 /* HTTPClient */ = {
+			isa = PBXGroup;
+			children = (
+				E8AF946A2840F0B600884741 /* HTTPClient.swift */,
+				E8AF946C2840F0DA00884741 /* HTTPResult.swift */,
+			);
+			path = HTTPClient;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +215,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8AF946D2840F0DA00884741 /* HTTPResult.swift in Sources */,
+				E8AF946B2840F0B600884741 /* HTTPClient.swift in Sources */,
 				E8AF944F28409D9500884741 /* CryptoLoader.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,6 +417,7 @@
 		E8AF946228409D9500884741 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -415,6 +432,7 @@
 		E8AF946328409D9500884741 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
