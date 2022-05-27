@@ -13,7 +13,7 @@ enum HTTPResult {
         case non200HTTPResponse
     }
     
-    case success(HTTPURLResponse)
+    case success(Data, HTTPURLResponse)
     case failure(Error)
 }
 
@@ -31,8 +31,12 @@ class RemoteLoader {
     func load(from url: URL, completion: @escaping ((HTTPResult) -> Void)){
         client.get(from: url) { result in
                      switch result {
-                     case .success:
-                         completion(.failure(.non200HTTPResponse))
+                     case let .success(data, response):
+                         if response.statusCode == 200{
+                             completion(.success(data, response))
+                         }else{
+                             completion(.failure(.non200HTTPResponse))
+                         }
                      default:
                          completion(.failure(.connectivity))
                      }
@@ -76,10 +80,12 @@ class RemoteLoaderTests: XCTestCase {
     func test_load_deliversNon200ResponseErrorOnNon200HTTPResponseStatusCode() {
         let (sut, client) = makeSUT()
         let non200HTTPResponseStatusCode = [199, 201, 233, 401]
+        let non200HTTPResponses = non200HTTPResponseStatusCode.map({HTTPURLResponse(url: anyURL, statusCode: $0, httpVersion: nil, headerFields: nil)})
         
-        non200HTTPResponseStatusCode.enumerated().forEach({ index, statusCode in
+        
+        non200HTTPResponses.enumerated().forEach({ index, response in
             expect(sut, tocompleteWith: .failure(HTTPResult.Error.non200HTTPResponse), with: anyURL) {
-                client.completeWith(statusCode: statusCode, index: index)
+                client.completeWith(Data(), response: response!, index: index)
             } })
     }
     
@@ -121,10 +127,8 @@ class ClientSpy: HTTPClient {
         message.append((url, completion))
     }
     
-    func completeWith(statusCode: Int = 200, index: Int = 0) {
-        let response = HTTPURLResponse(url: message[index].url, statusCode: statusCode, httpVersion: nil, headerFields: nil)!
-        
-        message[index].completion(.success(response))
+    func completeWith(_ data: Data, response: HTTPURLResponse, index: Int = 0) {
+        message[index].completion(.success(data, response))
     }
     
     func completeWithError(_ error: HTTPResult.Error, index: Int = 0) {
