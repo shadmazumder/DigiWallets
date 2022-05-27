@@ -78,23 +78,23 @@ class RemoteLoaderTests: XCTestCase {
     }
     
     private func expect(_ sut: RemoteLoader, tocompleteWith expectedResult: HTTPClientResponse, with url: URL, when action: ()-> Void, file: StaticString = #file, line: UInt = #line) {
-             let exp = expectation(description: "Waiting for the client")
-
+        let exp = expectation(description: "Waiting for the client")
+        
         sut.load(from: url) { result in
-                 switch (result, expectedResult) {
-                 case let (.failure(receivedError), .failure(expectedError)):
-                     XCTAssertEqual(receivedError, expectedError, file: file, line: line)
-
-                 default:
-                     XCTFail("Expected \(expectedResult) but got \(result)", file: file, line: line)
-                 }
-                 exp.fulfill()
-             }
-
-             action()
-
-             wait(for: [exp], timeout: 1.0)
-         }
+            switch (result, expectedResult) {
+            case let (.failure(receivedError), .failure(expectedError)):
+                XCTAssertEqual(receivedError, expectedError, file: file, line: line)
+                
+            default:
+                XCTFail("Expected \(expectedResult) but got \(result)", file: file, line: line)
+            }
+            exp.fulfill()
+        }
+        
+        action()
+        
+        wait(for: [exp], timeout: 1.0)
+    }
 }
 
 class ClientSpy: HTTPClient {
@@ -108,6 +108,6 @@ class ClientSpy: HTTPClient {
     }
     
     func completeWithError(_ error: HTTPClientResponse.Error, index: Int = 0) {
-             message[index].completion(.failure(error))
-         }
+        message[index].completion(.failure(error))
+    }
 }
