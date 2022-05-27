@@ -89,6 +89,15 @@ class RemoteLoaderTests: XCTestCase {
             } })
     }
     
+    func test_load_deliversDataOn200HTTPResponseWithJSONItems() {
+        let (sut, client) = makeSUT()
+        let jsonWithData = anyValidJsonStringWithData()
+        
+        expect(sut, tocompleteWith: .success(jsonWithData.data, anyHTTP200URLResponse), with: anyURL) {
+            client.completeWith(jsonWithData.data, response: anyHTTP200URLResponse)
+        }
+    }
+    
     // MARK: - Hepler
     private func makeSUT() -> (remoteLoader: RemoteLoader, spy: ClientSpy){
         let spy = ClientSpy()
@@ -104,7 +113,11 @@ class RemoteLoaderTests: XCTestCase {
             switch (result, expectedResult) {
             case let (.failure(receivedError), .failure(expectedError)):
                 XCTAssertEqual(receivedError, expectedError, file: file, line: line)
-            
+            case let (.success(receivedData, receivedResponse), .success(expectedData, expectedResponse)):
+                XCTAssertEqual(receivedData, expectedData)
+                
+                XCTAssertEqual(receivedResponse.url, expectedResponse.url)
+                XCTAssertEqual(receivedResponse.statusCode, expectedResponse.statusCode)
             default:
                 XCTFail("Expected \(expectedResult) but got \(result)", file: file, line: line)
             }
