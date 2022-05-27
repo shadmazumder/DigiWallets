@@ -10,9 +10,10 @@ import XCTest
 enum HTTPClientResponse {
     enum Error {
         case connectivity
+        case non200HTTPResponse
     }
     
-    case success
+    case success(HTTPURLResponse)
     case failure(Error)
 }
 
@@ -28,8 +29,13 @@ class RemoteLoader {
     }
     
     func load(from url: URL, completion: @escaping ((HTTPClientResponse) -> Void)){
-        client.get(from: url) { _ in
-            completion(.failure(.connectivity))
+        client.get(from: url) { result in
+                     switch result {
+                     case .success:
+                         completion(.failure(.non200HTTPResponse))
+                     default:
+                         completion(.failure(.connectivity))
+                     }
         }
     }
 }
@@ -65,6 +71,16 @@ class RemoteLoaderTests: XCTestCase {
         expect(sut, tocompleteWith: .failure(.connectivity), with: anyURL) {
             client.completeWithError(.connectivity)
         }
+    }
+    
+    func test_load_deliversNon200ResponseErrorOnNon200HTTPResponseStatusCode() {
+        let (sut, client) = makeSUT()
+        let non200HTTPResponseStatusCode = [199, 201, 233, 401]
+        
+        non200HTTPResponseStatusCode.enumerated().forEach({ index, statusCode in
+            expect(sut, tocompleteWith: .failure(HTTPClientResponse.Error.non200HTTPResponse), with: anyURL) {
+                client.completeWith(statusCode, index: index)
+            } })
     }
     
     // MARK: - Hepler
@@ -105,6 +121,12 @@ class ClientSpy: HTTPClient {
     
     func get(from url: URL, completion: @escaping ((HTTPClientResponse) -> Void)) {
         message.append((url, completion))
+    }
+    
+    func completeWith(_ statusCode: Int = 200, index: Int = 0) {
+        let response = HTTPURLResponse(url: message[index].url, statusCode: statusCode, httpVersion: nil, headerFields: nil)!
+        
+        message[index].completion(.success(response))
     }
     
     func completeWithError(_ error: HTTPClientResponse.Error, index: Int = 0) {
