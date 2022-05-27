@@ -11,6 +11,7 @@ public final class RemoteLoader {
     public enum ResultError: Error {
         case connectivity
         case non200HTTPResponse
+        case unexpectedError
     }
     
     private let client: HTTPClient

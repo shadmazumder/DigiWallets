@@ -9,7 +9,6 @@ import Foundation
 
 public class URLSessionHTTPClient: HTTPClient {
     private let session: URLSession
-    private struct UnexpectedError: Error {}
     
     public init(session: URLSession = .shared) {
         self.session = session
@@ -22,7 +21,7 @@ public class URLSessionHTTPClient: HTTPClient {
             }else if let data = data, let response = response as? HTTPURLResponse{
                 completion(.success(data, response))
             }else{
-                completion(.failure(UnexpectedError()))
+                completion(.failure(RemoteLoader.ResultError.unexpectedError))
             }
         }.resume()
     }
