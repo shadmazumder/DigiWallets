@@ -14,6 +14,7 @@
 		E8AF94772840F39100884741 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AF94752840F39100884741 /* HTTPClient.swift */; };
 		E8AF94782840F39100884741 /* HTTPResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AF94762840F39100884741 /* HTTPResult.swift */; };
 		E8AF947B2840FD5300884741 /* RemoteLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AF947A2840FD5300884741 /* RemoteLoader.swift */; };
+		E8AF947D284109AC00884741 /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AF947C284109AC00884741 /* URLSessionHTTPClientTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,7 @@
 		E8AF94752840F39100884741 /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		E8AF94762840F39100884741 /* HTTPResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPResult.swift; sourceTree = "<group>"; };
 		E8AF947A2840FD5300884741 /* RemoteLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteLoader.swift; sourceTree = "<group>"; };
+		E8AF947C284109AC00884741 /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 			children = (
 				E8AF94662840DCFB00884741 /* Helper */,
 				E8AF94642840A6B200884741 /* RemoteLoaderTests.swift */,
+				E8AF947C284109AC00884741 /* URLSessionHTTPClientTests.swift */,
 			);
 			path = CryptoLoaderTests;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8AF94652840A6B200884741 /* RemoteLoaderTests.swift in Sources */,
+				E8AF947D284109AC00884741 /* URLSessionHTTPClientTests.swift in Sources */,
 				E8AF94682840DD1000884741 /* TestHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
