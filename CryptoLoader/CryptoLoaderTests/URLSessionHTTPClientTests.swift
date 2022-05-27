@@ -16,9 +16,9 @@ class URLSessionHTTPClient: HTTPClient {
     }
     
     func get(from url: URL, completion: @escaping (HTTPResult) -> Void) {
-        session.dataTask(with: url){ _, response, _ in
-            if let response = response as? HTTPURLResponse{
-                completion(.success(Data(), response))
+        session.dataTask(with: url){ _, response, error in
+            if let error = error {
+                completion(.failure(error))
             }
         }.resume()
     }
@@ -50,16 +50,68 @@ class URLSessionHTTPClientTests: XCTestCase {
         wait(for: [exp], timeout: 0.5)
     }
     
+    func test_getFromURL_failsOnRequestError() {
+        let givenError = NSError(domain: "Session error", code: 1)
+        
+        let receivedError = requestErrorFor(expectedError: givenError) as NSError?
+        
+        XCTAssertEqual(receivedError?.domain, givenError.domain)
+        XCTAssertEqual(receivedError?.code, givenError.code)
+    }
+    
     // MARK: - Helper
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> HTTPClient{
         let sut = URLSessionHTTPClient()
         return sut
     }
+    
+    private func requestErrorFor(expectedError: Error?, file: StaticString = #file, line: UInt = #line) -> Error?{
+        let result  = requestResultFor(expectedError: expectedError, file: file, line: line)
+        
+        switch result {
+        case let .failure(error):
+            return error
+        default:
+            if let result = result {
+                XCTFail("Was expecting failure but got \(result)", file: file, line: line)
+            }else{
+                XCTFail("Was expecting failure but got success with nil result 👻", file: file, line: line)
+            }
+            return nil
+        }
+    }
+    
+    private func requestResultFor(expectedError: Error?, file: StaticString = #file, line: UInt = #line) -> HTTPResult?{
+        let exp = expectation(description: "Waiting for completion")
+        let sut = makeSUT(file: file, line: line)
+        
+        URLProtocolStub.stub(error: expectedError)
+        
+        var receivedResults: HTTPResult?
+        
+        sut.get(from: anyURL) { result in
+            receivedResults = result
+            exp.fulfill()
+        }
+        
+        wait(for: [exp], timeout: 1.0)
+        
+        return receivedResults
+    }
 }
 
 
-class URLProtocolStub: URLProtocol {
+private class URLProtocolStub: URLProtocol {
+    private struct Stub{
+        let error: Error?
+    }
+    
+    private static var stub: Stub?
     private static var requestObservable: ((URLRequest) -> Void)?
+    
+    static func stub(error: Error?){
+        stub = Stub(error: error)
+    }
     
     static func observeRequest(observer: @escaping ((URLRequest)-> Void)){
         requestObservable = observer
@@ -71,6 +123,8 @@ class URLProtocolStub: URLProtocol {
     
     static func stopInterceptingRequest(){
         URLProtocol.unregisterClass(URLProtocolStub.self)
+        stub = nil
+        URLProtocolStub.requestObservable = nil
     }
     
     override class func canInit(with request: URLRequest) -> Bool {
@@ -82,6 +136,16 @@ class URLProtocolStub: URLProtocol {
     }
     
     override func startLoading() {
-        URLProtocolStub.requestObservable?(request)
+        if let requestObserver = URLProtocolStub.requestObservable{
+            client?.urlProtocolDidFinishLoading(self)
+            return requestObserver(request)
+        }
+        
+        if let error = URLProtocolStub.stub?.error {
+            client?.urlProtocol(self, didFailWithError: error)
+        }
+        
+        client?.urlProtocolDidFinishLoading(self)
     }
-}
+    
+    override func stopLoading() {}}
