@@ -117,15 +117,10 @@ class URLSessionHTTPClientTests: XCTestCase {
     }
     
     private let anyData = {Data("any data".utf8)}
-    
     private var nonHTTPURLResponse: URLResponse {URLResponse(url: anyURL, mimeType: nil, expectedContentLength: 0, textEncodingName: nil)}
-    
     private var anyHTTPURLResponse: HTTPURLResponse {HTTPURLResponse(url: anyURL, statusCode: 200, httpVersion: nil, headerFields: nil)!}
-    
     private let anyNSError = {NSError(domain: "any domain", code: 0, userInfo: nil)}
 }
-
-
 
 private class URLProtocolStub: URLProtocol {
     private struct Stub{
