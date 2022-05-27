@@ -29,17 +29,17 @@ class RemoteLoader {
     }
     
     func load(from url: URL, completion: @escaping ((HTTPResult) -> Void)){
-        client.get(from: url) { result in
-            completion(self.mapResult(result))
+        client.get(from: url) { [weak self] result in
+            self?.mapResult(result, into: completion)
         }
     }
     
-    private func mapResult(_ result: HTTPResult) -> HTTPResult{
+    private func mapResult(_ result: HTTPResult, into completion: @escaping ((HTTPResult) -> Void)){
         switch result {
         case let .success(data, response):
-            return mapHTTPResult(with: data, for: response)
+            completion(mapHTTPResult(with: data, for: response))
         default:
-            return .failure(.connectivity)
+            completion(.failure(.connectivity))
         }
     }
     
@@ -105,6 +105,18 @@ class RemoteLoaderTests: XCTestCase {
         expect(sut, tocompleteWith: .success(jsonWithData.data, anyHTTP200URLResponse), with: anyURL) {
             client.completeWith(jsonWithData.data, response: anyHTTP200URLResponse)
         }
+    }
+    
+    func test_load_doesNotDeliverResultAfterSUTBeenDeallocated() {
+        let client = ClientSpy()
+        var sut: RemoteLoader? = RemoteLoader(client: client)
+        var receivedResult: HTTPResult?
+        sut?.load(from: anyURL, completion: { receivedResult = $0 })
+        
+        sut = nil
+        client.completeWith(anyValidJsonStringWithData().data, response: anyHTTP200URLResponse)
+        
+        XCTAssertNil(receivedResult)
     }
     
     // MARK: - Hepler
