@@ -80,7 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				E8AF94792840FD3C00884741 /* RemoteLoader */,
-				E8AF94742840F37800884741 /* HTTPClient */,
+				E8AF94742840F37800884741 /* HTTP */,
 				E8AF944E28409D9500884741 /* CryptoLoader.docc */,
 			);
 			path = CryptoLoader;
@@ -104,13 +104,13 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
-		E8AF94742840F37800884741 /* HTTPClient */ = {
+		E8AF94742840F37800884741 /* HTTP */ = {
 			isa = PBXGroup;
 			children = (
 				E8AF94752840F39100884741 /* HTTPClient.swift */,
 				E8AF94762840F39100884741 /* HTTPResult.swift */,
 			);
-			path = HTTPClient;
+			path = HTTP;
 			sourceTree = "<group>";
 		};
 		E8AF94792840FD3C00884741 /* RemoteLoader */ = {
