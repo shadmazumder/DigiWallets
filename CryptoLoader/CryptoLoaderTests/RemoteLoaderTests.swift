@@ -43,6 +43,16 @@ class RemoteLoaderTests: XCTestCase {
         XCTAssertEqual(spy.message.first?.key, anyURL)
     }
     
+    func test_multipleLoadRequest_resultsInMultipleURLCall() {
+        let anotherUrl = URL(string: "any-other-url")!
+        let (remoteLoader, spy) = makeSUT()
+        
+        remoteLoader.load(from: anyURL)
+        remoteLoader.load(from: anotherUrl)
+        
+        XCTAssertEqual(spy.message.map({$0.key}), [anyURL, anotherUrl])
+    }
+    
     // MARK: - Hepler
     private let anyURL = URL(string: "any-url")!
     
