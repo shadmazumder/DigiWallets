@@ -10,6 +10,7 @@ import CryptoLoader
 
 class URLSessionHTTPClient: HTTPClient {
     private let session: URLSession
+    private struct UnexpectedError: Error {}
     
     init(session: URLSession = .shared) {
         self.session = session
@@ -21,6 +22,8 @@ class URLSessionHTTPClient: HTTPClient {
                 completion(.failure(error))
             }else if let data = data, let response = response as? HTTPURLResponse{
                 completion(.success(data, response))
+            }else{
+                completion(.failure(UnexpectedError()))
             }
         }.resume()
     }
@@ -61,6 +64,18 @@ class URLSessionHTTPClientTests: XCTestCase {
         XCTAssertEqual(receivedError?.code, givenError.code)
     }
     
+    func test_getFromURL_failsOnAllInvalidValueRepresentatio() {
+        XCTAssertNotNil(requestErrorFor(data: nil, response: nil, expectedError: nil))
+        XCTAssertNotNil(requestErrorFor(data: nil, response: nonHTTPURLResponse, expectedError: nil))
+        XCTAssertNotNil(requestErrorFor(data: anyData(), response: nil, expectedError: nil))
+        XCTAssertNotNil(requestErrorFor(data: anyData(), response: anyHTTPURLResponse, expectedError: anyNSError()))
+        XCTAssertNotNil(requestErrorFor(data: nil, response: nonHTTPURLResponse, expectedError: anyNSError()))
+        XCTAssertNotNil(requestErrorFor(data: nil, response: anyHTTPURLResponse, expectedError: anyNSError()))
+        XCTAssertNotNil(requestErrorFor(data: anyData(), response: nonHTTPURLResponse, expectedError: anyNSError()))
+        XCTAssertNotNil(requestErrorFor(data: anyData(), response: anyHTTPURLResponse, expectedError: anyNSError()))
+        XCTAssertNotNil(requestErrorFor(data: anyData(), response: nonHTTPURLResponse, expectedError: nil))
+    }
+    
     // MARK: - Helper
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> HTTPClient{
         let sut = URLSessionHTTPClient()
@@ -96,6 +111,14 @@ class URLSessionHTTPClientTests: XCTestCase {
         
         return receivedResults
     }
+    
+    private let anyData = {Data("any data".utf8)}
+    
+    private var nonHTTPURLResponse: URLResponse {URLResponse(url: anyURL, mimeType: nil, expectedContentLength: 0, textEncodingName: nil)}
+    
+    private var anyHTTPURLResponse: HTTPURLResponse {HTTPURLResponse(url: anyURL, statusCode: 200, httpVersion: nil, headerFields: nil)!}
+    
+    private let anyNSError = {NSError(domain: "any domain", code: 0, userInfo: nil)}
 }
 
 
