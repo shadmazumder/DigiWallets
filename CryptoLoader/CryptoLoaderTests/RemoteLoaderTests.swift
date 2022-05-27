@@ -30,18 +30,27 @@ class RemoteLoader {
     
     func load(from url: URL, completion: @escaping ((HTTPResult) -> Void)){
         client.get(from: url) { result in
-                     switch result {
-                     case let .success(data, response):
-                         if response.statusCode == 200{
-                             completion(.success(data, response))
-                         }else{
-                             completion(.failure(.non200HTTPResponse))
-                         }
-                     default:
-                         completion(.failure(.connectivity))
-                     }
+            completion(self.mapResult(result))
         }
     }
+    
+    private func mapResult(_ result: HTTPResult) -> HTTPResult{
+        switch result {
+        case let .success(data, response):
+            return mapHTTPResult(with: data, for: response)
+        default:
+            return .failure(.connectivity)
+        }
+    }
+    
+    private func mapHTTPResult(with data: Data, for response: HTTPURLResponse) -> HTTPResult{
+        if response.statusCode == 200{
+            return .success(data, response)
+        }else{
+            return .failure(.non200HTTPResponse)
+        }
+    }
+    
 }
 
 class RemoteLoaderTests: XCTestCase {
