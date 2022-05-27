@@ -8,6 +8,11 @@
 import Foundation
 
 public final class RemoteLoader {
+    public enum ResultError: Error {
+        case connectivity
+        case non200HTTPResponse
+    }
+    
     private let client: HTTPClient
     
     public init(client: HTTPClient) {
@@ -25,7 +30,7 @@ public final class RemoteLoader {
         case let .success(data, response):
             completion(mapHTTPResult(with: data, for: response))
         default:
-            completion(.failure(.connectivity))
+            completion(.failure(ResultError.connectivity))
         }
     }
     
@@ -33,7 +38,7 @@ public final class RemoteLoader {
         if response.statusCode == 200{
             return .success(data, response)
         }else{
-            return .failure(.non200HTTPResponse)
+            return .failure(ResultError.non200HTTPResponse)
         }
     }
     

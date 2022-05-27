@@ -36,8 +36,8 @@ class RemoteLoaderTests: XCTestCase {
     func test_load_deliversErrorOnClientError() {
         let (sut, client) = makeSUT()
         
-        expect(sut, tocompleteWith: .failure(.connectivity), with: anyURL) {
-            client.completeWithError(.connectivity)
+        expect(sut, tocompleteWith: .failure(RemoteLoader.ResultError.connectivity), with: anyURL) {
+            client.completeWithError(RemoteLoader.ResultError.connectivity)
         }
     }
     
@@ -48,7 +48,7 @@ class RemoteLoaderTests: XCTestCase {
         
         
         non200HTTPResponses.enumerated().forEach({ index, response in
-            expect(sut, tocompleteWith: .failure(HTTPResult.Error.non200HTTPResponse), with: anyURL) {
+            expect(sut, tocompleteWith: .failure(RemoteLoader.ResultError.non200HTTPResponse), with: anyURL) {
                 client.completeWith(Data(), response: response!, index: index)
             } })
     }
@@ -91,7 +91,7 @@ class RemoteLoaderTests: XCTestCase {
         sut.load(from: url) { result in
             switch (result, expectedResult) {
             case let (.failure(receivedError), .failure(expectedError)):
-                XCTAssertEqual(receivedError, expectedError, file: file, line: line)
+                XCTAssertEqual(receivedError.localizedDescription, expectedError.localizedDescription, file: file, line: line)
             case let (.success(receivedData, receivedResponse), .success(expectedData, expectedResponse)):
                 XCTAssertEqual(receivedData, expectedData)
                 
@@ -123,7 +123,7 @@ class ClientSpy: HTTPClient {
         message[index].completion(.success(data, response))
     }
     
-    func completeWithError(_ error: HTTPResult.Error, index: Int = 0) {
+    func completeWithError(_ error: RemoteLoader.ResultError, index: Int = 0) {
         message[index].completion(.failure(error))
     }
 }

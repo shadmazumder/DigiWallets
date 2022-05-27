@@ -8,11 +8,6 @@
 import Foundation
 
 public enum HTTPResult {
-    public enum Error {
-        case connectivity
-        case non200HTTPResponse
-    }
-    
     case success(Data, HTTPURLResponse)
     case failure(Error)
 }
