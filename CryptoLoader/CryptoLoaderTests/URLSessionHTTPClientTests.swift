@@ -37,7 +37,6 @@ class URLSessionHTTPClientTests: XCTestCase {
     
     func test_getFromURL_performsGETRequestWithURL() {
         let anyURL = anyURL
-        let sut = URLSessionHTTPClient()
         let exp = expectation(description: "Waiting for response")
         
         URLProtocolStub.observeRequest { request in
@@ -46,9 +45,15 @@ class URLSessionHTTPClientTests: XCTestCase {
             exp.fulfill()
         }
         
-        sut.get(from: anyURL){ _ in }
+        makeSUT().get(from: anyURL){ _ in }
         
         wait(for: [exp], timeout: 0.5)
+    }
+    
+    // MARK: - Helper
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> HTTPClient{
+        let sut = URLSessionHTTPClient()
+        return sut
     }
 }
 
