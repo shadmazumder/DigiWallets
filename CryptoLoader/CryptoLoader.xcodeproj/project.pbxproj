@@ -34,7 +34,7 @@
 		E8AF94672840DD1000884741 /* TestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelper.swift; sourceTree = "<group>"; };
 		E8AF94752840F39100884741 /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		E8AF94762840F39100884741 /* HTTPResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPResult.swift; sourceTree = "<group>"; };
-		E8AF947A2840FD5300884741 /* RemoteLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RemoteLoader.swift; path = RemoteLoader/RemoteLoader.swift; sourceTree = "<group>"; };
+		E8AF947A2840FD5300884741 /* RemoteLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +80,6 @@
 				E8AF94792840FD3C00884741 /* RemoteLoader */,
 				E8AF94742840F37800884741 /* HTTPClient */,
 				E8AF944E28409D9500884741 /* CryptoLoader.docc */,
-				E8AF947A2840FD5300884741 /* RemoteLoader.swift */,
 			);
 			path = CryptoLoader;
 			sourceTree = "<group>";
@@ -114,6 +113,7 @@
 		E8AF94792840FD3C00884741 /* RemoteLoader */ = {
 			isa = PBXGroup;
 			children = (
+				E8AF947A2840FD5300884741 /* RemoteLoader.swift */,
 			);
 			path = RemoteLoader;
 			sourceTree = "<group>";
