@@ -8,8 +8,12 @@
 import XCTest
 
 enum HTTPClientResponse {
+    enum Error {
+        case connectivity
+    }
+    
     case success
-    case failure
+    case failure(Error)
 }
 
 protocol HTTPClient{
@@ -24,7 +28,9 @@ class RemoteLoader {
     }
     
     func load(from url: URL, completion: @escaping ((HTTPClientResponse) -> Void)){
-        client.get(from: url) { _ in }
+        client.get(from: url) { _ in
+            completion(.failure(.connectivity))
+        }
     }
 }
 
@@ -53,6 +59,14 @@ class RemoteLoaderTests: XCTestCase {
         XCTAssertEqual(spy.message.map({$0.url}), [anyURL, anotherUrl])
     }
     
+    func test_load_deliversErrorOnClientError() {
+        let (sut, client) = makeSUT()
+        
+        expect(sut, tocompleteWith: .failure(.connectivity), with: anyURL) {
+            client.completeWithError(.connectivity)
+        }
+    }
+    
     // MARK: - Hepler
     private let anyURL = URL(string: "any-url")!
     
@@ -62,6 +76,25 @@ class RemoteLoaderTests: XCTestCase {
         
         return (remoteLoader, spy)
     }
+    
+    private func expect(_ sut: RemoteLoader, tocompleteWith expectedResult: HTTPClientResponse, with url: URL, when action: ()-> Void, file: StaticString = #file, line: UInt = #line) {
+             let exp = expectation(description: "Waiting for the client")
+
+        sut.load(from: url) { result in
+                 switch (result, expectedResult) {
+                 case let (.failure(receivedError), .failure(expectedError)):
+                     XCTAssertEqual(receivedError, expectedError, file: file, line: line)
+
+                 default:
+                     XCTFail("Expected \(expectedResult) but got \(result)", file: file, line: line)
+                 }
+                 exp.fulfill()
+             }
+
+             action()
+
+             wait(for: [exp], timeout: 1.0)
+         }
 }
 
 class ClientSpy: HTTPClient {
@@ -73,4 +106,8 @@ class ClientSpy: HTTPClient {
     func get(from url: URL, completion: @escaping ((HTTPClientResponse) -> Void)) {
         message.append((url, completion))
     }
+    
+    func completeWithError(_ error: HTTPClientResponse.Error, index: Int = 0) {
+             message[index].completion(.failure(error))
+         }
 }
