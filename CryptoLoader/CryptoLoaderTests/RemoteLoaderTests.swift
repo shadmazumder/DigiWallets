@@ -124,6 +124,9 @@ class RemoteLoaderTests: XCTestCase {
         let spy = ClientSpy()
         let remoteLoader = RemoteLoader(client: spy)
         
+        trackMemoryLeak(remoteLoader)
+        trackMemoryLeak(spy)
+        
         return (remoteLoader, spy)
     }
     
