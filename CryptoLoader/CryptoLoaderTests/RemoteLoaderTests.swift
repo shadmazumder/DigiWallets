@@ -7,7 +7,7 @@
 
 import XCTest
 
-enum HTTPClientResponse {
+enum HTTPResult {
     enum Error {
         case connectivity
         case non200HTTPResponse
@@ -18,7 +18,7 @@ enum HTTPClientResponse {
 }
 
 protocol HTTPClient{
-    func get(from url: URL, completion: @escaping ((HTTPClientResponse) -> Void))
+    func get(from url: URL, completion: @escaping ((HTTPResult) -> Void))
 }
 
 class RemoteLoader {
@@ -28,7 +28,7 @@ class RemoteLoader {
         self.client = client
     }
     
-    func load(from url: URL, completion: @escaping ((HTTPClientResponse) -> Void)){
+    func load(from url: URL, completion: @escaping ((HTTPResult) -> Void)){
         client.get(from: url) { result in
                      switch result {
                      case .success:
@@ -78,8 +78,8 @@ class RemoteLoaderTests: XCTestCase {
         let non200HTTPResponseStatusCode = [199, 201, 233, 401]
         
         non200HTTPResponseStatusCode.enumerated().forEach({ index, statusCode in
-            expect(sut, tocompleteWith: .failure(HTTPClientResponse.Error.non200HTTPResponse), with: anyURL) {
-                client.completeWith(statusCode, index: index)
+            expect(sut, tocompleteWith: .failure(HTTPResult.Error.non200HTTPResponse), with: anyURL) {
+                client.completeWith(statusCode: statusCode, index: index)
             } })
     }
     
@@ -93,7 +93,7 @@ class RemoteLoaderTests: XCTestCase {
         return (remoteLoader, spy)
     }
     
-    private func expect(_ sut: RemoteLoader, tocompleteWith expectedResult: HTTPClientResponse, with url: URL, when action: ()-> Void, file: StaticString = #file, line: UInt = #line) {
+    private func expect(_ sut: RemoteLoader, tocompleteWith expectedResult: HTTPResult, with url: URL, when action: ()-> Void, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "Waiting for the client")
         
         sut.load(from: url) { result in
@@ -114,22 +114,22 @@ class RemoteLoaderTests: XCTestCase {
 }
 
 class ClientSpy: HTTPClient {
-    typealias Result = (url: URL, completion: ((HTTPClientResponse) -> Void))
+    typealias Result = (url: URL, completion: ((HTTPResult) -> Void))
     var message = [Result]()
     
     init() {}
     
-    func get(from url: URL, completion: @escaping ((HTTPClientResponse) -> Void)) {
+    func get(from url: URL, completion: @escaping ((HTTPResult) -> Void)) {
         message.append((url, completion))
     }
     
-    func completeWith(_ statusCode: Int = 200, index: Int = 0) {
+    func completeWith(statusCode: Int = 200, index: Int = 0) {
         let response = HTTPURLResponse(url: message[index].url, statusCode: statusCode, httpVersion: nil, headerFields: nil)!
         
         message[index].completion(.success(response))
     }
     
-    func completeWithError(_ error: HTTPClientResponse.Error, index: Int = 0) {
+    func completeWithError(_ error: HTTPResult.Error, index: Int = 0) {
         message[index].completion(.failure(error))
     }
 }
