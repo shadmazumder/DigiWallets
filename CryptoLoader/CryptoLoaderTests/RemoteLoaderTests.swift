@@ -7,5 +7,29 @@
 
 import XCTest
 
+enum HTTPClientResponse {
+    case success
+    case failure
+}
+
+protocol HTTPClient{}
+
+class RemoteLoader {
+    init(client: HTTPClient) {}
+}
+
 class RemoteLoaderTests: XCTestCase {
+    func test_init_doesNotCallAPI() {
+        let spy = ClientSpy()
+        let _ = RemoteLoader(client: spy)
+        XCTAssertTrue(spy.message?.isEmpty ?? false)
+    }
+}
+
+class ClientSpy: HTTPClient {
+    var message: [HTTPClientResponse]?
+    
+    init() {
+        message = [HTTPClientResponse]()
+    }
 }
