@@ -9,20 +9,20 @@ import XCTest
 import CryptoLoader
 
 class URLSessionHTTPClient: HTTPClient {
-     private let session: URLSession
-
-     init(session: URLSession = .shared) {
-         self.session = session
-     }
-
-     func get(from url: URL, completion: @escaping (HTTPResult) -> Void) {
-         session.dataTask(with: url){ _, response, _ in
-             if let response = response as? HTTPURLResponse{
-                 completion(.success(Data(), response))
-             }
-         }.resume()
-     }
- }
+    private let session: URLSession
+    
+    init(session: URLSession = .shared) {
+        self.session = session
+    }
+    
+    func get(from url: URL, completion: @escaping (HTTPResult) -> Void) {
+        session.dataTask(with: url){ _, response, _ in
+            if let response = response as? HTTPURLResponse{
+                completion(.success(Data(), response))
+            }
+        }.resume()
+    }
+}
 
 class URLSessionHTTPClientTests: XCTestCase {
     func test_getFromURL_performsGETRequestWithURL() {
@@ -48,29 +48,29 @@ class URLSessionHTTPClientTests: XCTestCase {
 
 
 class URLProtocolStub: URLProtocol {
-     private static var requestObservable: ((URLRequest) -> Void)?
-
-     static func observeRequest(observer: @escaping ((URLRequest)-> Void)){
-         requestObservable = observer
-     }
-
-     static func startInterceptingRequest(){
-         URLProtocol.registerClass(URLProtocolStub.self)
-     }
-
-     static func stopInterceptingRequest(){
-         URLProtocol.unregisterClass(URLProtocolStub.self)
-     }
-
-     override class func canInit(with request: URLRequest) -> Bool {
-         return true
-     }
-
-     override class func canonicalRequest(for request: URLRequest) -> URLRequest {
-         return request
-     }
-
-     override func startLoading() {
-         URLProtocolStub.requestObservable?(request)
-     }
- }
+    private static var requestObservable: ((URLRequest) -> Void)?
+    
+    static func observeRequest(observer: @escaping ((URLRequest)-> Void)){
+        requestObservable = observer
+    }
+    
+    static func startInterceptingRequest(){
+        URLProtocol.registerClass(URLProtocolStub.self)
+    }
+    
+    static func stopInterceptingRequest(){
+        URLProtocol.unregisterClass(URLProtocolStub.self)
+    }
+    
+    override class func canInit(with request: URLRequest) -> Bool {
+        return true
+    }
+    
+    override class func canonicalRequest(for request: URLRequest) -> URLRequest {
+        return request
+    }
+    
+    override func startLoading() {
+        URLProtocolStub.requestObservable?(request)
+    }
+}
