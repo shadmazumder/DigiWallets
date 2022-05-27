@@ -13,7 +13,7 @@ enum HTTPClientResponse {
 }
 
 protocol HTTPClient{
-    func get(from url: URL)
+    func get(from url: URL, completion: @escaping ((HTTPClientResponse) -> Void))
 }
 
 class RemoteLoader {
@@ -23,8 +23,8 @@ class RemoteLoader {
         self.client = client
     }
     
-    func load(from url: URL){
-        client.get(from: url)
+    func load(from url: URL, completion: @escaping ((HTTPClientResponse) -> Void)){
+        client.get(from: url) { _ in }
     }
 }
 
@@ -38,19 +38,19 @@ class RemoteLoaderTests: XCTestCase {
     func test_loadFromURL_callsOnURL() {
         let (remoteLoader, spy) = makeSUT()
         
-        remoteLoader.load(from: anyURL)
+        remoteLoader.load(from: anyURL) {_ in}
         
-        XCTAssertEqual(spy.message.first?.key, anyURL)
+        XCTAssertEqual(spy.message.first?.url, anyURL)
     }
     
     func test_multipleLoadRequest_resultsInMultipleURLCall() {
         let anotherUrl = URL(string: "any-other-url")!
         let (remoteLoader, spy) = makeSUT()
         
-        remoteLoader.load(from: anyURL)
-        remoteLoader.load(from: anotherUrl)
+        remoteLoader.load(from: anyURL) {_ in}
+        remoteLoader.load(from: anotherUrl) {_ in}
         
-        XCTAssertEqual(spy.message.map({$0.key}), [anyURL, anotherUrl])
+        XCTAssertEqual(spy.message.map({$0.url}), [anyURL, anotherUrl])
     }
     
     // MARK: - Hepler
@@ -65,11 +65,12 @@ class RemoteLoaderTests: XCTestCase {
 }
 
 class ClientSpy: HTTPClient {
-    var message = [URL: HTTPClientResponse]()
+    typealias Result = (url: URL, completion: ((HTTPClientResponse) -> Void))
+    var message = [Result]()
     
     init() {}
     
-    func get(from url: URL) {
-        message[url] = .success
+    func get(from url: URL, completion: @escaping ((HTTPClientResponse) -> Void)) {
+        message.append((url, completion))
     }
 }
