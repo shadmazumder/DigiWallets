@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		E8AF944F28409D9500884741 /* CryptoLoader.docc in Sources */ = {isa = PBXBuildFile; fileRef = E8AF944E28409D9500884741 /* CryptoLoader.docc */; };
 		E8AF945528409D9500884741 /* CryptoLoader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8AF944A28409D9500884741 /* CryptoLoader.framework */; };
-		E8AF945A28409D9500884741 /* CryptoLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AF945928409D9500884741 /* CryptoLoaderTests.swift */; };
+		E8AF94652840A6B200884741 /* RemoteLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AF94642840A6B200884741 /* RemoteLoaderTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,7 +26,7 @@
 		E8AF944A28409D9500884741 /* CryptoLoader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CryptoLoader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8AF944E28409D9500884741 /* CryptoLoader.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = CryptoLoader.docc; sourceTree = "<group>"; };
 		E8AF945428409D9500884741 /* CryptoLoaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptoLoaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E8AF945928409D9500884741 /* CryptoLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoLoaderTests.swift; sourceTree = "<group>"; };
+		E8AF94642840A6B200884741 /* RemoteLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteLoaderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +77,7 @@
 		E8AF945828409D9500884741 /* CryptoLoaderTests */ = {
 			isa = PBXGroup;
 			children = (
-				E8AF945928409D9500884741 /* CryptoLoaderTests.swift */,
+				E8AF94642840A6B200884741 /* RemoteLoaderTests.swift */,
 			);
 			path = CryptoLoaderTests;
 			sourceTree = "<group>";
@@ -198,7 +198,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8AF945A28409D9500884741 /* CryptoLoaderTests.swift in Sources */,
+				E8AF94652840A6B200884741 /* RemoteLoaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
