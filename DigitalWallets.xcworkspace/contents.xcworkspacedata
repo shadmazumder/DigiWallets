@@ -4,4 +4,7 @@
    <FileRef
       location = "group:CryptoLoader/CryptoLoader.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:APILayer/APILayer.xcodeproj">
+   </FileRef>
 </Workspace>
