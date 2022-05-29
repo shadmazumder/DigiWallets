@@ -77,9 +77,9 @@
 		E826D3B22841AEC7004062AB /* APILayer */ = {
 			isa = PBXGroup;
 			children = (
+				E8D7CE6B28439C1E005FA33F /* Models */,
 				E826D3B42841AEC7004062AB /* APILayer.docc */,
 				E8D7CE6328437DAD005FA33F /* DecodableRemoteLoader.swift */,
-				E8D7CE6928438DC3005FA33F /* Wallet.swift */,
 			);
 			path = APILayer;
 			sourceTree = "<group>";
@@ -92,6 +92,14 @@
 				E8D7CE6728438CD7005FA33F /* DecodingTests.swift */,
 			);
 			path = APILayerTests;
+			sourceTree = "<group>";
+		};
+		E8D7CE6B28439C1E005FA33F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E8D7CE6928438DC3005FA33F /* Wallet.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
