@@ -21,20 +21,23 @@ class DecodableRemoteLoader<T: Decodable> {
     
     func load(from url: URL, completion: @escaping ((Result) -> Void)){
         client.get(from: url) { result in
-            
             switch result{
             case let .success(responseData, _):
-                do{
-                    let decoder = JSONDecoder()
-                    let decoded = try decoder.decode(T.self, from: responseData)
-                    completion(.success(decoded))
-                }
-                catch {
-                    completion(.failure(error))
-                }
+                self.decode(from: responseData, completion: completion)
             case let .failure(error):
                 completion(.failure(error))
             }
+        }
+    }
+    
+    private func decode(from responseData: Data, completion: @escaping ((Result) -> Void)) {
+        do{
+            let decoder = JSONDecoder()
+            let decoded = try decoder.decode(T.self, from: responseData)
+            completion(.success(decoded))
+        }
+        catch {
+            completion(.failure(error))
         }
     }
 }
