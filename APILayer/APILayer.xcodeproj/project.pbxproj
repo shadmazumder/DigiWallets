@@ -15,6 +15,7 @@
 		E8D7CE6828438CD7005FA33F /* DecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D7CE6728438CD7005FA33F /* DecodingTests.swift */; };
 		E8D7CE6A28438DC3005FA33F /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D7CE6928438DC3005FA33F /* Wallet.swift */; };
 		E8D7CE6D28439C73005FA33F /* Wallets.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D7CE6C28439C73005FA33F /* Wallets.swift */; };
+		E8D7CE6F28439C8F005FA33F /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D7CE6E28439C8F005FA33F /* Transaction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,7 @@
 		E8D7CE6728438CD7005FA33F /* DecodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingTests.swift; sourceTree = "<group>"; };
 		E8D7CE6928438DC3005FA33F /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		E8D7CE6C28439C73005FA33F /* Wallets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallets.swift; sourceTree = "<group>"; };
+		E8D7CE6E28439C8F005FA33F /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				E8D7CE6928438DC3005FA33F /* Wallet.swift */,
 				E8D7CE6C28439C73005FA33F /* Wallets.swift */,
+				E8D7CE6E28439C8F005FA33F /* Transaction.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				E8D7CE6A28438DC3005FA33F /* Wallet.swift in Sources */,
 				E8D7CE6428437DAE005FA33F /* DecodableRemoteLoader.swift in Sources */,
 				E826D3B52841AEC7004062AB /* APILayer.docc in Sources */,
+				E8D7CE6F28439C8F005FA33F /* Transaction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
