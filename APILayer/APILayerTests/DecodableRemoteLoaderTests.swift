@@ -45,31 +45,20 @@ class DecodableRemoteLoader<T: Decodable> {
 class DecodableRemoteLoaderTests: XCTestCase {
     func test_load_deliversErrorOnFaultyData() {
         let (loader, client) = makeSUT()
-        let exp = expectation(description: "Wait for Decodable Remote Loader")
-        loader.load(from: anyURL){ result in
-            if case let .failure(error) = result, let _ = error as? DecodingError {
-                exp.fulfill()
-            }
+        let (decodedError, data) = anyDecodableErrorWithData
+        
+        expect(loader, toCompleteWith: .failure(decodedError)) {
+            client.completeWith(data)
         }
-        
-        client.completeWith(anyNonDecodableData)
-        
-        wait(for: [exp], timeout: 0.4)
     }
     
     func test_load_deliversDecodedObjectOnProperData() {
-        let validJson = anyValidJsonStringWithData
         let (loader, client) = makeSUT()
-        let exp = expectation(description: "Wait for Decodable Remote Loader")
-        loader.load(from: anyURL){ result in
-            if case let .success(model) = result, model == validJson.validJsonString{
-                exp.fulfill()
-            }
+        let validJson = anyValidJsonStringWithData
+        
+        expect(loader, toCompleteWith: .success(validJson.validJsonString)) {
+            client.completeWith(validJson.data)
         }
-        
-        client.completeWith(validJson.data)
-        
-        wait(for: [exp], timeout: 0.4)
     }
     
     // MARK: - Helper
@@ -81,9 +70,38 @@ class DecodableRemoteLoaderTests: XCTestCase {
         return (decodableLoader, client)
     }
     
-    var anyURL: URL {URL(string: "any-url")!}
-    var anyNonDecodableData: Data {Data()}
-    var anyValidJsonStringWithData: (validJsonString: String, data: Data) {
+    private func expect(_ sut: StringRemoteLoader, toCompleteWith expectedResult: StringRemoteLoader.Result, when action: (()-> Void), file: StaticString = #file, line: UInt = #line){
+        let exp = expectation(description: "Wait for Decodable Remote Loader")
+        
+        sut.load(from: anyURL) { result in
+            switch (result, expectedResult){
+            case let (.success(received), .success(expected)):
+                XCTAssertEqual(received, expected)
+            case let (.failure(received), .failure(expected)):
+                XCTAssertEqual(received.localizedDescription, expected.localizedDescription)
+            default:
+                XCTFail("Expected \(expectedResult), but got \(result)")
+            }
+            exp.fulfill()
+        }
+        action()
+        
+        wait(for: [exp], timeout: 0.4)
+    }
+    
+    private var anyURL: URL {URL(string: "any-url")!}
+    private var anyDecodableErrorWithData: (error: Error, data: Data){
+        let data = Data()
+        let decoder = JSONDecoder()
+        do {
+            let _ = try decoder.decode(String.self, from: data)
+            return (NSError(domain: "", code: -1), data)
+        } catch {
+            return (error, data)
+        }
+        
+    }
+    private var anyValidJsonStringWithData: (validJsonString: String, data: Data) {
         let validJsonString = "{\"id\":\"some-id\"}"
         
         let encoder = JSONEncoder()
