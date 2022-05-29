@@ -43,6 +43,9 @@ class DecodableRemoteLoaderTests: XCTestCase {
         wait(for: [exp], timeout: 0.4)
     }
     
+    
+    // MARK: - Helper
+    
     var anyURL: URL {URL(string: "any-url")!}
     var anyNonDecodableData: Data {Data()}
     var anyValidJsonStringWithData: (validJsonString: String, data: Data) {
