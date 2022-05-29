@@ -12,6 +12,7 @@
 		E826D3CF2841B0B8004062AB /* DecodableRemoteLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E826D3CE2841B0B8004062AB /* DecodableRemoteLoaderTests.swift */; };
 		E8D7CE6428437DAE005FA33F /* DecodableRemoteLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D7CE6328437DAD005FA33F /* DecodableRemoteLoader.swift */; };
 		E8D7CE6628438BEA005FA33F /* TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D7CE6528438BEA005FA33F /* TestHelper.swift */; };
+		E8D7CE6828438CD7005FA33F /* DecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D7CE6728438CD7005FA33F /* DecodingTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 		E826D3CE2841B0B8004062AB /* DecodableRemoteLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableRemoteLoaderTests.swift; sourceTree = "<group>"; };
 		E8D7CE6328437DAD005FA33F /* DecodableRemoteLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableRemoteLoader.swift; sourceTree = "<group>"; };
 		E8D7CE6528438BEA005FA33F /* TestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelper.swift; sourceTree = "<group>"; };
+		E8D7CE6728438CD7005FA33F /* DecodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,8 +84,9 @@
 		E826D3BE2841AEC7004062AB /* APILayerTests */ = {
 			isa = PBXGroup;
 			children = (
-				E826D3CE2841B0B8004062AB /* DecodableRemoteLoaderTests.swift */,
 				E8D7CE6528438BEA005FA33F /* TestHelper.swift */,
+				E826D3CE2841B0B8004062AB /* DecodableRemoteLoaderTests.swift */,
+				E8D7CE6728438CD7005FA33F /* DecodingTests.swift */,
 			);
 			path = APILayerTests;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8D7CE6828438CD7005FA33F /* DecodingTests.swift in Sources */,
 				E826D3CF2841B0B8004062AB /* DecodableRemoteLoaderTests.swift in Sources */,
 				E8D7CE6628438BEA005FA33F /* TestHelper.swift in Sources */,
 			);

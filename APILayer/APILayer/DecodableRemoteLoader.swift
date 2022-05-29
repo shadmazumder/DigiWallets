@@ -34,6 +34,7 @@ public final class DecodableRemoteLoader<T: Decodable> {
     private func decode(from responseData: Data, completion: @escaping ((Result) -> Void)) {
         do{
             let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
             let decoded = try decoder.decode(T.self, from: responseData)
             completion(.success(decoded))
         }
