@@ -10,13 +10,14 @@ import iOS
 
 class HomeViewControllerTests: XCTestCase {
     func test_loadFromStoryboard_returnsHomeViewController() {
-        XCTAssertTrue(launchesViewControllerFromHomeSotyboard() is HomeViewController, "Initial ViewController is not HomeViewController")
+        XCTAssertTrue(homeViewControllerFromHomeSotyboard() is HomeViewController, "Initial ViewController is not HomeViewController")
     }
-}
-
-// MARK: - Helper
-private func launchesViewControllerFromHomeSotyboard() -> UIViewController? {
-    let bundle = Bundle(for: HomeViewController.self)
-    let storyboard = UIStoryboard(name: "Home", bundle: bundle)
-    return storyboard.instantiateInitialViewController()
+    
+    // MARK: - Helper
+    
+    private func homeViewControllerFromHomeSotyboard() -> UIViewController? {
+        let bundle = Bundle(for: HomeViewController.self)
+        let storyboard = UIStoryboard(name: "Home", bundle: bundle)
+        return storyboard.instantiateInitialViewController()
+    }
 }
