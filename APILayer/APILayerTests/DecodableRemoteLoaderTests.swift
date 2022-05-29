@@ -7,40 +7,7 @@
 
 import XCTest
 import CryptoLoader
-
-class DecodableRemoteLoader<T: Decodable> {
-    enum Result {
-        case success(T)
-        case failure(Error)
-    }
-    private let client: HTTPClient
-    
-    init(_ client: HTTPClient) {
-        self.client = client
-    }
-    
-    func load(from url: URL, completion: @escaping ((Result) -> Void)){
-        client.get(from: url) { [weak self] result in
-            switch result{
-            case let .success(responseData, _):
-                self?.decode(from: responseData, completion: completion)
-            case let .failure(error):
-                completion(.failure(error))
-            }
-        }
-    }
-    
-    private func decode(from responseData: Data, completion: @escaping ((Result) -> Void)) {
-        do{
-            let decoder = JSONDecoder()
-            let decoded = try decoder.decode(T.self, from: responseData)
-            completion(.success(decoded))
-        }
-        catch {
-            completion(.failure(error))
-        }
-    }
-}
+import APILayer
 
 class DecodableRemoteLoaderTests: XCTestCase {
     func test_load_deliversErrorOnFaultyData() {

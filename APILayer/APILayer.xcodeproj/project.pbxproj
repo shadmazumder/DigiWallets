@@ -10,6 +10,7 @@
 		E826D3B52841AEC7004062AB /* APILayer.docc in Sources */ = {isa = PBXBuildFile; fileRef = E826D3B42841AEC7004062AB /* APILayer.docc */; };
 		E826D3BB2841AEC7004062AB /* APILayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E826D3B02841AEC7004062AB /* APILayer.framework */; };
 		E826D3CF2841B0B8004062AB /* DecodableRemoteLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E826D3CE2841B0B8004062AB /* DecodableRemoteLoaderTests.swift */; };
+		E8D7CE6428437DAE005FA33F /* DecodableRemoteLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D7CE6328437DAD005FA33F /* DecodableRemoteLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +28,7 @@
 		E826D3B42841AEC7004062AB /* APILayer.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = APILayer.docc; sourceTree = "<group>"; };
 		E826D3BA2841AEC7004062AB /* APILayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = APILayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E826D3CE2841B0B8004062AB /* DecodableRemoteLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableRemoteLoaderTests.swift; sourceTree = "<group>"; };
+		E8D7CE6328437DAD005FA33F /* DecodableRemoteLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableRemoteLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				E826D3B42841AEC7004062AB /* APILayer.docc */,
+				E8D7CE6328437DAD005FA33F /* DecodableRemoteLoader.swift */,
 			);
 			path = APILayer;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8D7CE6428437DAE005FA33F /* DecodableRemoteLoader.swift in Sources */,
 				E826D3B52841AEC7004062AB /* APILayer.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -390,6 +394,7 @@
 		E826D3C82841AEC7004062AB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -411,6 +416,7 @@
 		E826D3C92841AEC7004062AB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
