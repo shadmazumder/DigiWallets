@@ -8,14 +8,18 @@
 import XCTest
 import CryptoLoader
 
-class DecodableRemoteLoader {
-    let client: HTTPClient
+class DecodableRemoteLoader<T: Decodable> {
+    enum Result {
+        case success(T)
+        case failure(Error)
+    }
+    private let client: HTTPClient
     
     init(_ client: HTTPClient) {
         self.client = client
     }
     
-    func load(from url: URL, completion: @escaping ((HTTPResult) -> Void)){
+    func load(from url: URL, completion: @escaping ((Result) -> Void)){
         client.get(from: url) { _ in
             let decodingError = DecodingError.dataCorrupted(DecodingError.Context(codingPath: [], debugDescription: ""))
             completion(.failure(decodingError))
@@ -27,7 +31,7 @@ class DecodableRemoteLoaderTests: XCTestCase {
     func test_load_deliversErrorOnFaultyData() {
         let exp = expectation(description: "Wait for Decodable Remote Loader")
         let client = StubClient()
-        let decodableLoader = DecodableRemoteLoader(client)
+        let decodableLoader = DecodableRemoteLoader<String>(client)
         decodableLoader.load(from: anyURL){ result in
             if case let .failure(error) = result, let _ = error as? DecodingError {
                 exp.fulfill()
