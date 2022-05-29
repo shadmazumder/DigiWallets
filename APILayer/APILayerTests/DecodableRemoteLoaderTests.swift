@@ -44,10 +44,9 @@ class DecodableRemoteLoader<T: Decodable> {
 
 class DecodableRemoteLoaderTests: XCTestCase {
     func test_load_deliversErrorOnFaultyData() {
+        let (loader, client) = makeSUT()
         let exp = expectation(description: "Wait for Decodable Remote Loader")
-        let client = StubClient()
-        let decodableLoader = DecodableRemoteLoader<String>(client)
-        decodableLoader.load(from: anyURL){ result in
+        loader.load(from: anyURL){ result in
             if case let .failure(error) = result, let _ = error as? DecodingError {
                 exp.fulfill()
             }
@@ -59,12 +58,10 @@ class DecodableRemoteLoaderTests: XCTestCase {
     }
     
     func test_load_deliversDecodedObjectOnProperData() {
-        let exp = expectation(description: "Wait for Decodable Remote Loader")
-        let client = StubClient()
         let validJson = anyValidJsonStringWithData
-        
-        let decodableLoader = DecodableRemoteLoader<String>(client)
-        decodableLoader.load(from: anyURL){ result in
+        let (loader, client) = makeSUT()
+        let exp = expectation(description: "Wait for Decodable Remote Loader")
+        loader.load(from: anyURL){ result in
             if case let .success(model) = result, model == validJson.validJsonString{
                 exp.fulfill()
             }
@@ -76,6 +73,13 @@ class DecodableRemoteLoaderTests: XCTestCase {
     }
     
     // MARK: - Helper
+    typealias StringRemoteLoader = DecodableRemoteLoader<String>
+    
+    private func makeSUT() -> (remoteLoader: StringRemoteLoader, client: StubClient) {
+        let client = StubClient()
+        let decodableLoader = DecodableRemoteLoader<String>(client)
+        return (decodableLoader, client)
+    }
     
     var anyURL: URL {URL(string: "any-url")!}
     var anyNonDecodableData: Data {Data()}
