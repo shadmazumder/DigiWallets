@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct Transaction {
-    let id: String
-    let entry: String
-    let amount: String
-    let currency: String
-    let sender: String
-    let recipient: String
+public struct Transaction {
+    public let id: String
+    public let entry: String
+    public let amount: String
+    public let currency: String
+    public let sender: String
+    public let recipient: String
 }

@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct Histories {
-    let histories: [Transaction]
+public struct Histories {
+    public let histories: [Transaction]
 }
