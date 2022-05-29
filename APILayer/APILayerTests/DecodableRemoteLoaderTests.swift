@@ -20,9 +20,21 @@ class DecodableRemoteLoader<T: Decodable> {
     }
     
     func load(from url: URL, completion: @escaping ((Result) -> Void)){
-        client.get(from: url) { _ in
-            let decodingError = DecodingError.dataCorrupted(DecodingError.Context(codingPath: [], debugDescription: ""))
-            completion(.failure(decodingError))
+        client.get(from: url) { result in
+            
+            switch result{
+            case let .success(responseData, _):
+                do{
+                    let decoder = JSONDecoder()
+                    let decoded = try decoder.decode(T.self, from: responseData)
+                    completion(.success(decoded))
+                }
+                catch {
+                    completion(.failure(error))
+                }
+            case let .failure(error):
+                completion(.failure(error))
+            }
         }
     }
 }
@@ -43,6 +55,22 @@ class DecodableRemoteLoaderTests: XCTestCase {
         wait(for: [exp], timeout: 0.4)
     }
     
+    func test_load_deliversDecodedObjectOnProperData() {
+        let exp = expectation(description: "Wait for Decodable Remote Loader")
+        let client = StubClient()
+        let validJson = anyValidJsonStringWithData
+        
+        let decodableLoader = DecodableRemoteLoader<String>(client)
+        decodableLoader.load(from: anyURL){ result in
+            if case let .success(model) = result, model == validJson.validJsonString{
+                exp.fulfill()
+            }
+        }
+        
+        client.completeWith(validJson.data)
+        
+        wait(for: [exp], timeout: 0.4)
+    }
     
     // MARK: - Helper
     
