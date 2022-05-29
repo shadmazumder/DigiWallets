@@ -16,18 +16,30 @@ struct Wallet: Decodable {
 
 class DecodingTests: XCTestCase {
     func test_load_deliversCamelCaseFromSnakeFormat() {
-        let wallet = Wallet(id: "anyID", walletName: "anyName", balance: "anyBalance")
-        
+        let walletMapper = WalletMapper(id: "anyID", walletName: "anyName", balance: "anyBalance")
+
         let encoder = JSONEncoder()
         encoder.keyEncodingStrategy = .convertToSnakeCase
-        let encodedData = try! encoder.encode(wallet)
-        
+        let encodedData = try! encoder.encode(walletMapper)
+
         let client = StubClient()
         let loader = DecodableRemoteLoader<Wallet>(client)
-        expect(loader, toCompleteWith: .success(wallet)) {
+        expect(loader, toCompleteWith: .success(walletMapper.toWallet)) {
             client.completeWith(encodedData)
         }
     }
 }
 
-extension Wallet: Equatable, Encodable{}
+extension Wallet: Equatable{
+    public static func == (lhs: Wallet, rhs: Wallet) -> Bool { lhs.id == rhs.id }
+}
+
+struct WalletMapper: Equatable, Encodable{
+    let id: String
+    let walletName: String
+    let balance: String
+}
+
+extension WalletMapper{
+    var toWallet: Wallet{ Wallet(id: id, walletName: walletName, balance: balance)}
+}
