@@ -49,7 +49,7 @@ class DecodableRemoteLoaderTests: XCTestCase {
         return (decodableLoader, client)
     }
     
-    private func expect(_ sut: StringRemoteLoader, toCompleteWith expectedResult: StringRemoteLoader.Result, when action: (()-> Void), file: StaticString = #file, line: UInt = #line){
+    private func expect<T: Equatable>(_ sut: DecodableRemoteLoader<T>, toCompleteWith expectedResult: DecodableRemoteLoader<T>.Result, when action: (()-> Void), file: StaticString = #file, line: UInt = #line){
         let exp = expectation(description: "Wait for Decodable Remote Loader")
         
         sut.load(from: anyURL) { result in
