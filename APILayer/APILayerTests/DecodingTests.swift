@@ -8,12 +8,6 @@
 import XCTest
 import APILayer
 
-struct Wallet: Decodable {
-    let id: String
-    let walletName: String
-    let balance: String
-}
-
 class DecodingTests: XCTestCase {
     func test_load_deliversCamelCaseFromSnakeFormat() {
         let walletMapper = WalletMapper(id: "anyID", walletName: "anyName", balance: "anyBalance")
