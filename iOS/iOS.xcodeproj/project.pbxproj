@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E8A28E9A28440D4B003F4055 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8A28E9928440D4B003F4055 /* Home.storyboard */; };
 		E8A28E9C28440D64003F4055 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A28E9B28440D64003F4055 /* HomeViewController.swift */; };
+		E8A28E9E28447EED003F4055 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A28E9D28447EED003F4055 /* HomeViewModel.swift */; };
 		E8D7CEAE2843A019005FA33F /* iOS.docc in Sources */ = {isa = PBXBuildFile; fileRef = E8D7CEAD2843A019005FA33F /* iOS.docc */; };
 		E8D7CEB42843A019005FA33F /* iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8D7CEA92843A019005FA33F /* iOS.framework */; };
 		E8D7CEC428440774005FA33F /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D7CEC328440774005FA33F /* HomeViewControllerTests.swift */; };
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		E8A28E9928440D4B003F4055 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		E8A28E9B28440D64003F4055 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		E8A28E9D28447EED003F4055 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		E8D7CEA92843A019005FA33F /* iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8D7CEAD2843A019005FA33F /* iOS.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = iOS.docc; sourceTree = "<group>"; };
 		E8D7CEB32843A019005FA33F /* iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +59,7 @@
 			children = (
 				E8A28E9928440D4B003F4055 /* Home.storyboard */,
 				E8A28E9B28440D64003F4055 /* HomeViewController.swift */,
+				E8A28E9D28447EED003F4055 /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8D7CEAE2843A019005FA33F /* iOS.docc in Sources */,
+				E8A28E9E28447EED003F4055 /* HomeViewModel.swift in Sources */,
 				E8A28E9C28440D64003F4055 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
