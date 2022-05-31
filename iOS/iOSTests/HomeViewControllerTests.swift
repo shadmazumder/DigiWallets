@@ -20,6 +20,16 @@ class HomeViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.dataSource.snapshot().numberOfItems, 0)
     }
     
+    func test_loadView_returnsErrorOnUnsetURLs() {
+        let delegate = HomeViewControllerDelegateSpy()
+        let sut = makeSUt()
+        sut.delegate = delegate
+        
+        sut.loadViewIfNeeded()
+
+        XCTAssertEqual(delegate.result?.localizedDescription, HomeViewControllerError.unsetURLs.localizedDescription)
+    }
+    
     // MARK: - Helper
     private func makeSUt() -> HomeViewController{
         homeViewControllerFromHomeSotyboard() as! HomeViewController
@@ -48,5 +58,13 @@ class ClientSpy: HTTPClient {
     
     func completeWithError(_ error: RemoteLoader.ResultError, index: Int = 0) {
         message[index].completion(.failure(error))
+    }
+}
+
+class HomeViewControllerDelegateSpy: HomeViewControllerDelegate {
+    var result: Error?
+    
+    func handleErrorState(_ error: Error){
+        result = error
     }
 }
