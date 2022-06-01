@@ -7,6 +7,10 @@
 
 import Foundation
 
-public struct Histories {
+public struct Histories: Decodable {
     public let histories: [Transaction]
+    
+    public init(histories: [Transaction]) {
+        self.histories = histories
+    }
 }

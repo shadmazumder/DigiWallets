@@ -14,4 +14,13 @@ public struct Transaction: Decodable {
     public let currency: String
     public let sender: String
     public let recipient: String
+    
+    public init(id: String, entry: String, amount: String, currency: String, sender: String, recipient: String) {
+        self.id = id
+        self.entry = entry
+        self.amount = amount
+        self.currency = currency
+        self.sender = sender
+        self.recipient = recipient
+    }
 }
