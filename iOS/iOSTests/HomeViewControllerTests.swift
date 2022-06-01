@@ -28,7 +28,7 @@ class HomeViewControllerTests: XCTestCase {
         
         sut.loadViewIfNeeded()
 
-        XCTAssertEqual(delegate.errorResult?.localizedDescription, HomeViewControllerError.unsetURLs.localizedDescription)
+        XCTAssertEqual(delegate.errorResult.first?.localizedDescription, HomeViewControllerError.unsetURLs.localizedDescription)
     }
     
     func test_loadView_loadURLsWithoutError() {
@@ -38,7 +38,7 @@ class HomeViewControllerTests: XCTestCase {
         
         sut.loadViewIfNeeded()
 
-        XCTAssertNil(delegate.errorResult)
+        XCTAssertTrue(delegate.errorResult.isEmpty)
         XCTAssertEqual(client.message.map({$0.url}), [walletsURL, transactionsURL])
     }
     
@@ -50,7 +50,7 @@ class HomeViewControllerTests: XCTestCase {
         
         client.completeWithError(clientError)
         
-        XCTAssertEqual(delegate.errorResult?.localizedDescription, clientError.localizedDescription)
+        XCTAssertEqual(delegate.errorResult.first?.localizedDescription, clientError.localizedDescription)
     }
     
     // MARK: - Helper
@@ -96,9 +96,9 @@ class ClientSpy: HTTPClient {
 }
 
 class HomeViewControllerDelegateSpy: HomeViewControllerDelegate {
-    var errorResult: Error?
+    var errorResult = [Error]()
     
     func handleErrorState(_ error: Error){
-        errorResult = error
+        errorResult.append(error)
     }
 }
