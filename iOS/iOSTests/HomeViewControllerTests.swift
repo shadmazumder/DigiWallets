@@ -68,6 +68,11 @@ class HomeViewControllerTests: XCTestCase {
         homeViewController.walletsURL = walletsURL
         homeViewController.transactionsURL = transactionsURL
         
+        trackMemoryLeak(homeViewController)
+        trackMemoryLeak(client)
+        trackMemoryLeak(loader)
+        trackMemoryLeak(delegate)
+        
         return (homeViewController, delegate, client)
     }
     
@@ -102,5 +107,13 @@ class HomeViewControllerDelegateSpy: HomeViewControllerDelegate {
     
     func handleErrorState(_ error: Error){
         errorResult.append(error)
+    }
+}
+
+extension XCTestCase{
+    func trackMemoryLeak(_ instance: AnyObject, file: StaticString = #file, line: UInt = #line) {
+        addTeardownBlock { [weak instance] in
+            XCTAssertNil(instance, "Memory Leak!!! Didn't deallocated", file: file, line: line)
+        }
     }
 }
