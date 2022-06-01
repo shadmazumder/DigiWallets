@@ -37,12 +37,16 @@ public class HomeViewController: UIViewController {
     }
     
     private func loadFromRemote(){
-        guard let walletsURL = walletsURL,  let transactions = transactionsURL else{
+        guard let walletsURL = walletsURL,  let transactionsURL = transactionsURL else{
             delegate?.handleErrorState(HomeViewControllerError.unsetURLs)
             return
         }
-        
-        loader?.load(from: walletsURL, of: Wallets.self, completion: { [weak self] result in
+        loadWallets(from: walletsURL)
+        loadTransactions(from: transactionsURL)
+    }
+    
+    private func loadWallets(from url: URL){
+        loader?.load(from: url, of: Wallets.self, completion: { [weak self] result in
             switch result {
             case .success(_):
                 break
@@ -50,8 +54,10 @@ public class HomeViewController: UIViewController {
                 self?.delegate?.handleErrorState(error)
             }
         })
-        
-        loader?.load(from: transactions, of: Histories.self, completion: { [weak self] result in
+    }
+    
+    private func loadTransactions(from url: URL){
+        loader?.load(from: url, of: Histories.self, completion: { [weak self] result in
             switch result {
             case .success(_):
                 break
