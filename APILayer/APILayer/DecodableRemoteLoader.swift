@@ -8,9 +8,9 @@
 import Foundation
 import CryptoLoader
 
-public final class DecodableRemoteLoader<T: Decodable> {
+public final class DecodableRemoteLoader{
     public enum Result {
-        case success(T)
+        case success(Decodable)
         case failure(Error)
     }
     
@@ -20,18 +20,18 @@ public final class DecodableRemoteLoader<T: Decodable> {
         self.client = client
     }
     
-    public func load(from url: URL, completion: @escaping ((Result) -> Void)){
+    public func load<T: Decodable>(from url: URL, of type:  T.Type, completion: @escaping ((Result) -> Void)){
         client.get(from: url) { [weak self] result in
             switch result{
             case let .success(responseData, _):
-                self?.decode(from: responseData, completion: completion)
+                self?.decode(from: responseData, of: T.self, completion: completion)
             case let .failure(error):
                 completion(.failure(error))
             }
         }
     }
     
-    private func decode(from responseData: Data, completion: @escaping ((Result) -> Void)) {
+    private func decode<T: Decodable>(from responseData: Data, of type:  T.Type, completion: @escaping ((Result) -> Void)) {
         do{
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase

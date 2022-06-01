@@ -17,8 +17,8 @@ class DecodingTests: XCTestCase {
         let encodedData = try! encoder.encode(walletMapper)
 
         let client = StubClient()
-        let loader = DecodableRemoteLoader<Wallet>(client)
-        expect(loader, toCompleteWith: .success(walletMapper.toWallet)) {
+        let loader = DecodableRemoteLoader(client)
+        expect(loader, toCompleteWith: .success(walletMapper.toWallet), of: Wallet.self) {
             client.completeWith(encodedData)
         }
     }

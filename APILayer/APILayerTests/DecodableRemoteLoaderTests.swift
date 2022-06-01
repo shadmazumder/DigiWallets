@@ -14,7 +14,7 @@ class DecodableRemoteLoaderTests: XCTestCase {
         let (loader, client) = makeSUT()
         let (decodedError, data) = anyDecodableErrorWithData
         
-        expect(loader, toCompleteWith: .failure(decodedError)) {
+        expect(loader, toCompleteWith: .failure(decodedError), of: String.self) {
             client.completeWith(data)
         }
     }
@@ -23,16 +23,16 @@ class DecodableRemoteLoaderTests: XCTestCase {
         let (loader, client) = makeSUT()
         let validJson = anyValidJsonStringWithData
         
-        expect(loader, toCompleteWith: .success(validJson.validJsonString)) {
+        expect(loader, toCompleteWith: .success(validJson.validJsonString), of: String.self) {
             client.completeWith(validJson.data)
         }
     }
     
     func test_load_doesnotDeliversResultOnceSUTBeenDeallocated() {
         let client = StubClient()
-        var sut: StringRemoteLoader? = DecodableRemoteLoader(client)
-        var receivedResult: StringRemoteLoader.Result?
-        sut?.load(from: anyURL, completion: { receivedResult = $0 })
+        var sut: DecodableRemoteLoader? = DecodableRemoteLoader(client)
+        var receivedResult: DecodableRemoteLoader.Result?
+        sut?.load(from: anyURL, of: String.self, completion: { receivedResult = $0 })
         
         sut = nil
         client.completeWith(anyValidJsonStringWithData.data)
@@ -41,11 +41,9 @@ class DecodableRemoteLoaderTests: XCTestCase {
     }
     
     // MARK: - Helper
-    typealias StringRemoteLoader = DecodableRemoteLoader<String>
-    
-    private func makeSUT() -> (remoteLoader: StringRemoteLoader, client: StubClient) {
+    private func makeSUT() -> (remoteLoader: DecodableRemoteLoader, client: StubClient) {
         let client = StubClient()
-        let decodableLoader = DecodableRemoteLoader<String>(client)
+        let decodableLoader = DecodableRemoteLoader(client)
         return (decodableLoader, client)
     }
     

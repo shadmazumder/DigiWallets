@@ -11,13 +11,13 @@ import APILayer
 extension XCTestCase{
     var anyURL: URL {URL(string: "any-url")!}
 
-    func expect<T: Equatable>(_ sut: DecodableRemoteLoader<T>, toCompleteWith expectedResult: DecodableRemoteLoader<T>.Result, when action: (()-> Void), file: StaticString = #file, line: UInt = #line){
+    func expect<T: Decodable & Equatable>(_ sut: DecodableRemoteLoader, toCompleteWith expectedResult: DecodableRemoteLoader.Result, of type:  T.Type, when action: (()-> Void), file: StaticString = #file, line: UInt = #line){
         let exp = expectation(description: "Wait for Decodable Remote Loader")
         
-        sut.load(from: anyURL) { result in
+        sut.load(from: anyURL, of: T.self) { result in
             switch (result, expectedResult){
             case let (.success(received), .success(expected)):
-                XCTAssertEqual(received, expected)
+                XCTAssertEqual((received as? T), (expected as? T))
             case let (.failure(received), .failure(expected)):
                 XCTAssertEqual(received.localizedDescription, expected.localizedDescription)
             default:
