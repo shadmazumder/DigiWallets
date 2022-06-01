@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Transaction {
+public struct Transaction: Decodable {
     public let id: String
     public let entry: String
     public let amount: String
