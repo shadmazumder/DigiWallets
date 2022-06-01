@@ -41,7 +41,7 @@ class HomeViewControllerTests: XCTestCase {
         sut.delegate = delegate
         sut.loader = loader
         sut.walletsURL = walletsURL
-        sut.transactions = transactionURL
+        sut.transactionsURL = transactionURL
         
         sut.loadViewIfNeeded()
 

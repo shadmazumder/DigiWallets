@@ -22,7 +22,7 @@ public class HomeViewController: UIViewController {
     public var delegate: HomeViewControllerDelegate?
     public var loader: DecodableRemoteLoader?
     public var walletsURL: URL?
-    public var transactions: URL?
+    public var transactionsURL: URL?
     
     public private(set) lazy var dataSource: UITableViewDiffableDataSource<Int, HomeViewModel> = {
         .init(tableView: homeTableView) { (_, _, _) in
@@ -33,7 +33,7 @@ public class HomeViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let walletsURL = walletsURL,  let transactions = transactions else{
+        guard let walletsURL = walletsURL,  let transactions = transactionsURL else{
             delegate?.handleErrorState(HomeViewControllerError.unsetURLs)
             return
         }
