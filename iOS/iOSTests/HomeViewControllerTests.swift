@@ -72,6 +72,16 @@ class HomeViewControllerTests: XCTestCase {
         XCTAssertNotNil(sut.cell)
     }
     
+    func test_loadView_rendersHeader() {
+        let headerText = "My Crypto Space"
+        let (sut, _, _) = makeSUt()
+        sut.title = headerText
+        
+        sut.loadViewIfNeeded()
+        
+        XCTAssertEqual(sut.title, headerText)
+    }
+    
     // MARK: - Helper
     private func makeSUt(_ walletsURL: URL? = URL(string: "any-wallets-url")!, _ transactionsURL: URL? = URL(string: "any-transactions-url")!) -> (sut: HomeViewController, delegate: HomeViewControllerDelegateSpy, client: ClientSpy){
         let client = ClientSpy()
