@@ -8,6 +8,7 @@
 import XCTest
 import iOS
 import CryptoLoader
+import APILayer
 
 class HomeViewControllerTests: XCTestCase {
     func test_loadFromStoryboard_returnsHomeViewController() {
@@ -28,6 +29,24 @@ class HomeViewControllerTests: XCTestCase {
         sut.loadViewIfNeeded()
 
         XCTAssertEqual(delegate.errorResult?.localizedDescription, HomeViewControllerError.unsetURLs.localizedDescription)
+    }
+    
+    func test_loadView_loadUrlsWithoutError() {
+        let client = ClientSpy()
+        let loader = DecodableRemoteLoader(client)
+        let delegate = HomeViewControllerDelegateSpy()
+        let walletsURL = URL(string: "any-wallets-url")!
+        let transactionURL = URL(string: "any-transactions-url")!
+        let sut = makeSUt()
+        sut.delegate = delegate
+        sut.loader = loader
+        sut.walletsURL = walletsURL
+        sut.transactions = transactionURL
+        
+        sut.loadViewIfNeeded()
+
+        XCTAssertNil(delegate.errorResult)
+        XCTAssertEqual(client.message.map({$0.url}), [walletsURL, transactionURL])
     }
     
     // MARK: - Helper

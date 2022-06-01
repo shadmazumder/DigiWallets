@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import APILayer
 
 public enum HomeViewControllerError: Error {
     case unsetURLs
@@ -17,7 +18,11 @@ public protocol HomeViewControllerDelegate{
 
 public class HomeViewController: UIViewController {
     @IBOutlet weak var homeTableView: UITableView!
+    
     public var delegate: HomeViewControllerDelegate?
+    public var loader: DecodableRemoteLoader?
+    public var walletsURL: URL?
+    public var transactions: URL?
     
     public private(set) lazy var dataSource: UITableViewDiffableDataSource<Int, HomeViewModel> = {
         .init(tableView: homeTableView) { (_, _, _) in
@@ -27,6 +32,13 @@ public class HomeViewController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        delegate?.handleErrorState(HomeViewControllerError.unsetURLs)
+        
+        guard let walletsURL = walletsURL,  let transactions = transactions else{
+            delegate?.handleErrorState(HomeViewControllerError.unsetURLs)
+            return
+        }
+        
+        loader?.load(from: walletsURL, of: [Wallet].self, completion: { _ in })
+        loader?.load(from: transactions, of: [Transaction].self, completion: { _ in})
     }
 }
