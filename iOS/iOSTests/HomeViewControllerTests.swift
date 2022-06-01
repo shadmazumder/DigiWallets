@@ -27,7 +27,7 @@ class HomeViewControllerTests: XCTestCase {
         
         sut.loadViewIfNeeded()
 
-        XCTAssertEqual(delegate.result?.localizedDescription, HomeViewControllerError.unsetURLs.localizedDescription)
+        XCTAssertEqual(delegate.errorResult?.localizedDescription, HomeViewControllerError.unsetURLs.localizedDescription)
     }
     
     // MARK: - Helper
@@ -62,9 +62,9 @@ class ClientSpy: HTTPClient {
 }
 
 class HomeViewControllerDelegateSpy: HomeViewControllerDelegate {
-    var result: Error?
+    var errorResult: Error?
     
     func handleErrorState(_ error: Error){
-        result = error
+        errorResult = error
     }
 }
