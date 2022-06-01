@@ -45,6 +45,8 @@ public class HomeViewController: UIViewController {
         loader?.load(from: walletsURL, of: [Wallet].self, completion: { _ in
             self.delegate?.handleErrorState(RemoteLoader.ResultError.non200HTTPResponse)
         })
-        loader?.load(from: transactions, of: [Transaction].self, completion: { _ in})
+        loader?.load(from: transactions, of: [Transaction].self, completion: { _ in
+            self.delegate?.handleErrorState(RemoteLoader.ResultError.connectivity)
+        })
     }
 }

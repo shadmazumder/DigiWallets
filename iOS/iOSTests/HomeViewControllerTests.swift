@@ -53,6 +53,19 @@ class HomeViewControllerTests: XCTestCase {
         XCTAssertEqual(delegate.errorResult.first?.localizedDescription, clientError.localizedDescription)
     }
     
+    func test_loadView_deliversMultipleErrorOnClientMultipleError() {
+        let non200HttpError = RemoteLoader.ResultError.non200HTTPResponse
+        let connectivityError = RemoteLoader.ResultError.connectivity
+        let (sut, delegate, client) = makeSUt()
+        
+        sut.loadViewIfNeeded()
+        
+        client.completeWithError(non200HttpError)
+        client.completeWithError(connectivityError, index: 1)
+        
+        XCTAssertEqual(delegate.errorResult.map({ $0.localizedDescription }), [non200HttpError.localizedDescription, connectivityError.localizedDescription])
+    }
+    
     // MARK: - Helper
     private func makeSUt(_ walletsURL: URL? = URL(string: "any-wallets-url")!, _ transactionsURL: URL? = URL(string: "any-transactions-url")!) -> (sut: HomeViewController, delegate: HomeViewControllerDelegateSpy, client: ClientSpy){
         let client = ClientSpy()
