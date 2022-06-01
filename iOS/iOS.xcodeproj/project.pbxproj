@@ -15,6 +15,8 @@
 		E875826C284766A200A19874 /* ClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E875826B284766A200A19874 /* ClientSpy.swift */; };
 		E875826E284766DA00A19874 /* XCTestCase+MemoryTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E875826D284766DA00A19874 /* XCTestCase+MemoryTrack.swift */; };
 		E87582702847677C00A19874 /* HomeViewController+TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E875826F2847677C00A19874 /* HomeViewController+TestHelper.swift */; };
+		E875827228482A1800A19874 /* Wallets+Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E875827128482A1800A19874 /* Wallets+Encoding.swift */; };
+		E875827428482A4C00A19874 /* Histories+Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E875827328482A4C00A19874 /* Histories+Encoding.swift */; };
 		E8A28E9A28440D4B003F4055 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8A28E9928440D4B003F4055 /* Home.storyboard */; };
 		E8A28E9C28440D64003F4055 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A28E9B28440D64003F4055 /* HomeViewController.swift */; };
 		E8A28E9E28447EED003F4055 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A28E9D28447EED003F4055 /* HomeViewModel.swift */; };
@@ -55,6 +57,8 @@
 		E875826B284766A200A19874 /* ClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientSpy.swift; sourceTree = "<group>"; };
 		E875826D284766DA00A19874 /* XCTestCase+MemoryTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryTrack.swift"; sourceTree = "<group>"; };
 		E875826F2847677C00A19874 /* HomeViewController+TestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+TestHelper.swift"; sourceTree = "<group>"; };
+		E875827128482A1800A19874 /* Wallets+Encoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Wallets+Encoding.swift"; sourceTree = "<group>"; };
+		E875827328482A4C00A19874 /* Histories+Encoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Histories+Encoding.swift"; sourceTree = "<group>"; };
 		E8A28E9928440D4B003F4055 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		E8A28E9B28440D64003F4055 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E8A28E9D28447EED003F4055 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -101,6 +105,8 @@
 				E875826B284766A200A19874 /* ClientSpy.swift */,
 				E875826D284766DA00A19874 /* XCTestCase+MemoryTrack.swift */,
 				E875826F2847677C00A19874 /* HomeViewController+TestHelper.swift */,
+				E875827128482A1800A19874 /* Wallets+Encoding.swift */,
+				E875827328482A4C00A19874 /* Histories+Encoding.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -274,10 +280,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E87582702847677C00A19874 /* HomeViewController+TestHelper.swift in Sources */,
+				E875827228482A1800A19874 /* Wallets+Encoding.swift in Sources */,
 				E8D7CEC428440774005FA33F /* HomeViewControllerTests.swift in Sources */,
 				E875826C284766A200A19874 /* ClientSpy.swift in Sources */,
 				E875826A2847667900A19874 /* HomeViewControllerDelegateSpy.swift in Sources */,
 				E875826E284766DA00A19874 /* XCTestCase+MemoryTrack.swift in Sources */,
+				E875827428482A4C00A19874 /* Histories+Encoding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
