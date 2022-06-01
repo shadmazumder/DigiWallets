@@ -32,7 +32,10 @@ public class HomeViewController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        
+        loadFromRemote()
+    }
+    
+    private func loadFromRemote(){
         guard let walletsURL = walletsURL,  let transactions = transactionsURL else{
             delegate?.handleErrorState(HomeViewControllerError.unsetURLs)
             return
