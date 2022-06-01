@@ -7,6 +7,7 @@
 
 import UIKit
 import APILayer
+import CryptoLoader
 
 public enum HomeViewControllerError: Error {
     case unsetURLs
@@ -41,7 +42,9 @@ public class HomeViewController: UIViewController {
             return
         }
         
-        loader?.load(from: walletsURL, of: [Wallet].self, completion: { _ in })
+        loader?.load(from: walletsURL, of: [Wallet].self, completion: { _ in
+            self.delegate?.handleErrorState(RemoteLoader.ResultError.non200HTTPResponse)
+        })
         loader?.load(from: transactions, of: [Transaction].self, completion: { _ in})
     }
 }

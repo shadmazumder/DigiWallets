@@ -42,6 +42,17 @@ class HomeViewControllerTests: XCTestCase {
         XCTAssertEqual(client.message.map({$0.url}), [walletsURL, transactionsURL])
     }
     
+    func test_loadView_deliversErrorOnClientError() {
+        let clientError = RemoteLoader.ResultError.non200HTTPResponse
+        let (sut, delegate, client) = makeSUt()
+        
+        sut.loadViewIfNeeded()
+        
+        client.completeWithError(clientError)
+        
+        XCTAssertEqual(delegate.errorResult?.localizedDescription, clientError.localizedDescription)
+    }
+    
     // MARK: - Helper
     private func makeSUt(_ walletsURL: URL? = URL(string: "any-wallets-url")!, _ transactionsURL: URL? = URL(string: "any-transactions-url")!) -> (sut: HomeViewController, delegate: HomeViewControllerDelegateSpy, client: ClientSpy){
         let client = ClientSpy()
