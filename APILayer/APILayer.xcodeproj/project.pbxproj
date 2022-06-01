@@ -84,8 +84,8 @@
 			isa = PBXGroup;
 			children = (
 				E8D7CE6B28439C1E005FA33F /* Models */,
-				E826D3B42841AEC7004062AB /* APILayer.docc */,
 				E8D7CE6328437DAD005FA33F /* DecodableRemoteLoader.swift */,
+				E826D3B42841AEC7004062AB /* APILayer.docc */,
 			);
 			path = APILayer;
 			sourceTree = "<group>";
