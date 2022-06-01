@@ -18,7 +18,7 @@ public protocol HomeViewControllerDelegate{
 }
 
 public class HomeViewController: UIViewController {
-    @IBOutlet weak var homeTableView: UITableView!
+    @IBOutlet weak public private(set) var homeTableView: UITableView!
     
     public var delegate: HomeViewControllerDelegate?
     public var loader: DecodableRemoteLoader?
