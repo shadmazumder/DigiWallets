@@ -27,7 +27,7 @@ class HomeViewControllerTests: XCTestCase {
         let (sut, delegate, _) = makeSUt(nil, nil)
         
         sut.loadViewIfNeeded()
-
+        
         XCTAssertEqual(delegate.errorResult.first?.localizedDescription, HomeViewControllerError.unsetURLs.localizedDescription)
     }
     
@@ -37,7 +37,7 @@ class HomeViewControllerTests: XCTestCase {
         let (sut, delegate, client) = makeSUt(walletsURL, transactionsURL)
         
         sut.loadViewIfNeeded()
-
+        
         XCTAssertTrue(delegate.errorResult.isEmpty)
         XCTAssertEqual(client.message.map({$0.url}), [walletsURL, transactionsURL])
     }
@@ -51,8 +51,14 @@ class HomeViewControllerTests: XCTestCase {
         
         client.completeWithError(non200HttpError)
         client.completeWithError(connectivityError, index: 1)
-        
         XCTAssertEqual(delegate.errorResult.map({ $0.localizedDescription }), [non200HttpError.localizedDescription, connectivityError.localizedDescription])
+        
+        delegate.errorResult.removeAll()
+        sut.loadViewIfNeeded()
+        
+        client.completeWithError(connectivityError)
+        client.completeWithError(non200HttpError, index: 1)
+        XCTAssertEqual(delegate.errorResult.map({ $0.localizedDescription }), [connectivityError.localizedDescription, non200HttpError.localizedDescription])
     }
     
     // MARK: - Helper
