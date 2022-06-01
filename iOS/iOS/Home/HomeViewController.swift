@@ -42,7 +42,7 @@ public class HomeViewController: UIViewController {
             return
         }
         
-        loader?.load(from: walletsURL, of: [Wallet].self, completion: { [weak self] result in
+        loader?.load(from: walletsURL, of: Wallets.self, completion: { [weak self] result in
             switch result {
             case .success(_):
                 break
@@ -51,7 +51,7 @@ public class HomeViewController: UIViewController {
             }
         })
         
-        loader?.load(from: transactions, of: [Transaction].self, completion: { [weak self] result in
+        loader?.load(from: transactions, of: Histories.self, completion: { [weak self] result in
             switch result {
             case .success(_):
                 break

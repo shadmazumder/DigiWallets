@@ -61,6 +61,17 @@ class HomeViewControllerTests: XCTestCase {
         XCTAssertEqual(delegate.errorResult.map({ $0.localizedDescription }), [connectivityError.localizedDescription, non200HttpError.localizedDescription])
     }
     
+    func test_loadView_redndersCellOnClientSuccess() {
+        let (sut, delegate, client) = makeSUt()
+        sut.loadViewIfNeeded()
+
+        client.completeWithSuccess(anyWalletsWithData.data)
+        client.completeWithSuccess(anyTransactionsData.data, index: 1)
+        
+        XCTAssertTrue(delegate.errorResult.isEmpty)
+        XCTAssertNotNil(sut.cell)
+    }
+    
     // MARK: - Helper
     private func makeSUt(_ walletsURL: URL? = URL(string: "any-wallets-url")!, _ transactionsURL: URL? = URL(string: "any-transactions-url")!) -> (sut: HomeViewController, delegate: HomeViewControllerDelegateSpy, client: ClientSpy){
         let client = ClientSpy()
@@ -86,5 +97,79 @@ class HomeViewControllerTests: XCTestCase {
         let bundle = Bundle(for: HomeViewController.self)
         let storyboard = UIStoryboard(name: "Home", bundle: bundle)
         return storyboard.instantiateInitialViewController()
+    }
+    
+    private var anyWalletsWithData: (wallets: Wallets, data: Data){
+        let anyWallet = Wallet(id: "any-ID", walletName: "Any Name", balance: "any-balance")
+        let wallets = Wallets(wallets: [anyWallet])
+        
+        return (wallets, encodedData(wallets))
+    }
+    
+    private func encodedData<T: Encodable>(_ model: T) -> Data{
+        let encoder = JSONEncoder()
+        encoder.keyEncodingStrategy = .convertToSnakeCase
+        return try! encoder.encode(model)
+    }
+    
+    private var anyTransactionsData: (history: Histories, data: Data){
+        let anyTransaction = Transaction(id: "anyID", entry: "AnyEntry", amount: "anyAmount", currency: "AnyCurrency", sender: "AnySender", recipient: "AnyRecipient")
+        let histories = Histories(histories: [anyTransaction])
+        
+        return (histories, encodedData(histories))
+    }
+}
+
+extension Wallet: Encodable{
+    enum CodingKeys: String, CodingKey {
+        case id
+        case walletName
+        case balance
+    }
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(walletName, forKey: .walletName)
+        try container.encode(balance, forKey: .balance)
+    }
+}
+
+extension Wallets: Encodable{
+    enum CodingKeys: String, CodingKey {
+        case wallets
+    }
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(wallets, forKey: .wallets)
+    }
+}
+
+extension Transaction: Encodable{
+    enum CodingKeys: String, CodingKey {
+        case id
+        case entry
+        case amount
+        case currency
+        case sender
+        case recipient
+    }
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(entry, forKey: .entry)
+        try container.encode(amount, forKey: .amount)
+        try container.encode(currency, forKey: .currency)
+        try container.encode(sender, forKey: .sender)
+        try container.encode(recipient, forKey: .recipient)
+    }
+}
+
+extension Histories: Encodable{
+    enum CodingKeys: String, CodingKey {
+        case histories
+    }
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(histories, forKey: .histories)
     }
 }

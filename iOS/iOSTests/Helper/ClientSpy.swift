@@ -18,8 +18,9 @@ class ClientSpy: HTTPClient {
         message.append((url, completion))
     }
     
-    func completeWith(_ data: Data, response: HTTPURLResponse, index: Int = 0) {
-        message[index].completion(.success(data, response))
+    func completeWithSuccess(_ data: Data, index: Int = 0) {
+        let any200Response = HTTPURLResponse(url: URL(string: "any-url")!, statusCode: 200, httpVersion: nil, headerFields: nil)!
+        message[index].completion(.success(data, any200Response))
     }
     
     func completeWithError(_ error: RemoteLoader.ResultError, index: Int = 0) {
