@@ -16,30 +16,25 @@ class HomeViewControllerTests: XCTestCase {
     }
     
     func test_init_rendersNothing() {
-        let sut = makeSUt()
+        let (sut, _, _) = makeSUt()
+        
         sut.loadViewIfNeeded()
+        
         XCTAssertEqual(sut.dataSource.snapshot().numberOfItems, 0)
     }
     
     func test_loadView_returnsErrorOnUnsetURLs() {
-        let delegate = HomeViewControllerDelegateSpy()
-        let sut = makeSUt()
-        sut.delegate = delegate
+        let (sut, delegate, _) = makeSUt()
         
         sut.loadViewIfNeeded()
 
         XCTAssertEqual(delegate.errorResult?.localizedDescription, HomeViewControllerError.unsetURLs.localizedDescription)
     }
     
-    func test_loadView_loadUrlsWithoutError() {
-        let client = ClientSpy()
-        let loader = DecodableRemoteLoader(client)
-        let delegate = HomeViewControllerDelegateSpy()
+    func test_loadView_loadURLsWithoutError() {
+        let (sut, delegate, client) = makeSUt()
         let walletsURL = URL(string: "any-wallets-url")!
         let transactionURL = URL(string: "any-transactions-url")!
-        let sut = makeSUt()
-        sut.delegate = delegate
-        sut.loader = loader
         sut.walletsURL = walletsURL
         sut.transactionsURL = transactionURL
         
@@ -50,8 +45,16 @@ class HomeViewControllerTests: XCTestCase {
     }
     
     // MARK: - Helper
-    private func makeSUt() -> HomeViewController{
-        homeViewControllerFromHomeSotyboard() as! HomeViewController
+    private func makeSUt() -> (sut: HomeViewController, delegate: HomeViewControllerDelegateSpy, client: ClientSpy){
+        let client = ClientSpy()
+        let loader = DecodableRemoteLoader(client)
+        let delegate = HomeViewControllerDelegateSpy()
+        let homeViewController = homeViewControllerFromHomeSotyboard() as! HomeViewController
+        
+        homeViewController.delegate = delegate
+        homeViewController.loader = loader
+        
+        return (homeViewController, delegate, client)
     }
     
     private func homeViewControllerFromHomeSotyboard() -> UIViewController? {
