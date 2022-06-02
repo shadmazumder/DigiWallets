@@ -101,6 +101,20 @@ class HomeViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.refreshControl?.isRefreshing, true)
     }
     
+    func test_clientCompletionForMultipleWalletsFetch_hidesLoadingIndicator() {
+        let (sut, _, client) = makeSUt()
+        sut.loadViewIfNeeded()
+        
+        client.completeWithSuccess(anyWalletsWithData.data)
+        XCTAssertEqual(sut.refreshControl?.isRefreshing, false)
+        
+        sut.simulatePullToRefresh()
+        XCTAssertEqual(sut.refreshControl?.isRefreshing, true)
+        
+        client.completeWithError(.connectivity)
+        XCTAssertEqual(sut.refreshControl?.isRefreshing, false)
+    }
+    
     // MARK: - Helper
     private func makeSUt(_ walletsURL: URL? = URL(string: "any-wallets-url")!, _ transactionsURL: URL? = URL(string: "any-transactions-url")!) -> (sut: HomeViewController, delegate: HomeViewControllerDelegateSpy, client: ClientSpy){
         let client = ClientSpy()

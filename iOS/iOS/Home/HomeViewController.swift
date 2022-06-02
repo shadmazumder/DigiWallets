@@ -39,7 +39,6 @@ public class HomeViewController: UITableViewController {
     private func addRefreshControll(){
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(loadFromRemote), for: .valueChanged)
-        refreshControl?.beginRefreshing()
     }
     
     @objc private func loadFromRemote(){
@@ -47,12 +46,14 @@ public class HomeViewController: UITableViewController {
             delegate?.handleErrorState(HomeViewControllerError.unsetURLs)
             return
         }
+        refreshControl?.beginRefreshing()
         loadWallets(from: walletsURL)
         loadTransactions(from: transactionsURL)
     }
     
     private func loadWallets(from url: URL){
         loader?.load(from: url, of: Wallets.self, completion: { [weak self] result in
+            self?.refreshControl?.endRefreshing()
             switch result {
             case .success(_):
                 break
