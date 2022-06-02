@@ -85,12 +85,8 @@ class HomeViewControllerTests: XCTestCase {
     func test_pullToRefresh_loadsData() {
         let (sut, _, client) = makeSUt()
         sut.loadViewIfNeeded()
-
-        sut.refreshControl?.allTargets.forEach({ target in
-            sut.refreshControl?.actions(forTarget: target, forControlEvent: .valueChanged)?.forEach({
-                (target as NSObject).perform(Selector($0))
-            })
-        })
+        
+        sut.simulatePullToRefresh()
 
         XCTAssertEqual(client.message.count, 4)
     }

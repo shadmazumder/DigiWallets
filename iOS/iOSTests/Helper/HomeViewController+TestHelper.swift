@@ -16,4 +16,12 @@ extension HomeViewController{
     func cell(_ index: Int = 0) -> UITableViewCell{
         dataSource.tableView(tableView, cellForRowAt: indexPath(index))
     }
+    
+    func simulatePullToRefresh(){
+        refreshControl?.allTargets.forEach({ target in
+            refreshControl?.actions(forTarget: target, forControlEvent: .valueChanged)?.forEach({
+                (target as NSObject).perform(Selector($0))
+            })
+        })
+    }
 }
