@@ -14,6 +14,6 @@ extension HomeViewController{
     }
     
     func cell(_ index: Int = 0) -> UITableViewCell{
-        dataSource.tableView(homeTableView, cellForRowAt: indexPath(index))
+        dataSource.tableView(tableView, cellForRowAt: indexPath(index))
     }
 }

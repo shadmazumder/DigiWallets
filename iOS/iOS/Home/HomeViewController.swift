@@ -17,16 +17,14 @@ public protocol HomeViewControllerDelegate{
     func handleErrorState(_ error: Error)
 }
 
-public class HomeViewController: UIViewController {
-    @IBOutlet weak public private(set) var homeTableView: UITableView!
-    
+public class HomeViewController: UITableViewController {
     public var delegate: HomeViewControllerDelegate?
     public var loader: DecodableRemoteLoader?
     public var walletsURL: URL?
     public var transactionsURL: URL?
     
     public private(set) lazy var dataSource: UITableViewDiffableDataSource<Int, HomeViewModel> = {
-        .init(tableView: homeTableView) { (_, _, _) in
+        .init(tableView: tableView) { (_, _, _) in
             UITableViewCell()
         }
     }()
