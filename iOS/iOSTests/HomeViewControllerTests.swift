@@ -82,6 +82,19 @@ class HomeViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.title, headerText)
     }
     
+    func test_pullToRefresh_loadsData() {
+        let (sut, _, client) = makeSUt()
+        sut.loadViewIfNeeded()
+
+        sut.refreshControl?.allTargets.forEach({ target in
+            sut.refreshControl?.actions(forTarget: target, forControlEvent: .valueChanged)?.forEach({
+                (target as NSObject).perform(Selector($0))
+            })
+        })
+
+        XCTAssertEqual(client.message.count, 4)
+    }
+    
     // MARK: - Helper
     private func makeSUt(_ walletsURL: URL? = URL(string: "any-wallets-url")!, _ transactionsURL: URL? = URL(string: "any-transactions-url")!) -> (sut: HomeViewController, delegate: HomeViewControllerDelegateSpy, client: ClientSpy){
         let client = ClientSpy()
