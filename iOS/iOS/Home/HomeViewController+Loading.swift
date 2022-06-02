@@ -35,7 +35,7 @@ extension HomeViewController{
             switch result {
             case let .success(walletsAPIModel):
                 let wallets = walletsAPIModel as! Wallets
-                self?.diffarableReload(wallets.walletsViewModel, to: .wallets)
+                self?.diffarableReload(wallets.wallets.mapToWalletViewModel, to: .wallets)
             case let .failure(error):
                 self?.delegate?.handleErrorState(error)
             }
@@ -58,7 +58,7 @@ extension HomeViewController{
             switch result {
             case let .success(historiesAPIModel):
                 let histories = historiesAPIModel as! Histories
-                self?.diffarableReload(histories.transactionsViewModel, to: .transaction)
+                self?.diffarableReload(histories.histories.mapToTransactionViewModel, to: .transaction)
             case let .failure(error):
                 self?.delegate?.handleErrorState(error)
             }
