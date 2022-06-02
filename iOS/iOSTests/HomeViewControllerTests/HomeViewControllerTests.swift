@@ -93,64 +93,8 @@ class HomeViewControllerTests: XCTestCase {
         XCTAssertEqual(client.message.count, 6)
     }
     
-    func test_loadView_showsLoadingIndicator() {
-        let (sut, _, _) = makeSUt()
-        
-        sut.loadViewIfNeeded()
-        
-        XCTAssertEqual(sut.refreshControl?.isRefreshing, true)
-    }
-    
-    func test_clientCompletionForMultipleWalletsFetch_hidesLoadingIndicator() {
-        let (sut, _, client) = makeSUt()
-        sut.loadViewIfNeeded()
-        
-        client.completeWithSuccess(anyWalletsWithData.data)
-        XCTAssertEqual(sut.refreshControl?.isRefreshing, false)
-        
-        sut.simulatePullToRefresh()
-        XCTAssertEqual(sut.refreshControl?.isRefreshing, true)
-        
-        client.completeWithError(.connectivity)
-        XCTAssertEqual(sut.refreshControl?.isRefreshing, false)
-    }
-    
-    func test_clientCompletionForMultipleTransactionFetch_hidesLoadingIndicator() {
-        let (sut, _, client) = makeSUt()
-        sut.loadViewIfNeeded()
-        
-        client.completeWithSuccess(anyTransactionsData.data, index: 1)
-        XCTAssertEqual(sut.refreshControl?.isRefreshing, false)
-        
-        sut.simulatePullToRefresh()
-        XCTAssertEqual(sut.refreshControl?.isRefreshing, true)
-        
-        client.completeWithError(.connectivity, index: 1)
-        XCTAssertEqual(sut.refreshControl?.isRefreshing, false)
-    }
-    
-    func test_clientCompletionOnAnyFetch_hidesLoadingIndicator() {
-        let (sut, _, client) = makeSUt()
-        sut.loadViewIfNeeded()
-        
-        sut.simulatePullToRefresh()
-        sut.simulatePullToRefresh()
-        sut.simulatePullToRefresh()
-        sut.simulatePullToRefresh()
-        XCTAssertEqual(sut.refreshControl?.isRefreshing, true)
-        client.completeWithSuccess(anyTransactionsData.data, index: 1)
-        XCTAssertEqual(sut.refreshControl?.isRefreshing, false)
-        
-        sut.simulatePullToRefresh()
-        sut.simulatePullToRefresh()
-        XCTAssertEqual(sut.refreshControl?.isRefreshing, true)
-        client.completeWithError(.unexpectedError)
-        XCTAssertEqual(sut.refreshControl?.isRefreshing, false)
-        
-    }
-    
     // MARK: - Helper
-    private func makeSUt(_ walletsURL: URL? = URL(string: "any-wallets-url")!, _ transactionsURL: URL? = URL(string: "any-transactions-url")!) -> (sut: HomeViewController, delegate: HomeViewControllerDelegateSpy, client: ClientSpy){
+    func makeSUt(_ walletsURL: URL? = URL(string: "any-wallets-url")!, _ transactionsURL: URL? = URL(string: "any-transactions-url")!) -> (sut: HomeViewController, delegate: HomeViewControllerDelegateSpy, client: ClientSpy){
         let client = ClientSpy()
         let loader = DecodableRemoteLoader(client)
         let delegate = HomeViewControllerDelegateSpy()
@@ -176,7 +120,7 @@ class HomeViewControllerTests: XCTestCase {
         return storyboard.instantiateInitialViewController()
     }
     
-    private var anyWalletsWithData: (wallets: Wallets, data: Data){
+    var anyWalletsWithData: (wallets: Wallets, data: Data){
         let anyWallet = Wallet(id: "any-ID", walletName: "Any Name", balance: "any-balance")
         let wallets = Wallets(wallets: [anyWallet])
         
@@ -189,7 +133,7 @@ class HomeViewControllerTests: XCTestCase {
         return try! encoder.encode(model)
     }
     
-    private var anyTransactionsData: (history: Histories, data: Data){
+    var anyTransactionsData: (history: Histories, data: Data){
         let anyTransaction = Transaction(id: "anyID", entry: "AnyEntry", amount: "anyAmount", currency: "AnyCurrency", sender: "AnySender", recipient: "AnyRecipient")
         let histories = Histories(histories: [anyTransaction])
         
