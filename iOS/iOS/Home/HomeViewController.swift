@@ -7,15 +7,6 @@
 
 import UIKit
 import APILayer
-import CryptoLoader
-
-public enum HomeViewControllerError: Error {
-    case unsetURLs
-}
-
-public protocol HomeViewControllerDelegate{
-    func handleErrorState(_ error: Error)
-}
 
 public class HomeViewController: UITableViewController {
     public var delegate: HomeViewControllerDelegate?
