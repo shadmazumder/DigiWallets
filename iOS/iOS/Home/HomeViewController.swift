@@ -65,6 +65,7 @@ public class HomeViewController: UITableViewController {
     
     private func loadTransactions(from url: URL){
         loader?.load(from: url, of: Histories.self, completion: { [weak self] result in
+            self?.refreshControl?.endRefreshing()
             switch result {
             case .success(_):
                 break
