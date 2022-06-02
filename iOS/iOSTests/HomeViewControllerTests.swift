@@ -93,6 +93,14 @@ class HomeViewControllerTests: XCTestCase {
         XCTAssertEqual(client.message.count, 6)
     }
     
+    func test_loadView_showsLoadingIndicator() {
+        let (sut, _, _) = makeSUt()
+        
+        sut.loadViewIfNeeded()
+        
+        XCTAssertEqual(sut.refreshControl?.isRefreshing, true)
+    }
+    
     // MARK: - Helper
     private func makeSUt(_ walletsURL: URL? = URL(string: "any-wallets-url")!, _ transactionsURL: URL? = URL(string: "any-transactions-url")!) -> (sut: HomeViewController, delegate: HomeViewControllerDelegateSpy, client: ClientSpy){
         let client = ClientSpy()

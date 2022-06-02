@@ -39,6 +39,7 @@ public class HomeViewController: UITableViewController {
     private func addRefreshControll(){
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(loadFromRemote), for: .valueChanged)
+        refreshControl?.beginRefreshing()
     }
     
     @objc private func loadFromRemote(){
