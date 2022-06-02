@@ -87,8 +87,10 @@ class HomeViewControllerTests: XCTestCase {
         sut.loadViewIfNeeded()
         
         sut.simulatePullToRefresh()
-
         XCTAssertEqual(client.message.count, 4)
+        
+        sut.simulatePullToRefresh()
+        XCTAssertEqual(client.message.count, 6)
     }
     
     // MARK: - Helper
