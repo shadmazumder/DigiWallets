@@ -31,7 +31,7 @@ class DecodableRemoteLoaderTests: XCTestCase {
     func test_load_doesnotDeliversResultOnceSUTBeenDeallocated() {
         let client = StubClient()
         var sut: DecodableRemoteLoader? = DecodableRemoteLoader(client)
-        var receivedResult: DecodableRemoteLoader.Result?
+        var receivedResult: DecodableResult?
         sut?.load(from: anyURL, of: String.self, completion: { receivedResult = $0 })
         
         sut = nil
