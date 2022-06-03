@@ -13,10 +13,16 @@ public enum HomeViewSection: String, CaseIterable{
     case transaction = "Transactions"
 }
 
-public struct WalletViewModel: Hashable{
+public struct WalletViewModel{
     public let id: String
     public let name: String
     public let amount: String
+}
+
+extension WalletViewModel: Hashable{
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 }
 
 extension Wallet{
@@ -27,10 +33,16 @@ extension Array where Element == Wallet{
     var mapToWalletViewModel: [WalletViewModel] { map({$0.walletViewModel}) }
 }
 
-public struct TransactionViewModel: Hashable{
+public struct TransactionViewModel{
     public let id: String
     public let description: String
     public let currency: String
+}
+
+extension TransactionViewModel: Hashable{
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 }
 
 extension TransactionViewModel{
@@ -43,7 +55,6 @@ extension TransactionViewModel{
 
 extension Transaction{
     var transactionViewModel: TransactionViewModel{TransactionViewModel(transaction: self)}
-    
 }
 
 extension Array where Element == Transaction{
