@@ -11,17 +11,22 @@ import APILayer
 import iOS
 
 class HomeViewControllerCellRenderingTests: XCTestCase{
-    
-    func test_loadWalletsCompletion_rendersWalletsCellSuccessfully() {
+    func test_loadWallets_rendersWalletsCellPropertySuccessfully() {
         let (sut, loader) = makeSUT()
+        let wallets = anyWalletsWithData.wallets
 
         sut.loadViewIfNeeded()
         XCTAssertEqual(sut.numberOfWalletsCell, 0)
         
-        loader.completeWithSuccess(anyWalletsWithData.wallets)
-        XCTAssertEqual(sut.numberOfWalletsCell, 1)
+        
+        loader.completeWithSuccess(wallets)
+        
+        let walletCell = sut.walletCell()
+        XCTAssertEqual(walletCell?.name.text, wallets.wallets.first?.walletName)
+        XCTAssertEqual(walletCell?.amount.text, wallets.wallets.first?.balance)
     }
     
+    // MARK: - Helper
     private func makeSUT() -> (sut: HomeViewController, LoaderSpy){
         let homeViewController = homeViewControllerFromHomeSotyboard() as! HomeViewController
         let loader = LoaderSpy()

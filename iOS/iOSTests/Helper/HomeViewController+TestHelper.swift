@@ -17,6 +17,10 @@ extension HomeViewController{
         dataSource.tableView(tableView, cellForRowAt: indexPath(index))
     }
     
+    func walletCell(_ index: Int = 0) -> WalletCell?{
+        dataSource.tableView(tableView, cellForRowAt: IndexPath(row: index, section: 0)) as? WalletCell
+    }
+    
     var numberOfWalletsCell: Int{
         dataSource.snapshot().numberOfItems(inSection: .wallets)
     }

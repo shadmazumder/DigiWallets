@@ -7,9 +7,9 @@
 
 import UIKit
 
-class WalletCell: UITableViewCell {
-    @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var amount: UILabel!
+public class WalletCell: UITableViewCell {
+    @IBOutlet public private(set) weak var name: UILabel!
+    @IBOutlet public private(set) weak var amount: UILabel!
     
     func configure(_ viewModel: WalletViewModel){
         name.text = viewModel.name
