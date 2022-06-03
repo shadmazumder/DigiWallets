@@ -115,7 +115,6 @@
 			isa = PBXGroup;
 			children = (
 				E8089F76284919EB00E1C458 /* WalletCell.swift */,
-				E8089F7A284936DC00E1C458 /* UITableView+DequeCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -195,6 +194,7 @@
 		E8F68AFF284A545E008438CB /* UITableViewHelper */ = {
 			isa = PBXGroup;
 			children = (
+				E8089F7A284936DC00E1C458 /* UITableView+DequeCell.swift */,
 				E8F68B00284A5470008438CB /* HomeViewDataSource.swift */,
 			);
 			path = UITableViewHelper;
