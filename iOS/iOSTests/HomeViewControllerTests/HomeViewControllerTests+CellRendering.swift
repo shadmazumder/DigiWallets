@@ -61,6 +61,20 @@ class HomeViewControllerCellRenderingTests: XCTestCase{
         XCTAssertEqual(sut.numberOfWalletsCell, 0)
     }
     
+    func test_loadFailure_rendersNoCell() {
+        let (sut, loader) = makeSUT()
+
+        sut.loadViewIfNeeded()
+        XCTAssertEqual(sut.numberOfWalletsCell, 0)
+        XCTAssertEqual(sut.numberOfWalletsCell, 0)
+
+        loader.completeWithError(1)
+        XCTAssertEqual(sut.numberOfTransactionsCell, 0)
+
+        loader.completeWithError()
+        XCTAssertEqual(sut.numberOfWalletsCell, 0)
+    }
+    
     // MARK: - Helper
     private func makeSUT() -> (sut: HomeViewController, LoaderSpy){
         let homeViewController = homeViewControllerFromHomeSotyboard() as! HomeViewController
@@ -87,5 +101,10 @@ class LoaderSpy: DecodableLoader {
     
     func completeWithSuccess(_ decodableModel: Decodable, index: Int = 0){
         loadRequest[index](.success(decodableModel))
+    }
+    
+    func completeWithError(_ index: Int = 0){
+        let anyError = NSError(domain: "any domain", code: -1, userInfo: nil)
+        loadRequest[index](.failure(anyError))
     }
 }
