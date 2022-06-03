@@ -11,7 +11,7 @@ import APILayer
 public struct TransactionViewModel{
     public let id: String
     public let description: String
-    public let currency: String
+    public let amount: String
 }
 
 extension TransactionViewModel: Hashable{
@@ -21,10 +21,39 @@ extension TransactionViewModel: Hashable{
 }
 
 extension TransactionViewModel{
+    public static func description(from transaction: Transaction) -> String{
+        let action = action(for: transaction)
+        let recipient = recipient(for: transaction)
+        
+        return "You've \(action) \(recipient)"
+    }
+    
+    private static func action(for transaction: Transaction)-> String{
+        switch transaction.entry {
+        case "incoming":
+            return "received payment"
+        case "outgoing":
+            return "cashed out to"
+        default:
+            return "a transaction of"
+        }
+    }
+    
+    private static func recipient(for transaction: Transaction)-> String{
+        transaction.entry == "outgoing" ? transaction.recipient : ""
+    }
+    
+    public static func amount(from transaction: Transaction) -> String{
+        let sign = transaction.entry == "outgoing" ? "-" : ""
+        return "\(sign)\(transaction.amount) \(transaction.currency)"
+    }
+}
+
+extension TransactionViewModel{
     init(transaction: Transaction) {
         id = transaction.id
-        description = ""
-        currency = transaction.currency
+        description = TransactionViewModel.description(from: transaction)
+        amount = TransactionViewModel.amount(from: transaction)
     }
 }
 
