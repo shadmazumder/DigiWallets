@@ -10,6 +10,7 @@
 		E826D3B52841AEC7004062AB /* APILayer.docc in Sources */ = {isa = PBXBuildFile; fileRef = E826D3B42841AEC7004062AB /* APILayer.docc */; };
 		E826D3BB2841AEC7004062AB /* APILayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E826D3B02841AEC7004062AB /* APILayer.framework */; };
 		E826D3CF2841B0B8004062AB /* DecodableRemoteLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E826D3CE2841B0B8004062AB /* DecodableRemoteLoaderTests.swift */; };
+		E83EC12A284A5293006ACAEB /* DecodableLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83EC129284A5293006ACAEB /* DecodableLoader.swift */; };
 		E8D7CE6428437DAE005FA33F /* DecodableRemoteLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D7CE6328437DAD005FA33F /* DecodableRemoteLoader.swift */; };
 		E8D7CE6628438BEA005FA33F /* TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D7CE6528438BEA005FA33F /* TestHelper.swift */; };
 		E8D7CE6828438CD7005FA33F /* DecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D7CE6728438CD7005FA33F /* DecodingTests.swift */; };
@@ -34,6 +35,7 @@
 		E826D3B42841AEC7004062AB /* APILayer.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = APILayer.docc; sourceTree = "<group>"; };
 		E826D3BA2841AEC7004062AB /* APILayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = APILayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E826D3CE2841B0B8004062AB /* DecodableRemoteLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableRemoteLoaderTests.swift; sourceTree = "<group>"; };
+		E83EC129284A5293006ACAEB /* DecodableLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableLoader.swift; sourceTree = "<group>"; };
 		E8D7CE6328437DAD005FA33F /* DecodableRemoteLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableRemoteLoader.swift; sourceTree = "<group>"; };
 		E8D7CE6528438BEA005FA33F /* TestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelper.swift; sourceTree = "<group>"; };
 		E8D7CE6728438CD7005FA33F /* DecodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingTests.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				E8D7CE6B28439C1E005FA33F /* Models */,
 				E8D7CE6328437DAD005FA33F /* DecodableRemoteLoader.swift */,
 				E826D3B42841AEC7004062AB /* APILayer.docc */,
+				E83EC129284A5293006ACAEB /* DecodableLoader.swift */,
 			);
 			path = APILayer;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E83EC12A284A5293006ACAEB /* DecodableLoader.swift in Sources */,
 				E8D7CE7128439D0B005FA33F /* Histories.swift in Sources */,
 				E8D7CE6D28439C73005FA33F /* Wallets.swift in Sources */,
 				E8D7CE6A28438DC3005FA33F /* Wallet.swift in Sources */,

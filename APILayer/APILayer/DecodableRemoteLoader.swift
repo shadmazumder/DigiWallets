@@ -8,15 +8,6 @@
 import Foundation
 import CryptoLoader
 
-public enum DecodableResult {
-    case success(Decodable)
-    case failure(Error)
-}
-
-public protocol DecodableLoader{
-    func load<T: Decodable>(from url: URL, of type:  T.Type, completion: @escaping ((DecodableResult) -> Void))
-}
-
 public final class DecodableRemoteLoader: DecodableLoader{
     private let client: HTTPClient
     
