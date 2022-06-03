@@ -24,11 +24,13 @@
 		E875827428482A4C00A19874 /* Histories+Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E875827328482A4C00A19874 /* Histories+Encoding.swift */; };
 		E8A28E9A28440D4B003F4055 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8A28E9928440D4B003F4055 /* Home.storyboard */; };
 		E8A28E9C28440D64003F4055 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A28E9B28440D64003F4055 /* HomeViewController.swift */; };
-		E8A28E9E28447EED003F4055 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A28E9D28447EED003F4055 /* HomeViewModel.swift */; };
 		E8D7CEAE2843A019005FA33F /* iOS.docc in Sources */ = {isa = PBXBuildFile; fileRef = E8D7CEAD2843A019005FA33F /* iOS.docc */; };
 		E8D7CEB42843A019005FA33F /* iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8D7CEA92843A019005FA33F /* iOS.framework */; };
 		E8D7CEC428440774005FA33F /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D7CEC328440774005FA33F /* HomeViewControllerTests.swift */; };
 		E8F68B01284A5470008438CB /* HomeViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F68B00284A5470008438CB /* HomeViewDataSource.swift */; };
+		E8F68B04284A54CE008438CB /* HomeViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F68B03284A54CE008438CB /* HomeViewSection.swift */; };
+		E8F68B06284A54EA008438CB /* WalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F68B05284A54EA008438CB /* WalletViewModel.swift */; };
+		E8F68B08284A551D008438CB /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F68B07284A551D008438CB /* TransactionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,12 +74,14 @@
 		E875827328482A4C00A19874 /* Histories+Encoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Histories+Encoding.swift"; sourceTree = "<group>"; };
 		E8A28E9928440D4B003F4055 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		E8A28E9B28440D64003F4055 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		E8A28E9D28447EED003F4055 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		E8D7CEA92843A019005FA33F /* iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8D7CEAD2843A019005FA33F /* iOS.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = iOS.docc; sourceTree = "<group>"; };
 		E8D7CEB32843A019005FA33F /* iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8D7CEC328440774005FA33F /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
 		E8F68B00284A5470008438CB /* HomeViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewDataSource.swift; sourceTree = "<group>"; };
+		E8F68B03284A54CE008438CB /* HomeViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewSection.swift; sourceTree = "<group>"; };
+		E8F68B05284A54EA008438CB /* WalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewModel.swift; sourceTree = "<group>"; };
+		E8F68B07284A551D008438CB /* TransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,12 +148,12 @@
 		E8A28E9628440CE1003F4055 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				E8F68B02284A54BF008438CB /* Model */,
 				E8F68AFF284A545E008438CB /* UITableViewHelper */,
 				E8089F75284919B200E1C458 /* Cell */,
 				E8A28E9928440D4B003F4055 /* Home.storyboard */,
 				E8A28E9B28440D64003F4055 /* HomeViewController.swift */,
 				E8089F78284929D300E1C458 /* HomeViewController+Loading.swift */,
-				E8A28E9D28447EED003F4055 /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -198,6 +202,16 @@
 				E8F68B00284A5470008438CB /* HomeViewDataSource.swift */,
 			);
 			path = UITableViewHelper;
+			sourceTree = "<group>";
+		};
+		E8F68B02284A54BF008438CB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E8F68B03284A54CE008438CB /* HomeViewSection.swift */,
+				E8F68B05284A54EA008438CB /* WalletViewModel.swift */,
+				E8F68B07284A551D008438CB /* TransactionViewModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,12 +326,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8089F7B284936DC00E1C458 /* UITableView+DequeCell.swift in Sources */,
+				E8F68B04284A54CE008438CB /* HomeViewSection.swift in Sources */,
 				E8089F79284929D300E1C458 /* HomeViewController+Loading.swift in Sources */,
 				E8089F77284919EB00E1C458 /* WalletCell.swift in Sources */,
 				E8D7CEAE2843A019005FA33F /* iOS.docc in Sources */,
-				E8A28E9E28447EED003F4055 /* HomeViewModel.swift in Sources */,
+				E8F68B06284A54EA008438CB /* WalletViewModel.swift in Sources */,
 				E8F68B01284A5470008438CB /* HomeViewDataSource.swift in Sources */,
 				E8A28E9C28440D64003F4055 /* HomeViewController.swift in Sources */,
+				E8F68B08284A551D008438CB /* TransactionViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
