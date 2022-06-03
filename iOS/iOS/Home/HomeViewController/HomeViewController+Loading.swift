@@ -8,14 +8,6 @@
 import UIKit
 import APILayer
 
-public enum HomeViewControllerError: Error {
-    case unsetURLs
-}
-
-public protocol HomeViewControllerDelegate{
-    func handleErrorState(_ error: Error)
-}
-
 extension HomeViewController{
     @objc func loadFromRemote(){
         guard let walletsURL = walletsURL,  let transactionsURL = transactionsURL else{
