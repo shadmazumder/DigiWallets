@@ -8,8 +8,6 @@
 import UIKit
 import APILayer
 
-public class HomeViewDataSource:UITableViewDiffableDataSource<HomeViewSection, AnyHashable>{}
-
 public class HomeViewController: UITableViewController {
     public var delegate: HomeViewControllerDelegate?
     public var loader: DecodableLoader?

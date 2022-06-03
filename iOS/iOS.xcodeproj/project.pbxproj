@@ -28,6 +28,7 @@
 		E8D7CEAE2843A019005FA33F /* iOS.docc in Sources */ = {isa = PBXBuildFile; fileRef = E8D7CEAD2843A019005FA33F /* iOS.docc */; };
 		E8D7CEB42843A019005FA33F /* iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8D7CEA92843A019005FA33F /* iOS.framework */; };
 		E8D7CEC428440774005FA33F /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D7CEC328440774005FA33F /* HomeViewControllerTests.swift */; };
+		E8F68B01284A5470008438CB /* HomeViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F68B00284A5470008438CB /* HomeViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		E8D7CEAD2843A019005FA33F /* iOS.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = iOS.docc; sourceTree = "<group>"; };
 		E8D7CEB32843A019005FA33F /* iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8D7CEC328440774005FA33F /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
+		E8F68B00284A5470008438CB /* HomeViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 		E8A28E9628440CE1003F4055 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				E8F68AFF284A545E008438CB /* UITableViewHelper */,
 				E8089F75284919B200E1C458 /* Cell */,
 				E8A28E9928440D4B003F4055 /* Home.storyboard */,
 				E8A28E9B28440D64003F4055 /* HomeViewController.swift */,
@@ -187,6 +190,14 @@
 				E87582682847666B00A19874 /* Helper */,
 			);
 			path = iOSTests;
+			sourceTree = "<group>";
+		};
+		E8F68AFF284A545E008438CB /* UITableViewHelper */ = {
+			isa = PBXGroup;
+			children = (
+				E8F68B00284A5470008438CB /* HomeViewDataSource.swift */,
+			);
+			path = UITableViewHelper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,6 +316,7 @@
 				E8089F77284919EB00E1C458 /* WalletCell.swift in Sources */,
 				E8D7CEAE2843A019005FA33F /* iOS.docc in Sources */,
 				E8A28E9E28447EED003F4055 /* HomeViewModel.swift in Sources */,
+				E8F68B01284A5470008438CB /* HomeViewDataSource.swift in Sources */,
 				E8A28E9C28440D64003F4055 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
