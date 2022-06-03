@@ -8,13 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		E8089F6E2848820100E1C458 /* HomeViewControllerTests+IndicatorVisibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8089F6D2848820100E1C458 /* HomeViewControllerTests+IndicatorVisibility.swift */; };
+		E8089F74284894E300E1C458 /* HomeViewControllerTests+CellRendering.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8089F73284894E300E1C458 /* HomeViewControllerTests+CellRendering.swift */; };
+		E8089F77284919EB00E1C458 /* WalletCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8089F76284919EB00E1C458 /* WalletCell.swift */; };
+		E8089F79284929D300E1C458 /* HomeViewController+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8089F78284929D300E1C458 /* HomeViewController+Loading.swift */; };
+		E8089F7B284936DC00E1C458 /* UITableView+DequeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8089F7A284936DC00E1C458 /* UITableView+DequeCell.swift */; };
 		E8758262284625AF00A19874 /* CryptoLoader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8758261284625AF00A19874 /* CryptoLoader.framework */; };
 		E8758263284625AF00A19874 /* CryptoLoader.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E8758261284625AF00A19874 /* CryptoLoader.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E8758266284627B900A19874 /* APILayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8758265284627B900A19874 /* APILayer.framework */; };
 		E8758267284627B900A19874 /* APILayer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E8758265284627B900A19874 /* APILayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E875826A2847667900A19874 /* HomeViewControllerDelegateSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87582692847667900A19874 /* HomeViewControllerDelegateSpy.swift */; };
 		E875826C284766A200A19874 /* ClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E875826B284766A200A19874 /* ClientSpy.swift */; };
-		E875826E284766DA00A19874 /* XCTestCase+MemoryTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E875826D284766DA00A19874 /* XCTestCase+MemoryTrack.swift */; };
+		E875826E284766DA00A19874 /* XCTestCase+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E875826D284766DA00A19874 /* XCTestCase+Helper.swift */; };
 		E87582702847677C00A19874 /* HomeViewController+TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E875826F2847677C00A19874 /* HomeViewController+TestHelper.swift */; };
 		E875827228482A1800A19874 /* Wallets+Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E875827128482A1800A19874 /* Wallets+Encoding.swift */; };
 		E875827428482A4C00A19874 /* Histories+Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E875827328482A4C00A19874 /* Histories+Encoding.swift */; };
@@ -53,11 +57,15 @@
 
 /* Begin PBXFileReference section */
 		E8089F6D2848820100E1C458 /* HomeViewControllerTests+IndicatorVisibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewControllerTests+IndicatorVisibility.swift"; sourceTree = "<group>"; };
+		E8089F73284894E300E1C458 /* HomeViewControllerTests+CellRendering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewControllerTests+CellRendering.swift"; sourceTree = "<group>"; };
+		E8089F76284919EB00E1C458 /* WalletCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCell.swift; sourceTree = "<group>"; };
+		E8089F78284929D300E1C458 /* HomeViewController+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Loading.swift"; sourceTree = "<group>"; };
+		E8089F7A284936DC00E1C458 /* UITableView+DequeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+DequeCell.swift"; sourceTree = "<group>"; };
 		E8758261284625AF00A19874 /* CryptoLoader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CryptoLoader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8758265284627B900A19874 /* APILayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = APILayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E87582692847667900A19874 /* HomeViewControllerDelegateSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerDelegateSpy.swift; sourceTree = "<group>"; };
 		E875826B284766A200A19874 /* ClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientSpy.swift; sourceTree = "<group>"; };
-		E875826D284766DA00A19874 /* XCTestCase+MemoryTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryTrack.swift"; sourceTree = "<group>"; };
+		E875826D284766DA00A19874 /* XCTestCase+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Helper.swift"; sourceTree = "<group>"; };
 		E875826F2847677C00A19874 /* HomeViewController+TestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+TestHelper.swift"; sourceTree = "<group>"; };
 		E875827128482A1800A19874 /* Wallets+Encoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Wallets+Encoding.swift"; sourceTree = "<group>"; };
 		E875827328482A4C00A19874 /* Histories+Encoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Histories+Encoding.swift"; sourceTree = "<group>"; };
@@ -96,8 +104,18 @@
 			children = (
 				E8D7CEC328440774005FA33F /* HomeViewControllerTests.swift */,
 				E8089F6D2848820100E1C458 /* HomeViewControllerTests+IndicatorVisibility.swift */,
+				E8089F73284894E300E1C458 /* HomeViewControllerTests+CellRendering.swift */,
 			);
 			path = HomeViewControllerTests;
+			sourceTree = "<group>";
+		};
+		E8089F75284919B200E1C458 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E8089F76284919EB00E1C458 /* WalletCell.swift */,
+				E8089F7A284936DC00E1C458 /* UITableView+DequeCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		E8758260284625AF00A19874 /* Frameworks */ = {
@@ -114,7 +132,7 @@
 			children = (
 				E87582692847667900A19874 /* HomeViewControllerDelegateSpy.swift */,
 				E875826B284766A200A19874 /* ClientSpy.swift */,
-				E875826D284766DA00A19874 /* XCTestCase+MemoryTrack.swift */,
+				E875826D284766DA00A19874 /* XCTestCase+Helper.swift */,
 				E875826F2847677C00A19874 /* HomeViewController+TestHelper.swift */,
 				E875827128482A1800A19874 /* Wallets+Encoding.swift */,
 				E875827328482A4C00A19874 /* Histories+Encoding.swift */,
@@ -125,8 +143,10 @@
 		E8A28E9628440CE1003F4055 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				E8089F75284919B200E1C458 /* Cell */,
 				E8A28E9928440D4B003F4055 /* Home.storyboard */,
 				E8A28E9B28440D64003F4055 /* HomeViewController.swift */,
+				E8089F78284929D300E1C458 /* HomeViewController+Loading.swift */,
 				E8A28E9D28447EED003F4055 /* HomeViewModel.swift */,
 			);
 			path = Home;
@@ -280,6 +300,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8089F7B284936DC00E1C458 /* UITableView+DequeCell.swift in Sources */,
+				E8089F79284929D300E1C458 /* HomeViewController+Loading.swift in Sources */,
+				E8089F77284919EB00E1C458 /* WalletCell.swift in Sources */,
 				E8D7CEAE2843A019005FA33F /* iOS.docc in Sources */,
 				E8A28E9E28447EED003F4055 /* HomeViewModel.swift in Sources */,
 				E8A28E9C28440D64003F4055 /* HomeViewController.swift in Sources */,
@@ -292,10 +315,11 @@
 			files = (
 				E87582702847677C00A19874 /* HomeViewController+TestHelper.swift in Sources */,
 				E875827228482A1800A19874 /* Wallets+Encoding.swift in Sources */,
+				E8089F74284894E300E1C458 /* HomeViewControllerTests+CellRendering.swift in Sources */,
 				E8D7CEC428440774005FA33F /* HomeViewControllerTests.swift in Sources */,
 				E875826C284766A200A19874 /* ClientSpy.swift in Sources */,
 				E875826A2847667900A19874 /* HomeViewControllerDelegateSpy.swift in Sources */,
-				E875826E284766DA00A19874 /* XCTestCase+MemoryTrack.swift in Sources */,
+				E875826E284766DA00A19874 /* XCTestCase+Helper.swift in Sources */,
 				E875827428482A4C00A19874 /* Histories+Encoding.swift in Sources */,
 				E8089F6E2848820100E1C458 /* HomeViewControllerTests+IndicatorVisibility.swift in Sources */,
 			);

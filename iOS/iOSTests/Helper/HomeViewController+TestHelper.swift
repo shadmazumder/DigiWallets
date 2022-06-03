@@ -17,6 +17,10 @@ extension HomeViewController{
         dataSource.tableView(tableView, cellForRowAt: indexPath(index))
     }
     
+    var numberOfWalletsCell: Int{
+        dataSource.snapshot().numberOfItems(inSection: .wallets)
+    }
+    
     func simulatePullToRefresh(){
         refreshControl?.allTargets.forEach({ target in
             refreshControl?.actions(forTarget: target, forControlEvent: .valueChanged)?.forEach({
