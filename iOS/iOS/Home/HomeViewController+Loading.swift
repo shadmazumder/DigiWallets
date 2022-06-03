@@ -43,12 +43,9 @@ extension HomeViewController{
     }
     
     private func diffarableReload(_ homeViewModel: [AnyHashable], to section: HomeViewSection){
-        DispatchQueue.main.async { [weak self] in
-            guard var snapShot = self?.dataSource.snapshot() else {return}
-            
-            snapShot.appendItems(homeViewModel, toSection: section)
-            self?.dataSource.applySnapshotUsingReloadData(snapShot)
-        }
+        var snapShot = dataSource.snapshot()
+        snapShot.appendItems(homeViewModel, toSection: section)
+        dataSource.applySnapshotUsingReloadData(snapShot)
     }
     
     private func loadTransactions(from url: URL){
