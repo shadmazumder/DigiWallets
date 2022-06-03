@@ -12,12 +12,10 @@ import iOS
 
 class HomeViewControllerCellRenderingTests: XCTestCase{
     func test_loadWallets_rendersWalletsCellPropertySuccessfully() {
-        let (sut, loader) = makeSUT()
         let wallets = anyWalletsWithData.wallets
-
-        sut.loadViewIfNeeded()
-        XCTAssertEqual(sut.numberOfWalletsCell, 0)
         
+        let (sut, loader) = makeSUT()
+        XCTAssertEqual(sut.numberOfWalletsCell, 0)
         
         loader.completeWithSuccess(wallets)
         
@@ -27,10 +25,9 @@ class HomeViewControllerCellRenderingTests: XCTestCase{
     }
     
     func test_loadTransactions_rendersTransferCellPropertySuccessfully() {
-        let (sut, loader) = makeSUT()
         let transactions = anyTransactionsData.history
-
-        sut.loadViewIfNeeded()
+        
+        let (sut, loader) = makeSUT()
         XCTAssertEqual(sut.numberOfTransactionsCell, 0)
         
         
@@ -47,8 +44,7 @@ class HomeViewControllerCellRenderingTests: XCTestCase{
     
     func test_loadWithEmptyEntity_rendersNoCell() {
         let (sut, loader) = makeSUT()
-
-        sut.loadViewIfNeeded()
+        
         XCTAssertEqual(sut.numberOfWalletsCell, 0)
         XCTAssertEqual(sut.numberOfWalletsCell, 0)
 
@@ -63,8 +59,7 @@ class HomeViewControllerCellRenderingTests: XCTestCase{
     
     func test_loadFailure_rendersNoCell() {
         let (sut, loader) = makeSUT()
-
-        sut.loadViewIfNeeded()
+        
         XCTAssertEqual(sut.numberOfWalletsCell, 0)
         XCTAssertEqual(sut.numberOfWalletsCell, 0)
 
@@ -87,6 +82,8 @@ class HomeViewControllerCellRenderingTests: XCTestCase{
         
         trackMemoryLeak(homeViewController)
         trackMemoryLeak(loader)
+        
+        homeViewController.loadViewIfNeeded()
         
         return (homeViewController, loader)
     }
