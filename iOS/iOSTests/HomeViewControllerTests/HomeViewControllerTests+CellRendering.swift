@@ -31,7 +31,7 @@ class HomeViewControllerCellRenderingTests: XCTestCase{
         let transactions = anyTransactionsData.history
 
         sut.loadViewIfNeeded()
-        XCTAssertEqual(sut.numberOfWalletsCell, 0)
+        XCTAssertEqual(sut.numberOfTransactionsCell, 0)
         
         
         loader.completeWithSuccess(transactions, index: 1)
@@ -43,6 +43,22 @@ class HomeViewControllerCellRenderingTests: XCTestCase{
         
         XCTAssertEqual(transactionCell?.details.text, details)
         XCTAssertEqual(transactionCell?.amount.text, amount)
+    }
+    
+    func test_loadWithEmptyEntity_rendersNoCell() {
+        let (sut, loader) = makeSUT()
+
+        sut.loadViewIfNeeded()
+        XCTAssertEqual(sut.numberOfWalletsCell, 0)
+        XCTAssertEqual(sut.numberOfWalletsCell, 0)
+
+        let transactions = Histories(histories: [])
+        loader.completeWithSuccess(transactions, index: 1)
+        XCTAssertEqual(sut.numberOfTransactionsCell, 0)
+
+        let wallets = Wallets(wallets: [])
+        loader.completeWithSuccess(wallets, index: 0)
+        XCTAssertEqual(sut.numberOfWalletsCell, 0)
     }
     
     // MARK: - Helper
