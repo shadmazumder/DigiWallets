@@ -6,7 +6,6 @@
 //
 
 import XCTest
-import CryptoLoader
 import APILayer
 import iOS
 
