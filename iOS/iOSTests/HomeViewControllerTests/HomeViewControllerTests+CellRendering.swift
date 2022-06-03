@@ -12,10 +12,10 @@ import iOS
 
 class HomeViewControllerCellRenderingTests: XCTestCase{
     func test_loadWallets_rendersWalletsCellPropertySuccessfully() {
-        let wallets = anyWalletsWithData.wallets
-        
         let (sut, loader) = makeSUT()
         XCTAssertEqual(sut.numberOfWalletsCell, 0)
+        
+        let wallets = anyWalletsWithData.wallets
         
         loader.completeWithSuccess(wallets)
         
@@ -25,11 +25,10 @@ class HomeViewControllerCellRenderingTests: XCTestCase{
     }
     
     func test_loadTransactions_rendersTransferCellPropertySuccessfully() {
-        let transactions = anyTransactionsData.history
-        
         let (sut, loader) = makeSUT()
         XCTAssertEqual(sut.numberOfTransactionsCell, 0)
         
+        let transactions = anyTransactionsData.history
         
         loader.completeWithSuccess(transactions, index: 1)
         
@@ -68,6 +67,41 @@ class HomeViewControllerCellRenderingTests: XCTestCase{
 
         loader.completeWithError()
         XCTAssertEqual(sut.numberOfWalletsCell, 0)
+    }
+    
+    func test_refresh_recoversFromFailureState() {
+        let (sut, loader) = makeSUT()
+        XCTAssertEqual(sut.numberOfWalletsCell, 0)
+        XCTAssertEqual(sut.numberOfWalletsCell, 0)
+        
+        loader.completeWithError(1)
+        XCTAssertEqual(sut.numberOfTransactionsCell, 0)
+
+        loader.completeWithError()
+        XCTAssertEqual(sut.numberOfWalletsCell, 0)
+        
+        sut.simulatePullToRefresh()
+        
+        let wallets = anyWalletsWithData.wallets
+        
+        loader.completeWithSuccess(wallets)
+        
+        let walletCell = sut.walletCell()
+        XCTAssertEqual(walletCell?.name.text, wallets.wallets.first?.walletName)
+        XCTAssertEqual(walletCell?.amount.text, wallets.wallets.first?.balance)
+        
+        
+        let transactions = anyTransactionsData.history
+        
+        loader.completeWithSuccess(transactions, index: 1)
+        
+        let transactionCell = sut.transactionsCell()
+        let transaction = transactions.histories.first!
+        let details = TransactionViewModel.description(from: transaction)
+        let amount = TransactionViewModel.amount(from: transaction)
+        
+        XCTAssertEqual(transactionCell?.details.text, details)
+        XCTAssertEqual(transactionCell?.amount.text, amount)
     }
     
     // MARK: - Helper
