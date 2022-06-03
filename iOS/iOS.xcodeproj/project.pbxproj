@@ -148,12 +148,11 @@
 		E8A28E9628440CE1003F4055 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				E8F68B02284A54BF008438CB /* Model */,
 				E8F68AFF284A545E008438CB /* UITableViewHelper */,
+				E8F68B09284A5594008438CB /* HomeViewController */,
+				E8F68B02284A54BF008438CB /* Model */,
 				E8089F75284919B200E1C458 /* Cell */,
 				E8A28E9928440D4B003F4055 /* Home.storyboard */,
-				E8A28E9B28440D64003F4055 /* HomeViewController.swift */,
-				E8089F78284929D300E1C458 /* HomeViewController+Loading.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -212,6 +211,15 @@
 				E8F68B07284A551D008438CB /* TransactionViewModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E8F68B09284A5594008438CB /* HomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E8A28E9B28440D64003F4055 /* HomeViewController.swift */,
+				E8089F78284929D300E1C458 /* HomeViewController+Loading.swift */,
+			);
+			path = HomeViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
