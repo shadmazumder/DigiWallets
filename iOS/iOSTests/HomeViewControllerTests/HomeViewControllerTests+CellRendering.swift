@@ -26,6 +26,25 @@ class HomeViewControllerCellRenderingTests: XCTestCase{
         XCTAssertEqual(walletCell?.amount.text, wallets.wallets.first?.balance)
     }
     
+    func test_loadTransactions_rendersTransferCellPropertySuccessfully() {
+        let (sut, loader) = makeSUT()
+        let transactions = anyTransactionsData.history
+
+        sut.loadViewIfNeeded()
+        XCTAssertEqual(sut.numberOfWalletsCell, 0)
+        
+        
+        loader.completeWithSuccess(transactions, index: 1)
+        
+        let transactionCell = sut.transactionsCell()
+        let transaction = transactions.histories.first!
+        let details = TransactionViewModel.description(from: transaction)
+        let amount = TransactionViewModel.amount(from: transaction)
+        
+        XCTAssertEqual(transactionCell?.details.text, details)
+        XCTAssertEqual(transactionCell?.amount.text, amount)
+    }
+    
     // MARK: - Helper
     private func makeSUT() -> (sut: HomeViewController, LoaderSpy){
         let homeViewController = homeViewControllerFromHomeSotyboard() as! HomeViewController

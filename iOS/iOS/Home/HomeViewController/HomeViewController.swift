@@ -49,9 +49,9 @@ public class HomeViewController: UITableViewController {
             walletCell.configure(model as! WalletViewModel)
             return walletCell
         case 1:
-            let walletCell: WalletCell = tableView.dequeueReusableCell()
-            walletCell.configure(model as! WalletViewModel)
-            return walletCell
+            let transactionCell: TransactionCell = tableView.dequeueReusableCell()
+            transactionCell.configure(model as! TransactionViewModel)
+            return transactionCell
         default:
             return UITableViewCell()
         }

@@ -25,6 +25,14 @@ extension HomeViewController{
         dataSource.snapshot().numberOfItems(inSection: .wallets)
     }
     
+    var numberOfTransactionsCell: Int{
+        dataSource.snapshot().numberOfItems(inSection: .transaction)
+    }
+    
+    func transactionsCell(_ index: Int = 0) -> TransactionCell?{
+        dataSource.tableView(tableView, cellForRowAt: IndexPath(row: index, section: 1)) as? TransactionCell
+    }
+    
     func simulatePullToRefresh(){
         refreshControl?.allTargets.forEach({ target in
             refreshControl?.actions(forTarget: target, forControlEvent: .valueChanged)?.forEach({
