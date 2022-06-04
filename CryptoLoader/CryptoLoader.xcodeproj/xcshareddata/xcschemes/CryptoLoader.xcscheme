@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E8D7CEA82843A019005FA33F"
-               BuildableName = "iOS.framework"
-               BlueprintName = "iOS"
-               ReferencedContainer = "container:iOS.xcodeproj">
+               BlueprintIdentifier = "E8AF944928409D9500884741"
+               BuildableName = "CryptoLoader.framework"
+               BlueprintName = "CryptoLoader"
+               ReferencedContainer = "container:CryptoLoader.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,10 +34,10 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E8D7CEB22843A019005FA33F"
-               BuildableName = "iOSTests.xctest"
-               BlueprintName = "iOSTests"
-               ReferencedContainer = "container:iOS.xcodeproj">
+               BlueprintIdentifier = "E8AF945328409D9500884741"
+               BuildableName = "CryptoLoaderTests.xctest"
+               BlueprintName = "CryptoLoaderTests"
+               ReferencedContainer = "container:CryptoLoader.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -62,10 +62,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E8D7CEA82843A019005FA33F"
-            BuildableName = "iOS.framework"
-            BlueprintName = "iOS"
-            ReferencedContainer = "container:iOS.xcodeproj">
+            BlueprintIdentifier = "E8AF944928409D9500884741"
+            BuildableName = "CryptoLoader.framework"
+            BlueprintName = "CryptoLoader"
+            ReferencedContainer = "container:CryptoLoader.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

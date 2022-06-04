@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E8D7CEA82843A019005FA33F"
-               BuildableName = "iOS.framework"
-               BlueprintName = "iOS"
-               ReferencedContainer = "container:iOS.xcodeproj">
+               BlueprintIdentifier = "E826D3AF2841AEC7004062AB"
+               BuildableName = "APILayer.framework"
+               BlueprintName = "APILayer"
+               ReferencedContainer = "container:APILayer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,10 +34,10 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E8D7CEB22843A019005FA33F"
-               BuildableName = "iOSTests.xctest"
-               BlueprintName = "iOSTests"
-               ReferencedContainer = "container:iOS.xcodeproj">
+               BlueprintIdentifier = "E826D3B92841AEC7004062AB"
+               BuildableName = "APILayerTests.xctest"
+               BlueprintName = "APILayerTests"
+               ReferencedContainer = "container:APILayer.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -62,10 +62,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E8D7CEA82843A019005FA33F"
-            BuildableName = "iOS.framework"
-            BlueprintName = "iOS"
-            ReferencedContainer = "container:iOS.xcodeproj">
+            BlueprintIdentifier = "E826D3AF2841AEC7004062AB"
+            BuildableName = "APILayer.framework"
+            BlueprintName = "APILayer"
+            ReferencedContainer = "container:APILayer.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
