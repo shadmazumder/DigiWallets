@@ -18,14 +18,14 @@ class DecodingTests: XCTestCase {
 
         let client = StubClient()
         let loader = DecodableRemoteLoader(client)
-        expect(loader, toCompleteWith: .success(walletMapper.toWallet), of: Wallet.self) {
+        expect(loader, toCompleteWith: .success(walletMapper.toWallet), of: WalletAPIModel.self) {
             client.completeWith(encodedData)
         }
     }
 }
 
-extension Wallet: Equatable{
-    public static func == (lhs: Wallet, rhs: Wallet) -> Bool { lhs.id == rhs.id }
+extension WalletAPIModel: Equatable{
+    public static func == (lhs: WalletAPIModel, rhs: WalletAPIModel) -> Bool { lhs.id == rhs.id }
 }
 
 struct WalletMapper: Equatable, Encodable{
@@ -35,5 +35,5 @@ struct WalletMapper: Equatable, Encodable{
 }
 
 extension WalletMapper{
-    var toWallet: Wallet{ Wallet(id: id, walletName: walletName, balance: balance)}
+    var toWallet: WalletAPIModel{ WalletAPIModel(id: id, walletName: walletName, balance: balance)}
 }

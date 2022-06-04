@@ -1,5 +1,5 @@
 //
-//  Wallet.swift
+//  WalletAPIModel.swift
 //  APILayer
 //
 //  Created by Shad Mazumder on 29/5/22.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Wallet: Decodable {
+public struct WalletAPIModel: Decodable {
     public let id: String
     public let walletName: String
     public let balance: String

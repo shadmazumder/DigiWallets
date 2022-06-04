@@ -8,9 +8,9 @@
 import Foundation
 
 public struct Wallets: Decodable{
-    public let wallets: [Wallet]
+    public let wallets: [WalletAPIModel]
     
-    public init(wallets: [Wallet]){
+    public init(wallets: [WalletAPIModel]){
         self.wallets = wallets
     }
 }
