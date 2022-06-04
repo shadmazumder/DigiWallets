@@ -8,7 +8,7 @@
 import Foundation
 import iOS
 
-class HomeViewControllerDelegateSpy: HomeViewControllerErrorDelegate {
+class HomeViewControllerDelegateSpy: HomeViewErrorDelegate {
     var errorResult = [Error]()
     
     func handleErrorState(_ error: Error){

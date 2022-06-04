@@ -8,6 +8,10 @@
 import Foundation
 import APILayer
 
+struct WalletViewModel {
+    let wallet: [Wallet]
+}
+
 public struct Wallet{
     public let id: String
     public let name: String

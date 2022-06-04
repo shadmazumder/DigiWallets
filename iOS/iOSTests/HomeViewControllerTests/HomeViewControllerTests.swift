@@ -97,20 +97,17 @@ class HomeViewControllerTests: XCTestCase {
     func makeSUt(_ walletsURL: URL? = URL(string: "any-wallets-url")!, _ transactionsURL: URL? = URL(string: "any-transactions-url")!) -> (sut: HomeViewController, delegate: HomeViewControllerDelegateSpy, client: ClientSpy){
         let client = ClientSpy()
         let loader = DecodableRemoteLoader(client)
-        let delegate = HomeViewControllerDelegateSpy()
-        let homeViewController = homeViewControllerFromHomeSotyboard() as! HomeViewController
+        let errorDelegate = HomeViewControllerDelegateSpy()
         
-        homeViewController.delegate = delegate
-        homeViewController.loader = loader
+        let homeViewController = HomeUIComposer.homeComposeWith(loader: loader, errorDelegate: errorDelegate, walletURL: walletsURL, transactionURL: transactionsURL)
         
-        homeViewController.walletsURL = walletsURL
-        homeViewController.transactionsURL = transactionsURL
+//        trackMemoryLeak(homeViewController)
+//        trackMemoryLeak(client)
+//        trackMemoryLeak(loader)
+//        trackMemoryLeak(errorDelegate)
         
-        trackMemoryLeak(homeViewController)
-        trackMemoryLeak(client)
-        trackMemoryLeak(loader)
-        trackMemoryLeak(delegate)
+        homeViewController.loadViewIfNeeded()
         
-        return (homeViewController, delegate, client)
+        return (homeViewController, errorDelegate, client)
     }
 }

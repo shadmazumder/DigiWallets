@@ -6,32 +6,14 @@
 //
 
 import UIKit
-import APILayer
 
-extension HomeViewController{
-    @objc func loadFromRemote(){
-        guard let walletsURL = walletsURL,  let transactionsURL = transactionsURL else{
-            delegate?.handleErrorState(HomeViewControllerError.unsetURLs)
-            return
-        }
-
-        refreshControl?.beginRefreshing()
-        loadWallets(from: walletsURL)
-        loadTransactions(from: transactionsURL)
+extension HomeViewController: HomeView{
+    func display(_ wallets: WalletViewModel) {
+        diffarableReload(wallets.wallet, to: .wallets)
     }
     
-    private func loadWallets(from url: URL){
-        loader?.load(from: url, of: Wallets.self, completion: { [weak self] result in
-            self?.refreshControl?.endRefreshing()
-            
-            switch result {
-            case let .success(walletsAPIModel):
-                let wallets = walletsAPIModel as! Wallets
-                self?.diffarableReload(wallets.wallets.mapToWalletViewModel, to: .wallets)
-            case let .failure(error):
-                self?.delegate?.handleErrorState(error)
-            }
-        })
+    func display(_ transaction: TransactionViewModel) {
+        diffarableReload(transaction.transaction, to: .transaction)
     }
     
     private func diffarableReload(_ homeViewModel: [AnyHashable], to section: HomeViewSection){
@@ -39,18 +21,10 @@ extension HomeViewController{
         snapShot.appendItems(homeViewModel, toSection: section)
         dataSource.applySnapshotUsingReloadData(snapShot)
     }
-    
-    private func loadTransactions(from url: URL){
-        loader?.load(from: url, of: Histories.self, completion: { [weak self] result in
-            self?.refreshControl?.endRefreshing()
-            
-            switch result {
-            case let .success(historiesAPIModel):
-                let histories = historiesAPIModel as! Histories
-                self?.diffarableReload(histories.histories.mapToTransactionViewModel, to: .transaction)
-            case let .failure(error):
-                self?.delegate?.handleErrorState(error)
-            }
-        })
+}
+
+extension HomeViewController: HomeLoadingView{
+    func display(_ viewModel: HomeLoadingViewModel) {
+        viewModel.isLoading ? refreshControl?.beginRefreshing() : refreshControl?.endRefreshing()
     }
 }

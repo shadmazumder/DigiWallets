@@ -9,11 +9,7 @@ import UIKit
 import APILayer
 
 public class HomeViewController: UITableViewController {
-    public var delegate: HomeViewControllerErrorDelegate?
-    public var loader: DecodableLoader?
-    public var walletsURL: URL?
-    public var transactionsURL: URL?
-    
+    var delegate: HomeViewControllerDelegate?
     public private(set) var dataSource: HomeViewDataSource!
     
     public override func viewDidLoad() {
@@ -25,15 +21,15 @@ public class HomeViewController: UITableViewController {
         loadFromRemote()
     }
     
+    private func addRefreshControll(){
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(loadFromRemote), for: .valueChanged)
+    }
+    
     private func configureTableView(){
         dataSource = HomeViewDataSource(tableView: tableView, cellProvider: { [weak self] tableView, indexPath, itemIdentifier in
             self?.configuredCell(with: itemIdentifier, for: indexPath)
         })
-    }
-    
-    private func addRefreshControll(){
-        refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(loadFromRemote), for: .valueChanged)
     }
     
     private func addSections(){
@@ -55,5 +51,9 @@ public class HomeViewController: UITableViewController {
         default:
             return UITableViewCell()
         }
+    }
+    
+    @objc private func loadFromRemote(){
+        delegate?.didRequestHomeRefresh()
     }
 }

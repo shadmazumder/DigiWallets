@@ -41,4 +41,9 @@ extension XCTestCase{
             XCTAssertNil(instance, "Memory Leak!!! Didn't deallocated", file: file, line: line)
         }
     }
+    
+    var anyURL: URL { URL(string: "any-url")! }
+    
+    class DummyErrorDelegate: HomeViewErrorDelegate{ func handleErrorState(_ error: Error) {} }
+    var anyHomeViewErrorDelegate: HomeViewErrorDelegate{ DummyErrorDelegate() }
 }

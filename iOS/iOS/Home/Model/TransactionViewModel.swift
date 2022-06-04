@@ -8,11 +8,16 @@
 import Foundation
 import APILayer
 
+struct TransactionViewModel {
+    let transaction: [Transaction]
+}
+
 public struct Transaction{
     public let id: String
     public let description: String
     public let amount: String
 }
+
 
 extension Transaction: Hashable{
     public func hash(into hasher: inout Hasher) {

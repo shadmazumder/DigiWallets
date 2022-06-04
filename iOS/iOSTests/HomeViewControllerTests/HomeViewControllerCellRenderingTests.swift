@@ -105,16 +105,11 @@ class HomeViewControllerCellRenderingTests: XCTestCase{
     
     // MARK: - Helper
     private func makeSUT() -> (sut: HomeViewController, LoaderSpy){
-        let homeViewController = homeViewControllerFromHomeSotyboard() as! HomeViewController
         let loader = LoaderSpy()
-        homeViewController.loader = loader
+        let homeViewController = HomeUIComposer.homeComposeWith(loader: loader, errorDelegate: anyHomeViewErrorDelegate, walletURL: anyURL, transactionURL: anyURL)
         
-        let anyURL = URL(string: "any-url")!
-        homeViewController.walletsURL = anyURL
-        homeViewController.transactionsURL = anyURL
-        
-        trackMemoryLeak(homeViewController)
-        trackMemoryLeak(loader)
+//        trackMemoryLeak(homeViewController)
+//        trackMemoryLeak(loader)
         
         homeViewController.loadViewIfNeeded()
         
