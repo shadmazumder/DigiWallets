@@ -8,9 +8,9 @@
 import Foundation
 
 public struct Histories: Decodable {
-    public let histories: [Transaction]
+    public let histories: [TransactionAPIModel]
     
-    public init(histories: [Transaction]) {
+    public init(histories: [TransactionAPIModel]) {
         self.histories = histories
     }
 }

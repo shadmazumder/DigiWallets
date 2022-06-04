@@ -1,5 +1,5 @@
 //
-//  Transaction.swift
+//  TransactionAPIModel.swift
 //  APILayer
 //
 //  Created by Shad Mazumder on 29/5/22.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Transaction: Decodable {
+public struct TransactionAPIModel: Decodable {
     public let id: String
     public let entry: String
     public let amount: String
