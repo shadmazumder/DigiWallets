@@ -1,5 +1,5 @@
 //
-//  HomeViewControllerTests+CellRendering.swift
+//  HomeViewControllerCellRenderingTests.swift
 //  iOSTests
 //
 //  Created by Shad Mazumder on 2/6/22.
