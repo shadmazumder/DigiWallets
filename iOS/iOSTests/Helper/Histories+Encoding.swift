@@ -8,7 +8,7 @@
 import Foundation
 import APILayer
 
-extension Transaction: Encodable{
+extension TransactionAPIModel: Encodable{
     enum CodingKeys: String, CodingKey {
         case id
         case entry

@@ -8,7 +8,7 @@
 import Foundation
 import APILayer
 
-extension Wallet: Encodable{
+extension WalletAPIModel: Encodable{
     enum CodingKeys: String, CodingKey {
         case id
         case walletName

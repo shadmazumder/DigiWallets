@@ -11,7 +11,7 @@ public class WalletCell: UITableViewCell {
     @IBOutlet public private(set) weak var name: UILabel!
     @IBOutlet public private(set) weak var amount: UILabel!
     
-    func configure(_ viewModel: WalletViewModel){
+    func configure(_ viewModel: Wallet){
         name.text = viewModel.name
         amount.text = viewModel.amount
     }

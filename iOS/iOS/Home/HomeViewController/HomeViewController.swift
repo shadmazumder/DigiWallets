@@ -46,7 +46,7 @@ public class HomeViewController: UITableViewController {
         switch index.section{
         case 0:
             let walletCell: WalletCell = tableView.dequeueReusableCell()
-            walletCell.configure(model as! WalletViewModel)
+            walletCell.configure(model as! Wallet)
             return walletCell
         case 1:
             let transactionCell: TransactionCell = tableView.dequeueReusableCell()

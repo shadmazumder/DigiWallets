@@ -21,14 +21,14 @@ extension TransactionViewModel: Hashable{
 }
 
 extension TransactionViewModel{
-    public static func description(from transaction: Transaction) -> String{
+    public static func description(from transaction: TransactionAPIModel) -> String{
         let action = action(for: transaction)
         let recipient = recipient(for: transaction)
         
         return "You've \(action) \(recipient)"
     }
     
-    private static func action(for transaction: Transaction)-> String{
+    private static func action(for transaction: TransactionAPIModel)-> String{
         switch transaction.entry {
         case "incoming":
             return "received payment"
@@ -39,29 +39,29 @@ extension TransactionViewModel{
         }
     }
     
-    private static func recipient(for transaction: Transaction)-> String{
+    private static func recipient(for transaction: TransactionAPIModel)-> String{
         transaction.entry == "outgoing" ? transaction.recipient : ""
     }
     
-    public static func amount(from transaction: Transaction) -> String{
+    public static func amount(from transaction: TransactionAPIModel) -> String{
         let sign = transaction.entry == "outgoing" ? "-" : ""
         return "\(sign)\(transaction.amount) \(transaction.currency)"
     }
 }
 
 extension TransactionViewModel{
-    init(transaction: Transaction) {
+    init(transaction: TransactionAPIModel) {
         id = transaction.id
         description = TransactionViewModel.description(from: transaction)
         amount = TransactionViewModel.amount(from: transaction)
     }
 }
 
-extension Transaction{
+extension TransactionAPIModel{
     var transactionViewModel: TransactionViewModel{TransactionViewModel(transaction: self)}
 }
 
-extension Array where Element == Transaction{
+extension Array where Element == TransactionAPIModel{
     var mapToTransactionViewModel: [TransactionViewModel]{ map({$0.transactionViewModel}) }
 }
 
