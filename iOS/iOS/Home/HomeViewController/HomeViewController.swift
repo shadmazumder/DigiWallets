@@ -50,7 +50,7 @@ public class HomeViewController: UITableViewController {
             return walletCell
         case 1:
             let transactionCell: TransactionCell = tableView.dequeueReusableCell()
-            transactionCell.configure(model as! TransactionViewModel)
+            transactionCell.configure(model as! Transaction)
             return transactionCell
         default:
             return UITableViewCell()

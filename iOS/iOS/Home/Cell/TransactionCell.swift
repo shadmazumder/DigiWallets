@@ -11,7 +11,7 @@ public class TransactionCell: UITableViewCell {
     @IBOutlet public private(set) weak var details: UILabel!
     @IBOutlet public private(set) weak var amount: UILabel!
     
-    func configure(_ viewModel: TransactionViewModel){
+    func configure(_ viewModel: Transaction){
         details.text = viewModel.description
         amount.text = viewModel.amount
     }

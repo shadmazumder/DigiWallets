@@ -1,5 +1,5 @@
 //
-//  TransactionViewModel.swift
+//  Transaction.swift
 //  iOS
 //
 //  Created by Shad Mazumder on 3/6/22.
@@ -8,19 +8,19 @@
 import Foundation
 import APILayer
 
-public struct TransactionViewModel{
+public struct Transaction{
     public let id: String
     public let description: String
     public let amount: String
 }
 
-extension TransactionViewModel: Hashable{
+extension Transaction: Hashable{
     public func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
 }
 
-extension TransactionViewModel{
+extension Transaction{
     public static func description(from transaction: TransactionAPIModel) -> String{
         let action = action(for: transaction)
         let recipient = recipient(for: transaction)
@@ -49,19 +49,19 @@ extension TransactionViewModel{
     }
 }
 
-extension TransactionViewModel{
+extension Transaction{
     init(transaction: TransactionAPIModel) {
         id = transaction.id
-        description = TransactionViewModel.description(from: transaction)
-        amount = TransactionViewModel.amount(from: transaction)
+        description = Transaction.description(from: transaction)
+        amount = Transaction.amount(from: transaction)
     }
 }
 
 extension TransactionAPIModel{
-    var transactionViewModel: TransactionViewModel{TransactionViewModel(transaction: self)}
+    var transactionViewModel: Transaction{Transaction(transaction: self)}
 }
 
 extension Array where Element == TransactionAPIModel{
-    var mapToTransactionViewModel: [TransactionViewModel]{ map({$0.transactionViewModel}) }
+    var mapToTransactionViewModel: [Transaction]{ map({$0.transactionViewModel}) }
 }
 

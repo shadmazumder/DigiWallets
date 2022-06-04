@@ -33,8 +33,8 @@ class HomeViewControllerCellRenderingTests: XCTestCase{
         
         let transactionCell = sut.transactionsCell()
         let transaction = transactions.histories.first!
-        let details = TransactionViewModel.description(from: transaction)
-        let amount = TransactionViewModel.amount(from: transaction)
+        let details = Transaction.description(from: transaction)
+        let amount = Transaction.amount(from: transaction)
         
         XCTAssertEqual(transactionCell?.details.text, details)
         XCTAssertEqual(transactionCell?.amount.text, amount)
@@ -96,8 +96,8 @@ class HomeViewControllerCellRenderingTests: XCTestCase{
         
         let transactionCell = sut.transactionsCell()
         let transaction = transactions.histories.first!
-        let details = TransactionViewModel.description(from: transaction)
-        let amount = TransactionViewModel.amount(from: transaction)
+        let details = Transaction.description(from: transaction)
+        let amount = Transaction.amount(from: transaction)
         
         XCTAssertEqual(transactionCell?.details.text, details)
         XCTAssertEqual(transactionCell?.amount.text, amount)
