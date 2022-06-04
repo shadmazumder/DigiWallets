@@ -9,7 +9,7 @@ import UIKit
 import APILayer
 
 public class HomeViewController: UITableViewController {
-    public var delegate: HomeViewControllerDelegate?
+    public var delegate: HomeViewControllerErrorDelegate?
     public var loader: DecodableLoader?
     public var walletsURL: URL?
     public var transactionsURL: URL?

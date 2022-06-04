@@ -1,5 +1,5 @@
 //
-//  HomeViewControllerDelegate.swift
+//  HomeViewControllerErrorDelegate.swift
 //  iOS
 //
 //  Created by Shad Mazumder on 3/6/22.
@@ -11,6 +11,6 @@ public enum HomeViewControllerError: Error {
     case unsetURLs
 }
 
-public protocol HomeViewControllerDelegate{
+public protocol HomeViewControllerErrorDelegate{
     func handleErrorState(_ error: Error)
 }

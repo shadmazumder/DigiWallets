@@ -31,7 +31,7 @@
 		E8F68B04284A54CE008438CB /* HomeViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F68B03284A54CE008438CB /* HomeViewSection.swift */; };
 		E8F68B06284A54EA008438CB /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F68B05284A54EA008438CB /* Wallet.swift */; };
 		E8F68B08284A551D008438CB /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F68B07284A551D008438CB /* Transaction.swift */; };
-		E8F68B0B284A55C8008438CB /* HomeViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F68B0A284A55C8008438CB /* HomeViewControllerDelegate.swift */; };
+		E8F68B0B284A55C8008438CB /* HomeViewControllerErrorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F68B0A284A55C8008438CB /* HomeViewControllerErrorDelegate.swift */; };
 		E8F68B0D284A618D008438CB /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F68B0C284A618D008438CB /* TransactionCell.swift */; };
 		E8F68B0F284B0140008438CB /* HomeViewControllerThreadingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F68B0E284B0140008438CB /* HomeViewControllerThreadingTests.swift */; };
 /* End PBXBuildFile section */
@@ -85,7 +85,7 @@
 		E8F68B03284A54CE008438CB /* HomeViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewSection.swift; sourceTree = "<group>"; };
 		E8F68B05284A54EA008438CB /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		E8F68B07284A551D008438CB /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
-		E8F68B0A284A55C8008438CB /* HomeViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerDelegate.swift; sourceTree = "<group>"; };
+		E8F68B0A284A55C8008438CB /* HomeViewControllerErrorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerErrorDelegate.swift; sourceTree = "<group>"; };
 		E8F68B0C284A618D008438CB /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		E8F68B0E284B0140008438CB /* HomeViewControllerThreadingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerThreadingTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -226,7 +226,7 @@
 			children = (
 				E8A28E9B28440D64003F4055 /* HomeViewController.swift */,
 				E8089F78284929D300E1C458 /* HomeViewController+Loading.swift */,
-				E8F68B0A284A55C8008438CB /* HomeViewControllerDelegate.swift */,
+				E8F68B0A284A55C8008438CB /* HomeViewControllerErrorDelegate.swift */,
 			);
 			path = HomeViewController;
 			sourceTree = "<group>";
@@ -345,7 +345,7 @@
 				E8089F7B284936DC00E1C458 /* UITableView+DequeCell.swift in Sources */,
 				E8F68B0D284A618D008438CB /* TransactionCell.swift in Sources */,
 				E8F68B04284A54CE008438CB /* HomeViewSection.swift in Sources */,
-				E8F68B0B284A55C8008438CB /* HomeViewControllerDelegate.swift in Sources */,
+				E8F68B0B284A55C8008438CB /* HomeViewControllerErrorDelegate.swift in Sources */,
 				E8089F79284929D300E1C458 /* HomeViewController+Loading.swift in Sources */,
 				E8089F77284919EB00E1C458 /* WalletCell.swift in Sources */,
 				E8D7CEAE2843A019005FA33F /* iOS.docc in Sources */,
