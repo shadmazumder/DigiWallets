@@ -9,6 +9,15 @@ import UIKit
 import iOS
 
 extension HomeViewController{
+    func section(for section: HomeViewSection) -> Int{
+        switch section {
+        case .wallets:
+            return 0
+        case .transaction:
+            return 1
+        }
+    }
+    
     private func indexPath(_ index: Int) -> IndexPath{
         IndexPath(row: index, section: 0)
     }
@@ -18,7 +27,7 @@ extension HomeViewController{
     }
     
     func walletCell(_ index: Int = 0) -> WalletCell?{
-        dataSource.tableView(tableView, cellForRowAt: IndexPath(row: index, section: 0)) as? WalletCell
+        dataSource.tableView(tableView, cellForRowAt: IndexPath(row: index, section: section(for: .wallets))) as? WalletCell
     }
     
     var numberOfWalletsCell: Int{
@@ -30,7 +39,7 @@ extension HomeViewController{
     }
     
     func transactionsCell(_ index: Int = 0) -> TransactionCell?{
-        dataSource.tableView(tableView, cellForRowAt: IndexPath(row: index, section: 1)) as? TransactionCell
+        dataSource.tableView(tableView, cellForRowAt: IndexPath(row: index, section: section(for: .transaction))) as? TransactionCell
     }
     
     func simulatePullToRefresh(){
