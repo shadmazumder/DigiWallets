@@ -14,7 +14,8 @@ public class TransactionViewController: UIViewController {
     
     private var transaction: Transaction?
     
-    public override func viewDidLoad() {
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         transactionDetails.text = transaction?.description
         senderName.text = transaction?.sender
         amount.text = transaction?.amount
