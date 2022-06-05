@@ -10,10 +10,6 @@ import iOS
 import CryptoLoader
 
 class HomeViewControllerTests: XCTestCase {
-    func test_loadFromStoryboard_returnsHomeViewController() {
-        XCTAssertTrue(homeViewControllerFromHomeSotyboard() is HomeViewController, "Initial ViewController is not HomeViewController")
-    }
-    
     func test_init_rendersNothing() {
         let (sut, _, _) = makeSUt()
         

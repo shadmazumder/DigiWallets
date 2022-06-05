@@ -27,7 +27,8 @@ private extension HomeViewController{
     static func makeWith(delegate: HomeViewControllerDelegate) -> HomeViewController{
         let bundle = Bundle(for: HomeViewController.self)
         let storyboard = UIStoryboard(name: "Home", bundle: bundle)
-        let homeViewController = storyboard.instantiateInitialViewController() as! HomeViewController
+        let navigationController = storyboard.instantiateInitialViewController() as! UINavigationController
+        let homeViewController = navigationController.viewControllers.first as! HomeViewController
         homeViewController.delegate = delegate
         return homeViewController
     }

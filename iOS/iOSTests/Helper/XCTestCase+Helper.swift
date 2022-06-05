@@ -10,12 +10,6 @@ import APILayer
 import iOS
 
 extension XCTestCase{
-    func homeViewControllerFromHomeSotyboard() -> UIViewController? {
-        let bundle = Bundle(for: HomeViewController.self)
-        let storyboard = UIStoryboard(name: "Home", bundle: bundle)
-        return storyboard.instantiateInitialViewController()
-    }
-    
     var anyWalletsWithData: (wallets: Wallets, data: Data){
         let anyWallet = WalletAPIModel(id: "any-ID", walletName: "Any Name", balance: "any-balance")
         let wallets = Wallets(wallets: [anyWallet])
