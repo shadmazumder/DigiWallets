@@ -15,14 +15,21 @@ public class URLSessionHTTPClient: HTTPClient {
     }
     
     public func get(from url: URL, completion: @escaping (HTTPResult) -> Void) {
-        session.dataTask(with: url){ data, response, error in
+        session.dataTask(with: url){ [weak self] data, response, error in
             if let error = error {
-                completion(.failure(error))
+                self?.mapError(error, response: response, data: data, completion: completion)
             }else if let data = data, let response = response as? HTTPURLResponse{
                 completion(.success(data, response))
             }else{
                 completion(.failure(RemoteLoader.ResultError.unexpectedError))
             }
         }.resume()
+    }
+    
+    private func mapError(_ error: Error, response: URLResponse?, data: Data?,completion: @escaping ((HTTPResult) -> Void)){
+        if let _ = response, let _ = data{
+            completion(.failure(error))
+        }
+        completion(.failure(RemoteLoader.ResultError.connectivity))
     }
 }

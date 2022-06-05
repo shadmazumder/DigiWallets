@@ -34,13 +34,8 @@ class URLSessionHTTPClientTests: XCTestCase {
         wait(for: [exp], timeout: 0.5)
     }
     
-    func test_getFromURL_failsOnRequestError() {
-        let givenError = NSError(domain: "Session error", code: 1)
-        
-        let receivedError = requestErrorFor(data: nil, response: nil, expectedError: givenError) as NSError?
-        
-        XCTAssertEqual(receivedError?.domain, givenError.domain)
-        XCTAssertEqual(receivedError?.code, givenError.code)
+    func test_getFromURL_deliversConnectivityErrorOnNilDataWithNilResponse() {
+        XCTAssertEqual(requestErrorFor(data: nil, response: nil, expectedError: anyNSError())?.localizedDescription, RemoteLoader.ResultError.connectivity.localizedDescription)
     }
     
     func test_getFromURL_failsOnAllInvalidValueRepresentatio() {
