@@ -49,4 +49,8 @@ extension HomeViewController{
             })
         })
     }
+    
+    func simulateWalletCellSelection(){
+        tableView.deselectRow(at: IndexPath(row: 0, section: section(for: .wallets)), animated: false)
+    }
 }
