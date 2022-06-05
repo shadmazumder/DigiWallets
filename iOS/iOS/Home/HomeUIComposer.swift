@@ -15,21 +15,22 @@ public protocol HomeViewControllerDelegate {
 public final class HomeUIComposer{
     private init(){}
     
-    public static func homeComposeWith(loader: DecodableLoader, errorDelegate: HomeViewErrorDelegate, walletURL: URL?, transactionURL: URL?) -> HomeViewController{
+    public static func homeComposeWith(title: String?, loader: DecodableLoader, errorDelegate: HomeViewErrorDelegate, walletURL: URL?, transactionURL: URL?) -> HomeViewController{
         let presentationAdapter = HomeLoaderPresentationAdapter(remoteLoader: MainQueueDispatchDecorator(decoratee: loader))
-        let homeViewController = HomeViewController.makeWith(delegate: presentationAdapter)
+        let homeViewController = HomeViewController.makeWith(delegate: presentationAdapter, title: title)
         presentationAdapter.presenter = HomePresenter(homeView: homeViewController, loadingView: homeViewController, errorDelegate: errorDelegate, walletURL: walletURL, transactionURL: transactionURL)
         return homeViewController
     }
 }
 
 private extension HomeViewController{
-    static func makeWith(delegate: HomeViewControllerDelegate) -> HomeViewController{
+    static func makeWith(delegate: HomeViewControllerDelegate, title: String?) -> HomeViewController{
         let bundle = Bundle(for: HomeViewController.self)
         let storyboard = UIStoryboard(name: "Home", bundle: bundle)
         let navigationController = storyboard.instantiateInitialViewController() as! UINavigationController
         let homeViewController = navigationController.viewControllers.first as! HomeViewController
         homeViewController.delegate = delegate
+        homeViewController.title = title
         return homeViewController
     }
 }

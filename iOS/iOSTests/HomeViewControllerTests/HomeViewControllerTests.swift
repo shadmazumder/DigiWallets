@@ -16,6 +16,13 @@ class HomeViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.numberOfWalletsCell + sut.numberOfTransactionsCell, 0)
     }
     
+    func test_loadView_renderTitle() {
+        let title = "any TitlE"
+        let(sut, _, _) = makeSUt(title: title)
+        
+        XCTAssertEqual(sut.title, title)
+    }
+    
     func test_loadView_returnsErrorOnUnsetURLs() {
         let (_, delegate, _) = makeSUt(nil, nil)
         
@@ -66,11 +73,11 @@ class HomeViewControllerTests: XCTestCase {
     }
     
     // MARK: - Helper
-    func makeSUt(_ walletsURL: URL? = URL(string: "any-wallets-url")!, _ transactionsURL: URL? = URL(string: "any-transactions-url")!) -> (sut: HomeViewController, delegate: HomeViewControllerDelegateSpy, loaderSpy: LoaderSpy){
+    func makeSUt(_ walletsURL: URL? = URL(string: "any-wallets-url")!, _ transactionsURL: URL? = URL(string: "any-transactions-url")!, title: String? = nil) -> (sut: HomeViewController, delegate: HomeViewControllerDelegateSpy, loaderSpy: LoaderSpy){
         let loader = LoaderSpy()
         let errorDelegate = HomeViewControllerDelegateSpy()
         
-        let homeViewController = HomeUIComposer.homeComposeWith(loader: loader, errorDelegate: errorDelegate, walletURL: walletsURL, transactionURL: transactionsURL)
+        let homeViewController = HomeUIComposer.homeComposeWith(title: title, loader: loader, errorDelegate: errorDelegate, walletURL: walletsURL, transactionURL: transactionsURL)
         
         trackMemoryLeak(homeViewController)
         trackMemoryLeak(loader)

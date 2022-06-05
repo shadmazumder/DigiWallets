@@ -46,7 +46,7 @@ extension XCTestCase{
         let loader = DecodableRemoteLoader(client)
         let errorDelegate = anyHomeViewErrorDelegate
         
-        let homeViewController = HomeUIComposer.homeComposeWith(loader: loader, errorDelegate: errorDelegate, walletURL: walletsURL, transactionURL: transactionsURL)
+        let homeViewController = HomeUIComposer.homeComposeWith(title: nil, loader: loader, errorDelegate: errorDelegate, walletURL: walletsURL, transactionURL: transactionsURL)
         
         trackMemoryLeak(homeViewController)
         trackMemoryLeak(loader)
