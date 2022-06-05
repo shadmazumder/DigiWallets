@@ -24,6 +24,19 @@ class HomeViewControllerSectionHeader: XCTestCase {
         XCTAssertEqual(transactionHeader, HomeViewSection.transaction.rawValue)
     }
     
+    func test_ErrorLoad_rendersSectionHeader() {
+        let (sut, clientSpy) = makeSUt()
+        
+        clientSpy.completeWithError(.unexpectedError)
+        clientSpy.completeWithError(.connectivity, index: 0)
+
+        let walletHeader = sut.tableView.dataSource?.tableView?(sut.tableView, titleForHeaderInSection: sut.section(for: .wallets))
+        let transactionHeader = sut.tableView.dataSource?.tableView?(sut.tableView, titleForHeaderInSection: sut.section(for: .transaction))
+
+        XCTAssertEqual(walletHeader, HomeViewSection.wallets.rawValue)
+        XCTAssertEqual(transactionHeader, HomeViewSection.transaction.rawValue)
+    }
+    
     // MARK: - Helper
     private func makeSUt(_ walletsURL: URL? = URL(string: "any-wallets-url")!, _ transactionsURL: URL? = URL(string: "any-transactions-url")!) -> (sut: HomeViewController, clientSpy: ClientSpy){
         let client = ClientSpy()
