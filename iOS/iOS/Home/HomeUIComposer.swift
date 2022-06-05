@@ -29,16 +29,12 @@ public final class HomeUIComposer{
 
 private extension HomeViewController{
     static func makeWith(delegate: HomeViewControllerDelegate, navigationDelegate: HomeViewControllerNavigationDelegate, title: String?) -> HomeViewController{
-        let homeViewController = HomeViewController.navigationController.viewControllers.first as! HomeViewController
+        let bundle = Bundle(for: HomeViewController.self)
+        let storyboard = UIStoryboard(name: "Home", bundle: bundle)
+        let homeViewController = storyboard.instantiateInitialViewController() as! HomeViewController
         homeViewController.setDelegate(delegate: delegate, navigationDelegate: navigationDelegate)
         homeViewController.title = title
         return homeViewController
-    }
-    
-    static var navigationController: UINavigationController{
-        let bundle = Bundle(for: HomeViewController.self)
-        let storyboard = UIStoryboard(name: "Home", bundle: bundle)
-        return storyboard.instantiateInitialViewController() as! UINavigationController
     }
 }
 
