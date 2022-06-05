@@ -20,7 +20,7 @@ class RootComposer {
 
 extension RootComposer: HomeViewControllerNavigationDelegate, HomeViewErrorDelegate{
     func handleErrorState(_ error: Error) {
-        
+        router?.presentErrorIfApplicable(error)
     }
     
     func navigateToTransactionDetails(_ transaction: Transaction) {

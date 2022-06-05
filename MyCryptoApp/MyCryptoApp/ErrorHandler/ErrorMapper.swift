@@ -11,7 +11,7 @@ import CryptoLoader
 typealias AlertContent = (title: String, message: String, action: String)
 
 struct ErrorMapper {
-    func alertContent(for error: Error) -> AlertContent?{
+    static func alertContent(for error: Error) -> AlertContent?{
         switch error {
         case RemoteLoader.ResultError.connectivity:
             return connectivityAlertContent()
@@ -21,7 +21,7 @@ struct ErrorMapper {
         }
     }
     
-    private func connectivityAlertContent() -> AlertContent{
+    static private func connectivityAlertContent() -> AlertContent{
         let title = "Oop!"
         let message = "😬 We lost the connection 🙈"
         let action = "Try again later"

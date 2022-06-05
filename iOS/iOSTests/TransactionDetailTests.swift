@@ -13,6 +13,7 @@ class TransactionDetailTests: XCTestCase {
         let sut = TransactionUIComposer.composeTransaction()
         
         sut.loadViewIfNeeded()
+        sut.viewWillAppear(true)
         
         XCTAssertNil(sut.transactionDetails.text)
         XCTAssertNil(sut.senderName.text)
@@ -25,6 +26,7 @@ class TransactionDetailTests: XCTestCase {
         sut.update(with: transaction)
 
         sut.loadViewIfNeeded()
+        sut.viewWillAppear(true)
         
         
         XCTAssertEqual(sut.transactionDetails.text, transaction.description)

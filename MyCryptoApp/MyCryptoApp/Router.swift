@@ -44,3 +44,23 @@ final class Router {
     }
 }
 
+extension Router{
+    func presentErrorIfApplicable(_ error: Error){
+        guard let content = ErrorMapper.alertContent(for: error) else { return }
+        alertOn(homeViewController, content: content) {
+            // retry implementation
+        }
+    }
+    
+    private func alertOn(_ viewController: UIViewController, content: AlertContent, completion: @escaping () -> Void) {
+        let alert = UIAlertController(title: content.title,
+                                      message: content.message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: content.action, style: .cancel, handler: { _ in
+            completion()
+        }))
+
+        viewController.present(alert, animated: true, completion: nil)
+    }
+}
+
