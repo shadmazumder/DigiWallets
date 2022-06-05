@@ -31,8 +31,6 @@ class HomeViewControllerThreadingTests: XCTestCase {
         trackMemoryLeak(homeViewController)
         trackMemoryLeak(loader)
         
-        homeViewController.loadViewIfNeeded()
-        
         return (homeViewController, loader)
     }
 }
