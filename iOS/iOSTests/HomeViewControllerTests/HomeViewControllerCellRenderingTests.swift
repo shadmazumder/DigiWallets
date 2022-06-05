@@ -116,5 +116,5 @@ class HomeViewControllerCellRenderingTests: XCTestCase{
         return (homeViewController, loader)
     }
     
-    var anyError: NSError{ NSError(domain: "any-domain", code: -1, userInfo: nil)}
+    private var anyError: NSError {NSError(domain: "any-error", code: -1, userInfo: nil)}
 }

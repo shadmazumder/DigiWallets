@@ -23,6 +23,7 @@ final class HomeLoaderPresentationAdapter: HomeViewControllerDelegate{
             presenter?.didFinishedLoading(with: HomeViewControllerError.unsetURLs)
             return
         }
+        
         loadWallets(from: walletsURL)
         loadTransactions(from: transactionsURL)
     }

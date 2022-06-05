@@ -44,8 +44,6 @@ extension XCTestCase{
     
     var anyURL: URL { URL(string: "any-url")! }
     
-    var anyerror: NSError {NSError(domain: "any-error", code: -1, userInfo: nil)}
-    
     private class DummyErrorDelegate: HomeViewErrorDelegate{ func handleErrorState(_ error: Error) {} }
     var anyHomeViewErrorDelegate: HomeViewErrorDelegate{ DummyErrorDelegate() }
 }

@@ -7,7 +7,6 @@
 
 import XCTest
 import iOS
-import APILayer
 
 class HomeViewControllerThreadingTests: XCTestCase {
     func test_loadRemoteCompletion_dispatchFromBackgroundToUIthread() {

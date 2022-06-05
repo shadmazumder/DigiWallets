@@ -8,7 +8,6 @@
 import XCTest
 import iOS
 import CryptoLoader
-import APILayer
 
 class HomeViewControllerTests: XCTestCase {
     func test_loadFromStoryboard_returnsHomeViewController() {
