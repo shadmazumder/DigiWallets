@@ -35,19 +35,3 @@ class TransactionDetailTests: XCTestCase {
         return sut
     }
 }
-
-public class TransactionUIComposer{
-    private init(){}
-    public static func composeTransaction() -> TransactionViewController{
-        TransactionViewController.make()
-    }
-}
-
-private extension TransactionViewController{
-    static func make() -> TransactionViewController{
-        let bundle = Bundle(for: HomeViewController.self)
-        let storyboard = UIStoryboard(name: "Transaction", bundle: bundle)
-        let transactionDetailViewController = storyboard.instantiateInitialViewController() as! TransactionViewController
-        return transactionDetailViewController
-    }
-}

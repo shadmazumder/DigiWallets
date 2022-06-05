@@ -27,6 +27,7 @@
 		E898FFB5284C825900FA2F1B /* APILayer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E898FFB3284C825900FA2F1B /* APILayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E898FFB8284C825C00FA2F1B /* CryptoLoader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E898FFB7284C825C00FA2F1B /* CryptoLoader.framework */; };
 		E898FFB9284C825C00FA2F1B /* CryptoLoader.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E898FFB7284C825C00FA2F1B /* CryptoLoader.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E898FFBB284C87CD00FA2F1B /* TransactionUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E898FFBA284C87CD00FA2F1B /* TransactionUIComposer.swift */; };
 		E8A28E9A28440D4B003F4055 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8A28E9928440D4B003F4055 /* Home.storyboard */; };
 		E8A28E9C28440D64003F4055 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A28E9B28440D64003F4055 /* HomeViewController.swift */; };
 		E8D7CEAE2843A019005FA33F /* iOS.docc in Sources */ = {isa = PBXBuildFile; fileRef = E8D7CEAD2843A019005FA33F /* iOS.docc */; };
@@ -90,6 +91,7 @@
 		E875827328482A4C00A19874 /* Histories+Encoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Histories+Encoding.swift"; sourceTree = "<group>"; };
 		E898FFB3284C825900FA2F1B /* APILayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = APILayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E898FFB7284C825C00FA2F1B /* CryptoLoader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CryptoLoader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E898FFBA284C87CD00FA2F1B /* TransactionUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionUIComposer.swift; sourceTree = "<group>"; };
 		E8A28E9928440D4B003F4055 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		E8A28E9B28440D64003F4055 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E8D7CEA92843A019005FA33F /* iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,6 +160,7 @@
 			children = (
 				E861EEE0284C7B2E0046A095 /* TransactionViewController.swift */,
 				E861EEE2284C7B570046A095 /* Transaction.storyboard */,
+				E898FFBA284C87CD00FA2F1B /* TransactionUIComposer.swift */,
 			);
 			path = TransactionDetails;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				E8089F79284929D300E1C458 /* HomeViewController+Loading.swift in Sources */,
 				E8089F77284919EB00E1C458 /* WalletCell.swift in Sources */,
 				E8F68B11284B587E008438CB /* HomeUIComposer.swift in Sources */,
+				E898FFBB284C87CD00FA2F1B /* TransactionUIComposer.swift in Sources */,
 				E8D7CEAE2843A019005FA33F /* iOS.docc in Sources */,
 				E8F68B06284A54EA008438CB /* WalletViewModel.swift in Sources */,
 				E8F68B13284B6AF0008438CB /* HomePresenter.swift in Sources */,
