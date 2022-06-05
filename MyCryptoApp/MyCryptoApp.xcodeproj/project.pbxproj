@@ -9,24 +9,13 @@
 /* Begin PBXBuildFile section */
 		E898FFC9284C893C00FA2F1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E898FFC8284C893C00FA2F1B /* AppDelegate.swift */; };
 		E898FFCB284C893C00FA2F1B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E898FFCA284C893C00FA2F1B /* SceneDelegate.swift */; };
-		E898FFCD284C893C00FA2F1B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E898FFCC284C893C00FA2F1B /* ViewController.swift */; };
-		E898FFD0284C893C00FA2F1B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E898FFCE284C893C00FA2F1B /* Main.storyboard */; };
 		E898FFD2284C893D00FA2F1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E898FFD1284C893D00FA2F1B /* Assets.xcassets */; };
 		E898FFD5284C893D00FA2F1B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E898FFD3284C893D00FA2F1B /* LaunchScreen.storyboard */; };
-		E898FFE0284C893D00FA2F1B /* MyCryptoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E898FFDF284C893D00FA2F1B /* MyCryptoAppTests.swift */; };
-		E898FFEA284C893D00FA2F1B /* MyCryptoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E898FFE9284C893D00FA2F1B /* MyCryptoAppUITests.swift */; };
-		E898FFEC284C893D00FA2F1B /* MyCryptoAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E898FFEB284C893D00FA2F1B /* MyCryptoAppUITestsLaunchTests.swift */; };
+		E89CEC9F284C8EA600403657 /* AppComposing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89CEC9E284C8EA600403657 /* AppComposing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		E898FFDC284C893D00FA2F1B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E898FFBD284C893C00FA2F1B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E898FFC4284C893C00FA2F1B;
-			remoteInfo = MyCryptoApp;
-		};
-		E898FFE6284C893D00FA2F1B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E898FFBD284C893C00FA2F1B /* Project object */;
 			proxyType = 1;
@@ -39,16 +28,11 @@
 		E898FFC5284C893C00FA2F1B /* MyCryptoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyCryptoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E898FFC8284C893C00FA2F1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E898FFCA284C893C00FA2F1B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E898FFCC284C893C00FA2F1B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E898FFCF284C893C00FA2F1B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E898FFD1284C893D00FA2F1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E898FFD4284C893D00FA2F1B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E898FFD6284C893D00FA2F1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E898FFDB284C893D00FA2F1B /* MyCryptoAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyCryptoAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E898FFDF284C893D00FA2F1B /* MyCryptoAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCryptoAppTests.swift; sourceTree = "<group>"; };
-		E898FFE5284C893D00FA2F1B /* MyCryptoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyCryptoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E898FFE9284C893D00FA2F1B /* MyCryptoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCryptoAppUITests.swift; sourceTree = "<group>"; };
-		E898FFEB284C893D00FA2F1B /* MyCryptoAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCryptoAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E89CEC9E284C8EA600403657 /* AppComposing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppComposing.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,13 +50,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E898FFE2284C893D00FA2F1B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -81,7 +58,6 @@
 			children = (
 				E898FFC7284C893C00FA2F1B /* MyCryptoApp */,
 				E898FFDE284C893D00FA2F1B /* MyCryptoAppTests */,
-				E898FFE8284C893D00FA2F1B /* MyCryptoAppUITests */,
 				E898FFC6284C893C00FA2F1B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -91,7 +67,6 @@
 			children = (
 				E898FFC5284C893C00FA2F1B /* MyCryptoApp.app */,
 				E898FFDB284C893D00FA2F1B /* MyCryptoAppTests.xctest */,
-				E898FFE5284C893D00FA2F1B /* MyCryptoAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,8 +76,6 @@
 			children = (
 				E898FFC8284C893C00FA2F1B /* AppDelegate.swift */,
 				E898FFCA284C893C00FA2F1B /* SceneDelegate.swift */,
-				E898FFCC284C893C00FA2F1B /* ViewController.swift */,
-				E898FFCE284C893C00FA2F1B /* Main.storyboard */,
 				E898FFD1284C893D00FA2F1B /* Assets.xcassets */,
 				E898FFD3284C893D00FA2F1B /* LaunchScreen.storyboard */,
 				E898FFD6284C893D00FA2F1B /* Info.plist */,
@@ -113,18 +86,9 @@
 		E898FFDE284C893D00FA2F1B /* MyCryptoAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				E898FFDF284C893D00FA2F1B /* MyCryptoAppTests.swift */,
+				E89CEC9E284C8EA600403657 /* AppComposing.swift */,
 			);
 			path = MyCryptoAppTests;
-			sourceTree = "<group>";
-		};
-		E898FFE8284C893D00FA2F1B /* MyCryptoAppUITests */ = {
-			isa = PBXGroup;
-			children = (
-				E898FFE9284C893D00FA2F1B /* MyCryptoAppUITests.swift */,
-				E898FFEB284C893D00FA2F1B /* MyCryptoAppUITestsLaunchTests.swift */,
-			);
-			path = MyCryptoAppUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,24 +129,6 @@
 			productReference = E898FFDB284C893D00FA2F1B /* MyCryptoAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		E898FFE4284C893D00FA2F1B /* MyCryptoAppUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E898FFF5284C893D00FA2F1B /* Build configuration list for PBXNativeTarget "MyCryptoAppUITests" */;
-			buildPhases = (
-				E898FFE1284C893D00FA2F1B /* Sources */,
-				E898FFE2284C893D00FA2F1B /* Frameworks */,
-				E898FFE3284C893D00FA2F1B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E898FFE7284C893D00FA2F1B /* PBXTargetDependency */,
-			);
-			name = MyCryptoAppUITests;
-			productName = MyCryptoAppUITests;
-			productReference = E898FFE5284C893D00FA2F1B /* MyCryptoAppUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -198,10 +144,7 @@
 					};
 					E898FFDA284C893D00FA2F1B = {
 						CreatedOnToolsVersion = 13.4;
-						TestTargetID = E898FFC4284C893C00FA2F1B;
-					};
-					E898FFE4284C893D00FA2F1B = {
-						CreatedOnToolsVersion = 13.4;
+						LastSwiftMigration = 1340;
 						TestTargetID = E898FFC4284C893C00FA2F1B;
 					};
 				};
@@ -221,7 +164,6 @@
 			targets = (
 				E898FFC4284C893C00FA2F1B /* MyCryptoApp */,
 				E898FFDA284C893D00FA2F1B /* MyCryptoAppTests */,
-				E898FFE4284C893D00FA2F1B /* MyCryptoAppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -233,18 +175,10 @@
 			files = (
 				E898FFD5284C893D00FA2F1B /* LaunchScreen.storyboard in Resources */,
 				E898FFD2284C893D00FA2F1B /* Assets.xcassets in Resources */,
-				E898FFD0284C893C00FA2F1B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		E898FFD9284C893D00FA2F1B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E898FFE3284C893D00FA2F1B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -258,7 +192,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E898FFCD284C893C00FA2F1B /* ViewController.swift in Sources */,
 				E898FFC9284C893C00FA2F1B /* AppDelegate.swift in Sources */,
 				E898FFCB284C893C00FA2F1B /* SceneDelegate.swift in Sources */,
 			);
@@ -268,16 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E898FFE0284C893D00FA2F1B /* MyCryptoAppTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E898FFE1284C893D00FA2F1B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E898FFEA284C893D00FA2F1B /* MyCryptoAppUITests.swift in Sources */,
-				E898FFEC284C893D00FA2F1B /* MyCryptoAppUITestsLaunchTests.swift in Sources */,
+				E89CEC9F284C8EA600403657 /* AppComposing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,22 +213,9 @@
 			target = E898FFC4284C893C00FA2F1B /* MyCryptoApp */;
 			targetProxy = E898FFDC284C893D00FA2F1B /* PBXContainerItemProxy */;
 		};
-		E898FFE7284C893D00FA2F1B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E898FFC4284C893C00FA2F1B /* MyCryptoApp */;
-			targetProxy = E898FFE6284C893D00FA2F1B /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E898FFCE284C893C00FA2F1B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E898FFCF284C893C00FA2F1B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E898FFD3284C893D00FA2F1B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -441,7 +352,6 @@
 				INFOPLIST_FILE = MyCryptoApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -468,7 +378,6 @@
 				INFOPLIST_FILE = MyCryptoApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -489,14 +398,21 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = mobidevtalk.MyCryptoAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyCryptoApp.app/MyCryptoApp";
@@ -508,10 +424,16 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = mobidevtalk.MyCryptoAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -519,40 +441,6 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyCryptoApp.app/MyCryptoApp";
-			};
-			name = Release;
-		};
-		E898FFF6284C893D00FA2F1B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = mobidevtalk.MyCryptoAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = MyCryptoApp;
-			};
-			name = Debug;
-		};
-		E898FFF7284C893D00FA2F1B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = mobidevtalk.MyCryptoAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = MyCryptoApp;
 			};
 			name = Release;
 		};
@@ -582,15 +470,6 @@
 			buildConfigurations = (
 				E898FFF3284C893D00FA2F1B /* Debug */,
 				E898FFF4284C893D00FA2F1B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E898FFF5284C893D00FA2F1B /* Build configuration list for PBXNativeTarget "MyCryptoAppUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E898FFF6284C893D00FA2F1B /* Debug */,
-				E898FFF7284C893D00FA2F1B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
