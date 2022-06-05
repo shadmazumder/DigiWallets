@@ -11,23 +11,23 @@ public enum HomeViewControllerError: Error {
     case unsetURLs
 }
 
-public protocol HomeViewErrorDelegate{
+public protocol HomeViewErrorDelegate: AnyObject{
     func handleErrorState(_ error: Error)
 }
 
-protocol HomeLoadingView {
+protocol HomeLoadingView: AnyObject {
     func display(_ viewModel: HomeLoadingViewModel)
 }
 
-protocol HomeView {
+protocol HomeView: AnyObject {
     func display(_ wallets: WalletViewModel)
     func display(_ transaction: TransactionViewModel)
 }
 
 public final class HomePresenter{
-    private let homeView: HomeView
-    private let loadingView: HomeLoadingView
-    private let errorDelegate: HomeViewErrorDelegate
+    private weak var homeView: HomeView?
+    private weak var loadingView: HomeLoadingView?
+    private weak var errorDelegate: HomeViewErrorDelegate?
     
     let walletURL: URL?
     let transactionURL: URL?
@@ -41,25 +41,25 @@ public final class HomePresenter{
     }
     
     func didStartLoading(){
-        loadingView.display(HomeLoadingViewModel(isLoading: true))
+        loadingView?.display(HomeLoadingViewModel(isLoading: true))
     }
     
     func didFinishedLoading(with error: Error){
         stopLoading()
-        errorDelegate.handleErrorState(error)
+        errorDelegate?.handleErrorState(error)
     }
     
     func didFinishedLoading(with wallets: [Wallet]){
         stopLoading()
-        homeView.display(WalletViewModel(wallet: wallets))
+        homeView?.display(WalletViewModel(wallet: wallets))
     }
     
     func didFinishedLoading(with transactions: [Transaction]){
         stopLoading()
-        homeView.display(TransactionViewModel(transaction: transactions))
+        homeView?.display(TransactionViewModel(transaction: transactions))
     }
     
     private func stopLoading(){
-        loadingView.display(HomeLoadingViewModel(isLoading: false))
+        loadingView?.display(HomeLoadingViewModel(isLoading: false))
     }
 }

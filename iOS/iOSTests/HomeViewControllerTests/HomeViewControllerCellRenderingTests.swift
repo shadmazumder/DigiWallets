@@ -60,11 +60,11 @@ class HomeViewControllerCellRenderingTests: XCTestCase{
         
         XCTAssertEqual(sut.numberOfWalletsCell, 0)
         XCTAssertEqual(sut.numberOfWalletsCell, 0)
-
-        loader.completeWithError(1)
+        
+        loader.completeWithError(anyError)
         XCTAssertEqual(sut.numberOfTransactionsCell, 0)
 
-        loader.completeWithError()
+        loader.completeWithError(anyError)
         XCTAssertEqual(sut.numberOfWalletsCell, 0)
     }
     
@@ -73,10 +73,10 @@ class HomeViewControllerCellRenderingTests: XCTestCase{
         XCTAssertEqual(sut.numberOfWalletsCell, 0)
         XCTAssertEqual(sut.numberOfWalletsCell, 0)
         
-        loader.completeWithError(1)
+        loader.completeWithError(anyError)
         XCTAssertEqual(sut.numberOfTransactionsCell, 0)
 
-        loader.completeWithError()
+        loader.completeWithError(anyError)
         XCTAssertEqual(sut.numberOfWalletsCell, 0)
         
         sut.simulatePullToRefresh()
@@ -108,28 +108,13 @@ class HomeViewControllerCellRenderingTests: XCTestCase{
         let loader = LoaderSpy()
         let homeViewController = HomeUIComposer.homeComposeWith(loader: loader, errorDelegate: anyHomeViewErrorDelegate, walletURL: anyURL, transactionURL: anyURL)
         
-//        trackMemoryLeak(homeViewController)
-//        trackMemoryLeak(loader)
-        
         homeViewController.loadViewIfNeeded()
+        
+        trackMemoryLeak(homeViewController)
+        trackMemoryLeak(loader)
         
         return (homeViewController, loader)
     }
-}
-
-class LoaderSpy: DecodableLoader {
-    var loadRequest = [((DecodableResult) -> Void)]()
     
-    func load<T>(from url: URL, of type: T.Type, completion: @escaping ((DecodableResult) -> Void)) where T : Decodable {
-        loadRequest.append(completion)
-    }
-    
-    func completeWithSuccess(_ decodableModel: Decodable, index: Int = 0){
-        loadRequest[index](.success(decodableModel))
-    }
-    
-    func completeWithError(_ index: Int = 0){
-        let anyError = NSError(domain: "any domain", code: -1, userInfo: nil)
-        loadRequest[index](.failure(anyError))
-    }
+    var anyError: NSError{ NSError(domain: "any-domain", code: -1, userInfo: nil)}
 }
