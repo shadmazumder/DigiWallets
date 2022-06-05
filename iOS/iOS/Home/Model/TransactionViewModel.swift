@@ -15,9 +15,16 @@ struct TransactionViewModel {
 public struct Transaction{
     public let id: String
     public let description: String
+    public let sender: String
     public let amount: String
+    
+    public init(id: String, description: String, sender: String, amount: String){
+        self.id = id
+        self.description = description
+        self.sender = sender
+        self.amount = amount
+    }
 }
-
 
 extension Transaction: Hashable{
     public func hash(into hasher: inout Hasher) {
@@ -58,6 +65,7 @@ extension Transaction{
     init(transaction: TransactionAPIModel) {
         id = transaction.id
         description = Transaction.description(from: transaction)
+        sender = transaction.sender
         amount = Transaction.amount(from: transaction)
     }
 }
