@@ -12,9 +12,8 @@ import iOS
 
 class HomeViewControllerNavigation: XCTestCase {
     func test_walletSelection_doesNotNavigate() {
-        let (sut, client, navigationSpy) = makeSUt()
-        client.completeWithSuccess(anyWalletsWithData.data)
-        client.completeWithSuccess(anyTransactionsData.data, index: 1)
+        let (sut, navigationSpy) = makeSUt()
+        
         
         sut.simulateWalletCellSelection()
         
@@ -22,9 +21,7 @@ class HomeViewControllerNavigation: XCTestCase {
     }
     
     func test_TransactionSelection_navigatesToDetailsScreen() {
-        let (sut, client, navigationSpy) = makeSUt()
-        client.completeWithSuccess(anyWalletsWithData.data)
-        client.completeWithSuccess(anyTransactionsData.data, index: 1)
+        let (sut, navigationSpy) = makeSUt()
         
         sut.simulateTransactionCellSelection()
         
@@ -32,7 +29,7 @@ class HomeViewControllerNavigation: XCTestCase {
     }
     
     // MARK: - Helper
-    private func makeSUt() -> (sut: HomeViewController, clientSpy: ClientSpy, navigationSpy: NavigationSpy){
+    private func makeSUt() -> (sut: HomeViewController, navigationSpy: NavigationSpy){
         let client = ClientSpy()
         let loader = DecodableRemoteLoader(client)
         let navigationSpy = NavigationSpy()
@@ -45,8 +42,10 @@ class HomeViewControllerNavigation: XCTestCase {
         trackMemoryLeak(errorDelegate)
         
         homeViewController.loadViewIfNeeded()
+        client.completeWithSuccess(anyWalletsWithData.data)
+        client.completeWithSuccess(anyTransactionsData.data, index: 1)
         
-        return (homeViewController, client, navigationSpy)
+        return (homeViewController, navigationSpy)
     }
 }
 

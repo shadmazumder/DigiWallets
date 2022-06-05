@@ -9,14 +9,7 @@ import UIKit
 import iOS
 
 extension HomeViewController{
-    func section(for section: HomeViewSection) -> Int{
-        switch section {
-        case .wallets:
-            return 0
-        case .transaction:
-            return 1
-        }
-    }
+    func section(for homeViewSection: HomeViewSection) -> Int{ homeViewSection.section }
     
     private func indexPath(_ index: Int) -> IndexPath{
         IndexPath(row: index, section: 0)
@@ -51,7 +44,7 @@ extension HomeViewController{
     }
     
     func simulateWalletCellSelection(){
-        tableView.deselectRow(at: IndexPath(row: 0, section: section(for: .wallets)), animated: false)
+        tableView.delegate?.tableView?(tableView, didSelectRowAt: IndexPath(row: 0, section: section(for: .wallets)))
     }
     
     func simulateTransactionCellSelection(){

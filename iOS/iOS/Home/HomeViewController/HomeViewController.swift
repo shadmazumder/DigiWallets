@@ -63,6 +63,8 @@ public class HomeViewController: UITableViewController {
     }
     
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard indexPath.section == HomeViewSection.transaction.section else {return}
+        
         let transaction = dataSource.itemIdentifier(for: indexPath) as! Transaction
         navigationDelegate?.navigateToTransactionDetails(transaction)
     }
