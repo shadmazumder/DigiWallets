@@ -15,4 +15,9 @@ public class WalletCell: UITableViewCell {
         name.text = viewModel.name
         amount.text = viewModel.amount
     }
+    
+    public override func prepareForReuse() {
+        name.text = nil
+        amount.text = nil
+    }
 }

@@ -103,6 +103,24 @@ class HomeViewControllerCellRenderingTests: XCTestCase{
         XCTAssertEqual(transactionCell?.amount.text, amount)
     }
     
+    func test_prepareForReuse_resetProperties() {
+        let (sut, loader) = makeSUT()
+        loader.completeWithSuccess(anyWalletsWithData.wallets)
+        loader.completeWithSuccess(anyTransactionsData.history, index: 1)
+        let walletCell = sut.walletCell()
+        let transactionCell = sut.transactionsCell()
+        
+        walletCell?.prepareForReuse()
+        
+        XCTAssertNil(walletCell?.name.text)
+        XCTAssertNil(walletCell?.amount.text)
+        
+        transactionCell?.prepareForReuse()
+        
+        XCTAssertNil(transactionCell?.details.text)
+        XCTAssertNil(transactionCell?.amount.text)
+    }
+    
     // MARK: - Helper
     private func makeSUT() -> (sut: HomeViewController, loader: LoaderSpy){
         let loader = LoaderSpy()

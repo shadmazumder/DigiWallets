@@ -15,4 +15,9 @@ public class TransactionCell: UITableViewCell {
         details.text = viewModel.description
         amount.text = viewModel.amount
     }
+    
+    public override func prepareForReuse() {
+        details.text = nil
+        amount.text = nil
+    }
 }
