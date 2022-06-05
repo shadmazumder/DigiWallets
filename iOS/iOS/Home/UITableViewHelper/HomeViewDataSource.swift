@@ -7,4 +7,8 @@
 
 import UIKit
 
-public class HomeViewDataSource:UITableViewDiffableDataSource<HomeViewSection, AnyHashable>{}
+public class HomeViewDataSource:UITableViewDiffableDataSource<HomeViewSection, AnyHashable>{
+    public override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        HomeViewSection.allCases[section].rawValue
+    }
+}

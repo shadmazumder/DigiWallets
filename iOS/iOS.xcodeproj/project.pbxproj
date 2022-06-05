@@ -13,6 +13,7 @@
 		E8089F79284929D300E1C458 /* HomeViewController+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8089F78284929D300E1C458 /* HomeViewController+Loading.swift */; };
 		E8089F7B284936DC00E1C458 /* UITableView+DequeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8089F7A284936DC00E1C458 /* UITableView+DequeCell.swift */; };
 		E861EED8284C353F0046A095 /* ClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E861EED7284C353F0046A095 /* ClientSpy.swift */; };
+		E861EEDA284C36020046A095 /* HomeViewControllerSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E861EED9284C36020046A095 /* HomeViewControllerSectionHeader.swift */; };
 		E875826A2847667900A19874 /* HomeViewControllerDelegateSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87582692847667900A19874 /* HomeViewControllerDelegateSpy.swift */; };
 		E875826E284766DA00A19874 /* XCTestCase+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E875826D284766DA00A19874 /* XCTestCase+Helper.swift */; };
 		E87582702847677C00A19874 /* HomeViewController+TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E875826F2847677C00A19874 /* HomeViewController+TestHelper.swift */; };
@@ -71,6 +72,7 @@
 		E8089F78284929D300E1C458 /* HomeViewController+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Loading.swift"; sourceTree = "<group>"; };
 		E8089F7A284936DC00E1C458 /* UITableView+DequeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+DequeCell.swift"; sourceTree = "<group>"; };
 		E861EED7284C353F0046A095 /* ClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientSpy.swift; sourceTree = "<group>"; };
+		E861EED9284C36020046A095 /* HomeViewControllerSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerSectionHeader.swift; sourceTree = "<group>"; };
 		E8758261284625AF00A19874 /* CryptoLoader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CryptoLoader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8758265284627B900A19874 /* APILayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = APILayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E87582692847667900A19874 /* HomeViewControllerDelegateSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerDelegateSpy.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				E8D7CEC328440774005FA33F /* HomeViewControllerTests.swift */,
 				E8089F6D2848820100E1C458 /* HomeViewControllerTests+IndicatorVisibility.swift */,
 				E8089F73284894E300E1C458 /* HomeViewControllerCellRenderingTests.swift */,
+				E861EED9284C36020046A095 /* HomeViewControllerSectionHeader.swift */,
 				E8F68B0E284B0140008438CB /* HomeViewControllerThreadingTests.swift */,
 			);
 			path = HomeViewControllerTests;
@@ -393,6 +396,7 @@
 				E8E7A607284BBD2C0096268B /* LoaderSpy.swift in Sources */,
 				E861EED8284C353F0046A095 /* ClientSpy.swift in Sources */,
 				E875827428482A4C00A19874 /* Histories+Encoding.swift in Sources */,
+				E861EEDA284C36020046A095 /* HomeViewControllerSectionHeader.swift in Sources */,
 				E8089F6E2848820100E1C458 /* HomeViewControllerTests+IndicatorVisibility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
