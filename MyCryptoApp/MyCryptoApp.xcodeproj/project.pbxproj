@@ -12,6 +12,8 @@
 		E898FFD2284C893D00FA2F1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E898FFD1284C893D00FA2F1B /* Assets.xcassets */; };
 		E898FFD5284C893D00FA2F1B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E898FFD3284C893D00FA2F1B /* LaunchScreen.storyboard */; };
 		E89CEC9F284C8EA600403657 /* AppComposing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89CEC9E284C8EA600403657 /* AppComposing.swift */; };
+		E8D88375284C934F004DDDC0 /* iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8D88374284C934F004DDDC0 /* iOS.framework */; };
+		E8D88376284C934F004DDDC0 /* iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E8D88374284C934F004DDDC0 /* iOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,6 +26,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		E8D88377284C934F004DDDC0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E8D88376284C934F004DDDC0 /* iOS.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		E898FFC5284C893C00FA2F1B /* MyCryptoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyCryptoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E898FFC8284C893C00FA2F1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -33,6 +49,7 @@
 		E898FFD6284C893D00FA2F1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E898FFDB284C893D00FA2F1B /* MyCryptoAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyCryptoAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E89CEC9E284C8EA600403657 /* AppComposing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppComposing.swift; sourceTree = "<group>"; };
+		E8D88374284C934F004DDDC0 /* iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8D88375284C934F004DDDC0 /* iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +77,7 @@
 				E898FFC7284C893C00FA2F1B /* MyCryptoApp */,
 				E898FFDE284C893D00FA2F1B /* MyCryptoAppTests */,
 				E898FFC6284C893C00FA2F1B /* Products */,
+				E8D88373284C934F004DDDC0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,6 +110,14 @@
 			path = MyCryptoAppTests;
 			sourceTree = "<group>";
 		};
+		E8D88373284C934F004DDDC0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E8D88374284C934F004DDDC0 /* iOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -101,6 +128,7 @@
 				E898FFC1284C893C00FA2F1B /* Sources */,
 				E898FFC2284C893C00FA2F1B /* Frameworks */,
 				E898FFC3284C893C00FA2F1B /* Resources */,
+				E8D88377284C934F004DDDC0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

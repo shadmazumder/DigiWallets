@@ -6,10 +6,12 @@
 //
 
 import XCTest
+import MyCryptoApp
+import iOS
 
 struct Router {
     func startRouting() -> UIViewController{
-        UINavigationController()
+        UINavigationController(rootViewController: HomeViewController())
     }
 }
 
@@ -19,5 +21,12 @@ class AppComposing: XCTestCase {
         let controller = router.startRouting()
         
         XCTAssertTrue(controller is UINavigationController)
+    }
+    
+    func test_startRouting_returnsHomveViewControllerAsRootViewController() {
+        let router = Router()
+        let controller = router.startRouting()
+        let navController = controller as? UINavigationController
+        XCTAssertTrue(navController?.viewControllers.first is HomeViewController)
     }
 }
