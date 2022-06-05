@@ -77,7 +77,7 @@ class HomeViewControllerTests: XCTestCase {
         let loader = LoaderSpy()
         let errorDelegate = HomeViewControllerDelegateSpy()
         
-        let homeViewController = HomeUIComposer.homeComposeWith(title: title, loader: loader, errorDelegate: errorDelegate, walletURL: walletsURL, transactionURL: transactionsURL)
+        let homeViewController = HomeUIComposer.homeComposeWith(title: title, loader: loader, errorDelegate: errorDelegate, walletURL: walletsURL, transactionURL: transactionsURL, navigationDelegate: anyHomeNavigationDelegate)
         
         trackMemoryLeak(homeViewController)
         trackMemoryLeak(loader)

@@ -12,26 +12,33 @@ public protocol HomeViewControllerDelegate {
     func didRequestHomeRefresh()
 }
 
+public protocol HomeViewControllerNavigationDelegate {
+    func navigateToTransactionDetails(_ transaction: Transaction)
+}
+
 public final class HomeUIComposer{
     private init(){}
     
-    public static func homeComposeWith(title: String?, loader: DecodableLoader, errorDelegate: HomeViewErrorDelegate, walletURL: URL?, transactionURL: URL?) -> HomeViewController{
+    public static func homeComposeWith(title: String?, loader: DecodableLoader, errorDelegate: HomeViewErrorDelegate, walletURL: URL?, transactionURL: URL?, navigationDelegate: HomeViewControllerNavigationDelegate) -> HomeViewController{
         let presentationAdapter = HomeLoaderPresentationAdapter(remoteLoader: MainQueueDispatchDecorator(decoratee: loader))
-        let homeViewController = HomeViewController.makeWith(delegate: presentationAdapter, title: title)
+        let homeViewController = HomeViewController.makeWith(delegate: presentationAdapter, navigationDelegate: navigationDelegate, title: title)
         presentationAdapter.presenter = HomePresenter(homeView: homeViewController, loadingView: homeViewController, errorDelegate: errorDelegate, walletURL: walletURL, transactionURL: transactionURL)
         return homeViewController
     }
 }
 
 private extension HomeViewController{
-    static func makeWith(delegate: HomeViewControllerDelegate, title: String?) -> HomeViewController{
-        let bundle = Bundle(for: HomeViewController.self)
-        let storyboard = UIStoryboard(name: "Home", bundle: bundle)
-        let navigationController = storyboard.instantiateInitialViewController() as! UINavigationController
-        let homeViewController = navigationController.viewControllers.first as! HomeViewController
-        homeViewController.delegate = delegate
+    static func makeWith(delegate: HomeViewControllerDelegate, navigationDelegate: HomeViewControllerNavigationDelegate, title: String?) -> HomeViewController{
+        let homeViewController = HomeViewController.navigationController.viewControllers.first as! HomeViewController
+        homeViewController.setDelegate(delegate: delegate, navigationDelegate: navigationDelegate)
         homeViewController.title = title
         return homeViewController
+    }
+    
+    static var navigationController: UINavigationController{
+        let bundle = Bundle(for: HomeViewController.self)
+        let storyboard = UIStoryboard(name: "Home", bundle: bundle)
+        return storyboard.instantiateInitialViewController() as! UINavigationController
     }
 }
 

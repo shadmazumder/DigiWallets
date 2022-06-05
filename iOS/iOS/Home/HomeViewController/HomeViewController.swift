@@ -8,7 +8,8 @@
 import UIKit
 
 public class HomeViewController: UITableViewController {
-    var delegate: HomeViewControllerDelegate?
+    private var delegate: HomeViewControllerDelegate?
+    private var navigationDelegate: HomeViewControllerNavigationDelegate?
     private(set) var dataSource: HomeViewDataSource!
     
     public override func viewDidLoad() {
@@ -54,5 +55,15 @@ public class HomeViewController: UITableViewController {
     
     @objc private func loadFromRemote(){
         delegate?.didRequestHomeRefresh()
+    }
+    
+    func setDelegate(delegate: HomeViewControllerDelegate, navigationDelegate: HomeViewControllerNavigationDelegate){
+        self.delegate = delegate
+        self.navigationDelegate = navigationDelegate
+    }
+    
+    public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let transaction = dataSource.itemIdentifier(for: indexPath) as! Transaction
+        navigationDelegate?.navigateToTransactionDetails(transaction)
     }
 }

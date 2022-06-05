@@ -26,7 +26,7 @@ class HomeViewControllerThreadingTests: XCTestCase {
     // MARK: - Helper
     private func makeSUT() -> (sut: HomeViewController, LoaderSpy){
         let loader = LoaderSpy()
-        let homeViewController = HomeUIComposer.homeComposeWith(title: nil, loader: loader, errorDelegate: anyHomeViewErrorDelegate, walletURL: anyURL, transactionURL: anyURL)
+        let homeViewController = HomeUIComposer.homeComposeWith(title: nil, loader: loader, errorDelegate: anyHomeViewErrorDelegate, walletURL: anyURL, transactionURL: anyURL, navigationDelegate: anyHomeNavigationDelegate)
         
         trackMemoryLeak(homeViewController)
         trackMemoryLeak(loader)

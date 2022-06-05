@@ -41,12 +41,17 @@ extension XCTestCase{
     private class DummyErrorDelegate: HomeViewErrorDelegate{ func handleErrorState(_ error: Error) {} }
     var anyHomeViewErrorDelegate: HomeViewErrorDelegate{ DummyErrorDelegate() }
     
+    private class DummyNavRouter: HomeViewControllerNavigationDelegate{
+        func navigateToTransactionDetails(_ transaction: Transaction) {}
+    }
+    var anyHomeNavigationDelegate: HomeViewControllerNavigationDelegate { DummyNavRouter() }
+    
     func makeSUt(_ walletsURL: URL? = URL(string: "any-wallets-url")!, _ transactionsURL: URL? = URL(string: "any-transactions-url")!) -> (sut: HomeViewController, clientSpy: ClientSpy){
         let client = ClientSpy()
         let loader = DecodableRemoteLoader(client)
         let errorDelegate = anyHomeViewErrorDelegate
         
-        let homeViewController = HomeUIComposer.homeComposeWith(title: nil, loader: loader, errorDelegate: errorDelegate, walletURL: walletsURL, transactionURL: transactionsURL)
+        let homeViewController = HomeUIComposer.homeComposeWith(title: nil, loader: loader, errorDelegate: errorDelegate, walletURL: walletsURL, transactionURL: transactionsURL, navigationDelegate: anyHomeNavigationDelegate)
         
         trackMemoryLeak(homeViewController)
         trackMemoryLeak(loader)
