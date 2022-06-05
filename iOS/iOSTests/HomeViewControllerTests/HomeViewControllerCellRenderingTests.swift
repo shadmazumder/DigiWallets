@@ -104,7 +104,7 @@ class HomeViewControllerCellRenderingTests: XCTestCase{
     }
     
     // MARK: - Helper
-    private func makeSUT() -> (sut: HomeViewController, LoaderSpy){
+    private func makeSUT() -> (sut: HomeViewController, loader: LoaderSpy){
         let loader = LoaderSpy()
         let homeViewController = HomeUIComposer.homeComposeWith(loader: loader, errorDelegate: anyHomeViewErrorDelegate, walletURL: anyURL, transactionURL: anyURL)
         

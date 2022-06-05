@@ -22,24 +22,24 @@ extension HomeViewController{
         IndexPath(row: index, section: 0)
     }
     
-    func cell(_ index: Int = 0) -> UITableViewCell{
-        dataSource.tableView(tableView, cellForRowAt: indexPath(index))
+    func cell(_ index: Int = 0) -> UITableViewCell?{
+        tableView.cellForRow(at: indexPath(index))
     }
     
     func walletCell(_ index: Int = 0) -> WalletCell?{
-        dataSource.tableView(tableView, cellForRowAt: IndexPath(row: index, section: section(for: .wallets))) as? WalletCell
+        tableView.cellForRow(at: IndexPath(row: index, section: section(for: .wallets))) as? WalletCell
     }
     
     var numberOfWalletsCell: Int{
-        dataSource.snapshot().numberOfItems(inSection: .wallets)
+        tableView.numberOfRows(inSection: section(for: .wallets))
     }
     
     var numberOfTransactionsCell: Int{
-        dataSource.snapshot().numberOfItems(inSection: .transaction)
+        tableView.numberOfRows(inSection: section(for: .transaction))
     }
     
     func transactionsCell(_ index: Int = 0) -> TransactionCell?{
-        dataSource.tableView(tableView, cellForRowAt: IndexPath(row: index, section: section(for: .transaction))) as? TransactionCell
+        tableView.cellForRow(at: IndexPath(row: index, section: section(for: .transaction))) as? TransactionCell
     }
     
     func simulatePullToRefresh(){

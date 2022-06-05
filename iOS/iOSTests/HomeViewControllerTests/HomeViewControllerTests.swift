@@ -17,7 +17,7 @@ class HomeViewControllerTests: XCTestCase {
     func test_init_rendersNothing() {
         let (sut, _, _) = makeSUt()
         
-        XCTAssertEqual(sut.dataSource.snapshot().numberOfItems, 0)
+        XCTAssertEqual(sut.numberOfWalletsCell + sut.numberOfTransactionsCell, 0)
     }
     
     func test_loadView_returnsErrorOnUnsetURLs() {

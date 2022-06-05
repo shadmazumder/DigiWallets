@@ -9,7 +9,7 @@ import UIKit
 
 public class HomeViewController: UITableViewController {
     var delegate: HomeViewControllerDelegate?
-    public private(set) var dataSource: HomeViewDataSource!
+    private(set) var dataSource: HomeViewDataSource!
     
     public override func viewDidLoad() {
         super.viewDidLoad()
