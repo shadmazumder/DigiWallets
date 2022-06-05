@@ -14,7 +14,6 @@ class HomeViewControllerNavigation: XCTestCase {
     func test_walletSelection_doesNotNavigate() {
         let (sut, navigationSpy) = makeSUt()
         
-        
         sut.simulateWalletCellSelection()
         
         XCTAssertEqual(navigationSpy.count, 0)

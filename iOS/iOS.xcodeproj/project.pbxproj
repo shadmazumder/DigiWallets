@@ -15,20 +15,23 @@
 		E861EED8284C353F0046A095 /* ClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E861EED7284C353F0046A095 /* ClientSpy.swift */; };
 		E861EEDA284C36020046A095 /* HomeViewControllerSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E861EED9284C36020046A095 /* HomeViewControllerSectionHeader.swift */; };
 		E861EEDC284C4E120046A095 /* HomeViewControllerNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E861EEDB284C4E120046A095 /* HomeViewControllerNavigation.swift */; };
+		E861EEDE284C74920046A095 /* TransactionDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E861EEDD284C74920046A095 /* TransactionDetailTests.swift */; };
+		E861EEE1284C7B2E0046A095 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E861EEE0284C7B2E0046A095 /* TransactionViewController.swift */; };
+		E861EEE3284C7B570046A095 /* Transaction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E861EEE2284C7B570046A095 /* Transaction.storyboard */; };
 		E875826A2847667900A19874 /* HomeViewControllerDelegateSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87582692847667900A19874 /* HomeViewControllerDelegateSpy.swift */; };
 		E875826E284766DA00A19874 /* XCTestCase+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E875826D284766DA00A19874 /* XCTestCase+Helper.swift */; };
 		E87582702847677C00A19874 /* HomeViewController+TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E875826F2847677C00A19874 /* HomeViewController+TestHelper.swift */; };
 		E875827228482A1800A19874 /* Wallets+Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E875827128482A1800A19874 /* Wallets+Encoding.swift */; };
 		E875827428482A4C00A19874 /* Histories+Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E875827328482A4C00A19874 /* Histories+Encoding.swift */; };
+		E898FFB4284C825900FA2F1B /* APILayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E898FFB3284C825900FA2F1B /* APILayer.framework */; };
+		E898FFB5284C825900FA2F1B /* APILayer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E898FFB3284C825900FA2F1B /* APILayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E898FFB8284C825C00FA2F1B /* CryptoLoader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E898FFB7284C825C00FA2F1B /* CryptoLoader.framework */; };
+		E898FFB9284C825C00FA2F1B /* CryptoLoader.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E898FFB7284C825C00FA2F1B /* CryptoLoader.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E8A28E9A28440D4B003F4055 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8A28E9928440D4B003F4055 /* Home.storyboard */; };
 		E8A28E9C28440D64003F4055 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A28E9B28440D64003F4055 /* HomeViewController.swift */; };
 		E8D7CEAE2843A019005FA33F /* iOS.docc in Sources */ = {isa = PBXBuildFile; fileRef = E8D7CEAD2843A019005FA33F /* iOS.docc */; };
 		E8D7CEB42843A019005FA33F /* iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8D7CEA92843A019005FA33F /* iOS.framework */; };
 		E8D7CEC428440774005FA33F /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D7CEC328440774005FA33F /* HomeViewControllerTests.swift */; };
-		E8E7A600284BAE350096268B /* CryptoLoader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E7A5FF284BAE350096268B /* CryptoLoader.framework */; };
-		E8E7A601284BAE350096268B /* CryptoLoader.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E8E7A5FF284BAE350096268B /* CryptoLoader.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E8E7A604284BAE390096268B /* APILayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E7A603284BAE390096268B /* APILayer.framework */; };
-		E8E7A605284BAE390096268B /* APILayer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E8E7A603284BAE390096268B /* APILayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E8E7A607284BBD2C0096268B /* LoaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E7A606284BBD2C0096268B /* LoaderSpy.swift */; };
 		E8F68B01284A5470008438CB /* HomeViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F68B00284A5470008438CB /* HomeViewDataSource.swift */; };
 		E8F68B04284A54CE008438CB /* HomeLoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F68B03284A54CE008438CB /* HomeLoadingViewModel.swift */; };
@@ -52,14 +55,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		E8E7A602284BAE350096268B /* Embed Frameworks */ = {
+		E898FFB6284C825900FA2F1B /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E8E7A601284BAE350096268B /* CryptoLoader.framework in Embed Frameworks */,
-				E8E7A605284BAE390096268B /* APILayer.framework in Embed Frameworks */,
+				E898FFB9284C825C00FA2F1B /* CryptoLoader.framework in Embed Frameworks */,
+				E898FFB5284C825900FA2F1B /* APILayer.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -75,6 +78,9 @@
 		E861EED7284C353F0046A095 /* ClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientSpy.swift; sourceTree = "<group>"; };
 		E861EED9284C36020046A095 /* HomeViewControllerSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerSectionHeader.swift; sourceTree = "<group>"; };
 		E861EEDB284C4E120046A095 /* HomeViewControllerNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerNavigation.swift; sourceTree = "<group>"; };
+		E861EEDD284C74920046A095 /* TransactionDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailTests.swift; sourceTree = "<group>"; };
+		E861EEE0284C7B2E0046A095 /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
+		E861EEE2284C7B570046A095 /* Transaction.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Transaction.storyboard; sourceTree = "<group>"; };
 		E8758261284625AF00A19874 /* CryptoLoader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CryptoLoader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8758265284627B900A19874 /* APILayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = APILayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E87582692847667900A19874 /* HomeViewControllerDelegateSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerDelegateSpy.swift; sourceTree = "<group>"; };
@@ -82,6 +88,8 @@
 		E875826F2847677C00A19874 /* HomeViewController+TestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+TestHelper.swift"; sourceTree = "<group>"; };
 		E875827128482A1800A19874 /* Wallets+Encoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Wallets+Encoding.swift"; sourceTree = "<group>"; };
 		E875827328482A4C00A19874 /* Histories+Encoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Histories+Encoding.swift"; sourceTree = "<group>"; };
+		E898FFB3284C825900FA2F1B /* APILayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = APILayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E898FFB7284C825C00FA2F1B /* CryptoLoader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CryptoLoader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8A28E9928440D4B003F4055 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		E8A28E9B28440D64003F4055 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E8D7CEA92843A019005FA33F /* iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,8 +115,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8E7A600284BAE350096268B /* CryptoLoader.framework in Frameworks */,
-				E8E7A604284BAE390096268B /* APILayer.framework in Frameworks */,
+				E898FFB8284C825C00FA2F1B /* CryptoLoader.framework in Frameworks */,
+				E898FFB4284C825900FA2F1B /* APILayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,9 +153,20 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		E861EEDF284C7AEC0046A095 /* TransactionDetails */ = {
+			isa = PBXGroup;
+			children = (
+				E861EEE0284C7B2E0046A095 /* TransactionViewController.swift */,
+				E861EEE2284C7B570046A095 /* Transaction.storyboard */,
+			);
+			path = TransactionDetails;
+			sourceTree = "<group>";
+		};
 		E8758260284625AF00A19874 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E898FFB7284C825C00FA2F1B /* CryptoLoader.framework */,
+				E898FFB3284C825900FA2F1B /* APILayer.framework */,
 				E8E7A603284BAE390096268B /* APILayer.framework */,
 				E8E7A5FF284BAE350096268B /* CryptoLoader.framework */,
 				E8758265284627B900A19874 /* APILayer.framework */,
@@ -207,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				E8A28E9628440CE1003F4055 /* Home */,
+				E861EEDF284C7AEC0046A095 /* TransactionDetails */,
 				E8D7CEAD2843A019005FA33F /* iOS.docc */,
 			);
 			path = iOS;
@@ -217,6 +237,7 @@
 			children = (
 				E8089F6C284881D500E1C458 /* HomeViewControllerTests */,
 				E87582682847666B00A19874 /* Helper */,
+				E861EEDD284C74920046A095 /* TransactionDetailTests.swift */,
 			);
 			path = iOSTests;
 			sourceTree = "<group>";
@@ -279,7 +300,7 @@
 				E8D7CEA52843A019005FA33F /* Sources */,
 				E8D7CEA62843A019005FA33F /* Frameworks */,
 				E8D7CEA72843A019005FA33F /* Resources */,
-				E8E7A602284BAE350096268B /* Embed Frameworks */,
+				E898FFB6284C825900FA2F1B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -352,6 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8A28E9A28440D4B003F4055 /* Home.storyboard in Resources */,
+				E861EEE3284C7B570046A095 /* Transaction.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +403,7 @@
 				E8F68B01284A5470008438CB /* HomeViewDataSource.swift in Sources */,
 				E8A28E9C28440D64003F4055 /* HomeViewController.swift in Sources */,
 				E8F68B08284A551D008438CB /* TransactionViewModel.swift in Sources */,
+				E861EEE1284C7B2E0046A095 /* TransactionViewController.swift in Sources */,
 				E8F68B16284B6B55008438CB /* HomeLoaderPresentationAdapter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,6 +419,7 @@
 				E8D7CEC428440774005FA33F /* HomeViewControllerTests.swift in Sources */,
 				E8F68B0F284B0140008438CB /* HomeViewControllerThreadingTests.swift in Sources */,
 				E875826A2847667900A19874 /* HomeViewControllerDelegateSpy.swift in Sources */,
+				E861EEDE284C74920046A095 /* TransactionDetailTests.swift in Sources */,
 				E875826E284766DA00A19874 /* XCTestCase+Helper.swift in Sources */,
 				E8E7A607284BBD2C0096268B /* LoaderSpy.swift in Sources */,
 				E861EED8284C353F0046A095 /* ClientSpy.swift in Sources */,
