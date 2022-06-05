@@ -36,21 +36,4 @@ class HomeViewControllerSectionHeader: XCTestCase {
         XCTAssertEqual(walletHeader, HomeViewSection.wallets.rawValue)
         XCTAssertEqual(transactionHeader, HomeViewSection.transaction.rawValue)
     }
-    
-    // MARK: - Helper
-    private func makeSUt(_ walletsURL: URL? = URL(string: "any-wallets-url")!, _ transactionsURL: URL? = URL(string: "any-transactions-url")!) -> (sut: HomeViewController, clientSpy: ClientSpy){
-        let client = ClientSpy()
-        let loader = DecodableRemoteLoader(client)
-        let errorDelegate = anyHomeViewErrorDelegate
-        
-        let homeViewController = HomeUIComposer.homeComposeWith(loader: loader, errorDelegate: errorDelegate, walletURL: walletsURL, transactionURL: transactionsURL)
-        
-        trackMemoryLeak(homeViewController)
-        trackMemoryLeak(loader)
-        trackMemoryLeak(errorDelegate)
-        
-        homeViewController.loadViewIfNeeded()
-        
-        return (homeViewController, client)
-    }
 }
