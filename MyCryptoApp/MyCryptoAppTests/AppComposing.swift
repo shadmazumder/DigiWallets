@@ -16,17 +16,15 @@ struct Router {
 }
 
 class AppComposing: XCTestCase {
-    func test_startRouting_returnsNavigationController() {
-        let router = Router()
-        let controller = router.startRouting()
-        
-        XCTAssertTrue(controller is UINavigationController)
+    func test_startRouting_returnsHomveViewControllerAsRootViewController() {
+        let (_, navController ) = makeSUT()
+        XCTAssertTrue(navController.viewControllers.first is HomeViewController)
     }
     
-    func test_startRouting_returnsHomveViewControllerAsRootViewController() {
+    // MARK: - Helper
+    func makeSUT() -> (router: Router, navigationController: UINavigationController){
         let router = Router()
         let controller = router.startRouting()
-        let navController = controller as? UINavigationController
-        XCTAssertTrue(navController?.viewControllers.first is HomeViewController)
+        return (router, controller as! UINavigationController)
     }
 }
