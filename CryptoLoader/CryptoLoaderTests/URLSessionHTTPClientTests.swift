@@ -35,7 +35,7 @@ class URLSessionHTTPClientTests: XCTestCase {
     }
     
     func test_getFromURL_deliversConnectivityErrorOnNilDataWithNilResponse() {
-        XCTAssertEqual(requestErrorFor(data: nil, response: nil, expectedError: anyNSError())?.localizedDescription, RemoteLoader.ResultError.connectivity.localizedDescription)
+        XCTAssertEqual(requestErrorFor(data: nil, response: nil, expectedError: anyNSError())?.localizedDescription, ResultError.connectivity.localizedDescription)
     }
     
     func test_getFromURL_failsOnAllInvalidValueRepresentatio() {

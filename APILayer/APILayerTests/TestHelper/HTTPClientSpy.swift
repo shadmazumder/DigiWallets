@@ -18,7 +18,7 @@ class HTTPClientSpy: HTTPClient {
         message.append((url, completion))
     }
     
-    func completeWithError(_ error: RemoteLoader.ResultError, index: Int = 0) {
+    func completeWithError(_ error: ResultError, index: Int = 0) {
         message[index].completion(.failure(error))
     }
     

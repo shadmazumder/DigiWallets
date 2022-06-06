@@ -23,7 +23,7 @@ class ClientSpy: HTTPClient {
         message[index].completion(.success(data, response))
     }
     
-    func completeWithError(_ error: RemoteLoader.ResultError, index: Int = 0) {
+    func completeWithError(_ error: ResultError, index: Int = 0) {
         message[index].completion(.failure(error))
     }
 }

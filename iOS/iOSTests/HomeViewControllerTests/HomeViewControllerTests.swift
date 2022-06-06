@@ -38,8 +38,8 @@ class HomeViewControllerTests: XCTestCase {
     }
     
     func test_loadView_deliversErrorsOnClientErrors(){
-        let non200HttpError = RemoteLoader.ResultError.non200HTTPResponse
-        let connectivityError = RemoteLoader.ResultError.connectivity
+        let non200HttpError = ResultError.non200HTTPResponse
+        let connectivityError = ResultError.connectivity
         let (sut, delegate, loaderSpy) = makeSUt()
         
         loaderSpy.completeWithError(non200HttpError)

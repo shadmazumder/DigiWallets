@@ -38,8 +38,8 @@ class DecodableRemoteLoaderTests: XCTestCase {
     func test_load_deliversErrorOnClientError() {
         let (sut, client) = makeSUT()
         
-        expect(sut, toCompleteWith: .failure(RemoteLoader.ResultError.connectivity), of: String.self) {
-            client.completeWithError(RemoteLoader.ResultError.connectivity)
+        expect(sut, toCompleteWith: .failure(ResultError.connectivity), of: String.self) {
+            client.completeWithError(ResultError.connectivity)
         }
     }
     
@@ -50,7 +50,7 @@ class DecodableRemoteLoaderTests: XCTestCase {
         
         
         non200HTTPResponses.enumerated().forEach({ index, response in
-            expect(sut, toCompleteWith: .failure(DecodableRemoteLoader.ResultError.non200HTTPResponse), of: String.self) {
+            expect(sut, toCompleteWith: .failure(ResultError.non200HTTPResponse), of: String.self) {
                 client.completeWith(Data(), response: response!, index: index)
             } })
     }

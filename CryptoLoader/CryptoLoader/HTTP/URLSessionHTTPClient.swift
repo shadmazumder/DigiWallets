@@ -21,7 +21,7 @@ public class URLSessionHTTPClient: HTTPClient {
             }else if let data = data, let response = response as? HTTPURLResponse{
                 completion(.success(data, response))
             }else{
-                completion(.failure(RemoteLoader.ResultError.unexpectedError))
+                completion(.failure(ResultError.unexpectedError))
             }
         }.resume()
     }
@@ -30,6 +30,6 @@ public class URLSessionHTTPClient: HTTPClient {
         if let _ = response, let _ = data{
             completion(.failure(error))
         }
-        completion(.failure(RemoteLoader.ResultError.connectivity))
+        completion(.failure(ResultError.connectivity))
     }
 }
