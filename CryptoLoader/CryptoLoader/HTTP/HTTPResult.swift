@@ -11,3 +11,9 @@ public enum HTTPResult {
     case success(Data, HTTPURLResponse)
     case failure(Error)
 }
+
+public enum ResultError: Error {
+    case connectivity
+    case non200HTTPResponse
+    case unexpectedError
+}
