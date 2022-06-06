@@ -10,6 +10,14 @@ import CryptoLoader
 import APILayer
 
 class DecodableRemoteLoaderTests: XCTestCase {
+    // MARK: - Remote Load
+    func test_init_doesNotCallAPI() {
+        let (_ , spy) = makeSUT()
+        
+        XCTAssertTrue(spy.message.isEmpty)
+    }
+    
+    // MARK: - Decoding
     func test_load_deliversErrorOnFaultyData() {
         let (loader, client) = makeSUT()
         let (decodedError, data) = anyDecodableErrorWithData
