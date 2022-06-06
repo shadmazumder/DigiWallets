@@ -13,7 +13,7 @@ typealias AlertContent = (title: String, message: String, action: String)
 struct ErrorMapper {
     static func alertContent(for error: Error) -> AlertContent?{
         switch error {
-        case RemoteLoader.ResultError.connectivity:
+        case ResultError.connectivity:
             return connectivityAlertContent()
         default:
             RemoteTracker.track(error)
