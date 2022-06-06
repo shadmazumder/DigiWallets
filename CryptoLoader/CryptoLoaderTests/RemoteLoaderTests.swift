@@ -9,6 +9,12 @@ import XCTest
 import CryptoLoader
 
 class RemoteLoaderTests: XCTestCase {
+    func test_init_doesNotCallAPI() {
+        let (_ , spy) = makeSUT()
+        
+        XCTAssertTrue(spy.message.isEmpty)
+    }
+    
     func test_loadFromURL_callsOnURL() {
         let (remoteLoader, spy) = makeSUT()
         
