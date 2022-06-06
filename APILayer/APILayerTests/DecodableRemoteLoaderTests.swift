@@ -43,6 +43,18 @@ class DecodableRemoteLoaderTests: XCTestCase {
         }
     }
     
+    func test_load_deliversNon200ResponseErrorOnNon200HTTPResponseStatusCode() {
+        let (sut, client) = makeSUT()
+        let non200HTTPResponseStatusCode = [199, 201, 233, 401]
+        let non200HTTPResponses = non200HTTPResponseStatusCode.map({HTTPURLResponse(url: anyURL, statusCode: $0, httpVersion: nil, headerFields: nil)})
+        
+        
+        non200HTTPResponses.enumerated().forEach({ index, response in
+            expect(sut, toCompleteWith: .failure(DecodableRemoteLoader.ResultError.non200HTTPResponse), of: String.self) {
+                client.completeWith(Data(), response: response!, index: index)
+            } })
+    }
+    
     // MARK: - Decoding
     func test_load_deliversErrorOnFaultyData() {
         let (loader, client) = makeSUT()
