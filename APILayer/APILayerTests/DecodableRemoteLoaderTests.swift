@@ -17,6 +17,14 @@ class DecodableRemoteLoaderTests: XCTestCase {
         XCTAssertTrue(spy.message.isEmpty)
     }
     
+    func test_loadFromURL_callsOnURL() {
+        let (remoteLoader, spy) = makeSUT()
+        
+        remoteLoader.load(from: anyURL, of: String.self) {_ in}
+        
+        XCTAssertEqual(spy.message.first?.url, anyURL)
+    }
+    
     // MARK: - Decoding
     func test_load_deliversErrorOnFaultyData() {
         let (loader, client) = makeSUT()
