@@ -35,6 +35,14 @@ class DecodableRemoteLoaderTests: XCTestCase {
         XCTAssertEqual(spy.message.map({$0.url}), [anyURL, anotherUrl])
     }
     
+    func test_load_deliversErrorOnClientError() {
+        let (sut, client) = makeSUT()
+        
+        expect(sut, toCompleteWith: .failure(RemoteLoader.ResultError.connectivity), of: String.self) {
+            client.completeWithError(RemoteLoader.ResultError.connectivity)
+        }
+    }
+    
     // MARK: - Decoding
     func test_load_deliversErrorOnFaultyData() {
         let (loader, client) = makeSUT()
