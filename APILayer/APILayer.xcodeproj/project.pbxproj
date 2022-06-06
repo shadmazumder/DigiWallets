@@ -18,6 +18,7 @@
 		E8D7CE6D28439C73005FA33F /* Wallets.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D7CE6C28439C73005FA33F /* Wallets.swift */; };
 		E8D7CE6F28439C8F005FA33F /* TransactionAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D7CE6E28439C8F005FA33F /* TransactionAPIModel.swift */; };
 		E8D7CE7128439D0B005FA33F /* Histories.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D7CE7028439D0B005FA33F /* Histories.swift */; };
+		E8D88383284DD15D004DDDC0 /* HTTPClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D88382284DD15D004DDDC0 /* HTTPClientSpy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		E8D7CE6C28439C73005FA33F /* Wallets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallets.swift; sourceTree = "<group>"; };
 		E8D7CE6E28439C8F005FA33F /* TransactionAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionAPIModel.swift; sourceTree = "<group>"; };
 		E8D7CE7028439D0B005FA33F /* Histories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Histories.swift; sourceTree = "<group>"; };
+		E8D88382284DD15D004DDDC0 /* HTTPClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientSpy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +98,7 @@
 		E826D3BE2841AEC7004062AB /* APILayerTests */ = {
 			isa = PBXGroup;
 			children = (
-				E8D7CE6528438BEA005FA33F /* TestHelper.swift */,
+				E8D88381284DD147004DDDC0 /* TestHelper */,
 				E826D3CE2841B0B8004062AB /* DecodableRemoteLoaderTests.swift */,
 				E8D7CE6728438CD7005FA33F /* DecodingTests.swift */,
 			);
@@ -112,6 +114,15 @@
 				E8D7CE7028439D0B005FA33F /* Histories.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		E8D88381284DD147004DDDC0 /* TestHelper */ = {
+			isa = PBXGroup;
+			children = (
+				E8D7CE6528438BEA005FA33F /* TestHelper.swift */,
+				E8D88382284DD15D004DDDC0 /* HTTPClientSpy.swift */,
+			);
+			path = TestHelper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8D7CE6828438CD7005FA33F /* DecodingTests.swift in Sources */,
+				E8D88383284DD15D004DDDC0 /* HTTPClientSpy.swift in Sources */,
 				E826D3CF2841B0B8004062AB /* DecodableRemoteLoaderTests.swift in Sources */,
 				E8D7CE6628438BEA005FA33F /* TestHelper.swift in Sources */,
 			);

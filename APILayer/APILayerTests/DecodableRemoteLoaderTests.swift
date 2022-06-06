@@ -29,7 +29,7 @@ class DecodableRemoteLoaderTests: XCTestCase {
     }
     
     func test_load_doesnotDeliversResultOnceSUTBeenDeallocated() {
-        let client = ClientSpy()
+        let client = HTTPClientSpy()
         var sut: DecodableRemoteLoader? = DecodableRemoteLoader(client)
         var receivedResult: DecodableResult?
         sut?.load(from: anyURL, of: String.self, completion: { receivedResult = $0 })
@@ -41,8 +41,8 @@ class DecodableRemoteLoaderTests: XCTestCase {
     }
     
     // MARK: - Helper
-    private func makeSUT() -> (remoteLoader: DecodableRemoteLoader, client: ClientSpy) {
-        let client = ClientSpy()
+    private func makeSUT() -> (remoteLoader: DecodableRemoteLoader, client: HTTPClientSpy) {
+        let client = HTTPClientSpy()
         let decodableLoader = DecodableRemoteLoader(client)
         return (decodableLoader, client)
     }
@@ -65,29 +65,5 @@ class DecodableRemoteLoaderTests: XCTestCase {
         let data = try! encoder.encode(validJsonString)
         
         return (validJsonString, data)
-    }
-}
-
-class ClientSpy: HTTPClient {
-    typealias Result = (url: URL, completion: ((HTTPResult) -> Void))
-    var message = [Result]()
-    
-    init() {}
-    
-    func get(from url: URL, completion: @escaping ((HTTPResult) -> Void)) {
-        message.append((url, completion))
-    }
-    
-    func completeWithError(_ error: RemoteLoader.ResultError, index: Int = 0) {
-        message[index].completion(.failure(error))
-    }
-    
-    func completeWith(_ data: Data, index: Int = 0) {
-        let http200Response = HTTPURLResponse(url: message[index].url, statusCode: 200, httpVersion: nil, headerFields: nil)!
-        completeWith(data, response: http200Response, index: index)
-    }
-    
-    func completeWith(_ data: Data, response: HTTPURLResponse, index: Int = 0) {
-        message[index].completion(.success(data, response))
     }
 }

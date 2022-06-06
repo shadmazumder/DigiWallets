@@ -16,7 +16,7 @@ class DecodingTests: XCTestCase {
         encoder.keyEncodingStrategy = .convertToSnakeCase
         let encodedData = try! encoder.encode(walletMapper)
 
-        let client = StubClient()
+        let client = HTTPClientSpy()
         let loader = DecodableRemoteLoader(client)
         expect(loader, toCompleteWith: .success(walletMapper.toWallet), of: WalletAPIModel.self) {
             client.completeWith(encodedData)
