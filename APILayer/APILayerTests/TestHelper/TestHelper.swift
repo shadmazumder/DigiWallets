@@ -29,4 +29,10 @@ extension XCTestCase{
         
         wait(for: [exp], timeout: 0.4)
     }
+    
+    func trackMemoryLeak(_ instance: AnyObject, file: StaticString = #file, line: UInt = #line) {
+        addTeardownBlock { [weak instance] in
+            XCTAssertNil(instance, "Memory Leak!!! Didn't deallocated", file: file, line: line)
+        }
+    }
 }

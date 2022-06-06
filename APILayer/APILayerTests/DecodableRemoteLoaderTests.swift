@@ -55,6 +55,19 @@ class DecodableRemoteLoaderTests: XCTestCase {
             } })
     }
     
+    func test_load_doesNotDeliverResultAfterSUTBeenDeallocated() {
+        let client = HTTPClientSpy()
+        var sut: DecodableRemoteLoader? = DecodableRemoteLoader(client)
+        var receivedResult: DecodableResult?
+        sut?.load(from: anyURL, of: String.self, completion: { receivedResult = $0 })
+        
+        sut = nil
+        let anyHTTP200URLResponse = HTTPURLResponse(url: anyURL, statusCode: 200, httpVersion: nil, headerFields: nil)!
+        client.completeWith(anyValidJsonStringWithData.data, response: anyHTTP200URLResponse)
+        
+        XCTAssertNil(receivedResult)
+    }
+    
     // MARK: - Decoding
     func test_load_deliversErrorOnFaultyData() {
         let (loader, client) = makeSUT()
@@ -90,6 +103,8 @@ class DecodableRemoteLoaderTests: XCTestCase {
     private func makeSUT() -> (remoteLoader: DecodableRemoteLoader, client: HTTPClientSpy) {
         let client = HTTPClientSpy()
         let decodableLoader = DecodableRemoteLoader(client)
+        trackMemoryLeak(decodableLoader)
+        trackMemoryLeak(client)
         return (decodableLoader, client)
     }
     
