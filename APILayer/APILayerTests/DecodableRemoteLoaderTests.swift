@@ -25,6 +25,16 @@ class DecodableRemoteLoaderTests: XCTestCase {
         XCTAssertEqual(spy.message.first?.url, anyURL)
     }
     
+    func test_multipleLoadRequest_resultsInMultipleURLCall() {
+        let anotherUrl = URL(string: "any-other-url")!
+        let (remoteLoader, spy) = makeSUT()
+        
+        remoteLoader.load(from: anyURL, of: String.self) {_ in}
+        remoteLoader.load(from: anotherUrl, of: String.self) {_ in}
+        
+        XCTAssertEqual(spy.message.map({$0.url}), [anyURL, anotherUrl])
+    }
+    
     // MARK: - Decoding
     func test_load_deliversErrorOnFaultyData() {
         let (loader, client) = makeSUT()
