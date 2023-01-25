@@ -22,7 +22,7 @@ struct ErrorMapper {
     }
     
     static private func connectivityAlertContent() -> AlertContent{
-        let title = "Oop!"
+        let title = "Oops!"
         let message = "😬 We lost the connection 🙈"
         let action = "Try again later"
         return (title, message, action)
