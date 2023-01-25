@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		E826D3A328413947004062AB /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E826D3A228413947004062AB /* URLSessionHTTPClient.swift */; };
 		E8AF944F28409D9500884741 /* CryptoLoader.docc in Sources */ = {isa = PBXBuildFile; fileRef = E8AF944E28409D9500884741 /* CryptoLoader.docc */; };
-		E8AF945528409D9500884741 /* CryptoLoader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8AF944A28409D9500884741 /* CryptoLoader.framework */; };
+		E8AF945528409D9500884741 /* CryptoLoader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8AF944A28409D9500884741 /* CryptoLoader.framework */; platformFilters = (ios, macos, ); };
 		E8AF94682840DD1000884741 /* TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AF94672840DD1000884741 /* TestHelper.swift */; };
 		E8AF94772840F39100884741 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AF94752840F39100884741 /* HTTPClient.swift */; };
 		E8AF94782840F39100884741 /* HTTPResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AF94762840F39100884741 /* HTTPResult.swift */; };
@@ -239,6 +239,10 @@
 /* Begin PBXTargetDependency section */
 		E8AF945728409D9500884741 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilters = (
+				ios,
+				macos,
+			);
 			target = E8AF944928409D9500884741 /* CryptoLoader */;
 			targetProxy = E8AF945628409D9500884741 /* PBXContainerItemProxy */;
 		};
@@ -387,10 +391,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = mobidevtalk.CryptoLoader;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -417,10 +423,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = mobidevtalk.CryptoLoader;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -434,8 +442,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = mobidevtalk.CryptoLoaderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -449,8 +461,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = mobidevtalk.CryptoLoaderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
