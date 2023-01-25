@@ -19,6 +19,8 @@
 		E8D7CE6F28439C8F005FA33F /* TransactionAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D7CE6E28439C8F005FA33F /* TransactionAPIModel.swift */; };
 		E8D7CE7128439D0B005FA33F /* Histories.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D7CE7028439D0B005FA33F /* Histories.swift */; };
 		E8D88383284DD15D004DDDC0 /* HTTPClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D88382284DD15D004DDDC0 /* HTTPClientSpy.swift */; };
+		E8E0A51629817C39006F10EB /* CryptoLoader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E0A51529817C39006F10EB /* CryptoLoader.framework */; };
+		E8E0A51729817C39006F10EB /* CryptoLoader.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E8E0A51529817C39006F10EB /* CryptoLoader.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +32,20 @@
 			remoteInfo = APILayer;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E8E0A51829817C39006F10EB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E8E0A51729817C39006F10EB /* CryptoLoader.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		E826D3B02841AEC7004062AB /* APILayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = APILayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +61,7 @@
 		E8D7CE6E28439C8F005FA33F /* TransactionAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionAPIModel.swift; sourceTree = "<group>"; };
 		E8D7CE7028439D0B005FA33F /* Histories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Histories.swift; sourceTree = "<group>"; };
 		E8D88382284DD15D004DDDC0 /* HTTPClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientSpy.swift; sourceTree = "<group>"; };
+		E8E0A51529817C39006F10EB /* CryptoLoader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CryptoLoader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8E0A51629817C39006F10EB /* CryptoLoader.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +90,7 @@
 				E826D3B22841AEC7004062AB /* APILayer */,
 				E826D3BE2841AEC7004062AB /* APILayerTests */,
 				E826D3B12841AEC7004062AB /* Products */,
+				E8E0A51429817C39006F10EB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +144,14 @@
 			path = TestHelper;
 			sourceTree = "<group>";
 		};
+		E8E0A51429817C39006F10EB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E8E0A51529817C39006F10EB /* CryptoLoader.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -146,6 +173,7 @@
 				E826D3AC2841AEC7004062AB /* Sources */,
 				E826D3AD2841AEC7004062AB /* Frameworks */,
 				E826D3AE2841AEC7004062AB /* Resources */,
+				E8E0A51829817C39006F10EB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
