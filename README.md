@@ -8,7 +8,30 @@ The app is divided into 4 module.
 3. The next part is the `iOS` which in isolation creates the Views to represent those raw data by converting them into corresponding view model.
 4. Last is the `MyCryptoApp` which is the composer module. On this module we compose all the above three module to run the app.
 
-Remote server <-- CryptoLoader <-- APILayer <-- iOS <-- MyCryptoApp
+```
+                 _______________
+                |  CryptoLoader |
+                |_______________|
+                       /|\
+                        |
+                        |
+                 _______________
+                |   APILayer    |
+                |_______________|
+                       /|\
+                        |
+                        |
+                 _______________
+                |      iOS      |
+                |_______________|
+                       /|\
+                        |
+                        |
+                 _______________
+                |  MyCryptoApp  |
+                |_______________|
+```
+
 
 # Unit test
 Except the `MyCryptoApp` all other modules are developed using TDD approach.
