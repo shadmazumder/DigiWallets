@@ -14,10 +14,10 @@ Remote server <-- CryptoLoader <-- APILayer <-- iOS <-- MyCryptoApp
 Except the `MyCryptoApp` all other modules are developed using TDD approach.
 
 # Modules intorduction
-`CryptoLoader` and `APILayer` are mac based framework. To run the test for those two module please select `My Mac` from the schema and run the tests on. As the code are not dependent on the `UIKit` we intentionally skipped to build those two module as iOS framework. Becuse the feedback loop is far more faster than the iOS based framework.
-
-`iOS` is the iOS based framework and concerntrates on the UI part. Select any of the simulator to run the test for this module.
-
-`MyCryptoApp` currently do not have any test. The plan was to add some UI tests for this module. However we can run this module on the simulator.
+- `CryptoLoader` and `APILayer` were first developed as mac based framework. Then the other platforms support were added. Netwroking and API based conversion is not iOS dependent. So making them mac based gives us the very quick feedback loop. As the test code runs on Mac.
+  - `CryptoLoader` is focusing on Networking
+  - `APILayer` is focusing on raw data conversion. `APILayer` converts the raw Data into API layer based model, so that the next model 'iOS` can digest/convert this model into its own model(ViewModel)
+- `iOS` is the iOS based framework and concerntrates on the UI part. Select any of the simulator to run the test for this module. `iOS` was choosen a framework as it will give a lot faster feedback loop. Because to run the tests for `iOS` we will not need to run the app on the simulator.
+- `MyCryptoApp` currently do not have any test. The plan was to add some UI tests for this module. However we can run this module on the simulator.
 
 
